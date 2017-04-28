@@ -35,15 +35,15 @@ class FRGifHeader: FRStateHeader {
     }
     
     
-    fileprivate lazy var gifView:UIImageView = {
+    fileprivate lazy var gifView: UIImageView = {
         [unowned self] in
         let gifView = UIImageView()
         self.addSubview(gifView)
         return gifView
         }()
     
-    fileprivate var stateImages:Dictionary<RefreshState, Array<UIImage>> = [RefreshState.idle : []]
-    fileprivate var stateDurations:Dictionary<RefreshState, TimeInterval> = [RefreshState.idle : 1, RefreshState.pulling : 1, RefreshState.refreshing : 1]
+    fileprivate var stateImages: Dictionary<RefreshState, Array<UIImage>> = [RefreshState.idle : []]
+    fileprivate var stateDurations: Dictionary<RefreshState, TimeInterval> = [RefreshState.idle : 1, RefreshState.pulling : 1, RefreshState.refreshing : 1]
     
     
     //MARK: 重写

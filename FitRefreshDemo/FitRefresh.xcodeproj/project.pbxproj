@@ -10,7 +10,6 @@
 		E7081C1C1EB2E67C0082C609 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C1B1EB2E67C0082C609 /* AppDelegate.swift */; };
 		E7081C1E1EB2E67C0082C609 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C1D1EB2E67C0082C609 /* ViewController.swift */; };
 		E7081C211EB2E67C0082C609 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7081C1F1EB2E67C0082C609 /* Main.storyboard */; };
-		E7081C231EB2E67C0082C609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7081C221EB2E67C0082C609 /* Assets.xcassets */; };
 		E7081C261EB2E67C0082C609 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7081C241EB2E67C0082C609 /* LaunchScreen.storyboard */; };
 		E7081C311EB2E67C0082C609 /* FitRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C301EB2E67C0082C609 /* FitRefreshTests.swift */; };
 		E7081C3C1EB2E67C0082C609 /* FitRefreshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C3B1EB2E67C0082C609 /* FitRefreshUITests.swift */; };
@@ -27,6 +26,9 @@
 		E7081C7C1EB319640082C609 /* FRResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E7081C6F1EB319640082C609 /* FRResources.bundle */; };
 		E7081C7D1EB319640082C609 /* FRStateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C701EB319640082C609 /* FRStateHeader.swift */; };
 		E7081C7E1EB319640082C609 /* ScrollViewExtension-FitRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C711EB319640082C609 /* ScrollViewExtension-FitRefresh.swift */; };
+		E7081C9B1EB321E40082C609 /* GifTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C9A1EB321E40082C609 /* GifTableViewController.swift */; };
+		E7081C9D1EB321F20082C609 /* NormalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C9C1EB321F20082C609 /* NormalTableViewController.swift */; };
+		E7081C9F1EB32B850082C609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7081C9E1EB32B850082C609 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +53,6 @@
 		E7081C1B1EB2E67C0082C609 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7081C1D1EB2E67C0082C609 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E7081C201EB2E67C0082C609 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E7081C221EB2E67C0082C609 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7081C251EB2E67C0082C609 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7081C271EB2E67C0082C609 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7081C2C1EB2E67C0082C609 /* FitRefreshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitRefreshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +74,9 @@
 		E7081C6F1EB319640082C609 /* FRResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FRResources.bundle; sourceTree = "<group>"; };
 		E7081C701EB319640082C609 /* FRStateHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRStateHeader.swift; sourceTree = "<group>"; };
 		E7081C711EB319640082C609 /* ScrollViewExtension-FitRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollViewExtension-FitRefresh.swift"; sourceTree = "<group>"; };
+		E7081C9A1EB321E40082C609 /* GifTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifTableViewController.swift; sourceTree = "<group>"; };
+		E7081C9C1EB321F20082C609 /* NormalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewController.swift; sourceTree = "<group>"; };
+		E7081C9E1EB32B850082C609 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,9 +130,11 @@
 			children = (
 				E7081C1B1EB2E67C0082C609 /* AppDelegate.swift */,
 				E7081C1D1EB2E67C0082C609 /* ViewController.swift */,
+				E7081C9C1EB321F20082C609 /* NormalTableViewController.swift */,
+				E7081C9A1EB321E40082C609 /* GifTableViewController.swift */,
 				E7081C1F1EB2E67C0082C609 /* Main.storyboard */,
-				E7081C221EB2E67C0082C609 /* Assets.xcassets */,
 				E7081C241EB2E67C0082C609 /* LaunchScreen.storyboard */,
+				E7081C9E1EB32B850082C609 /* Assets.xcassets */,
 				E7081C271EB2E67C0082C609 /* Info.plist */,
 			);
 			path = FitRefresh;
@@ -285,7 +291,7 @@
 			files = (
 				E7081C261EB2E67C0082C609 /* LaunchScreen.storyboard in Resources */,
 				E7081C7C1EB319640082C609 /* FRResources.bundle in Resources */,
-				E7081C231EB2E67C0082C609 /* Assets.xcassets in Resources */,
+				E7081C9F1EB32B850082C609 /* Assets.xcassets in Resources */,
 				E7081C211EB2E67C0082C609 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,9 +327,11 @@
 				E7081C7B1EB319640082C609 /* FRNormalHeader.swift in Sources */,
 				E7081C731EB319640082C609 /* FRAutoFooter.swift in Sources */,
 				E7081C741EB319640082C609 /* FRAutoNormalFooter.swift in Sources */,
+				E7081C9D1EB321F20082C609 /* NormalTableViewController.swift in Sources */,
 				E7081C751EB319640082C609 /* FRAutoStateFooter.swift in Sources */,
 				E7081C721EB319640082C609 /* Component.swift in Sources */,
 				E7081C791EB319640082C609 /* FRHeader.swift in Sources */,
+				E7081C9B1EB321E40082C609 /* GifTableViewController.swift in Sources */,
 				E7081C1C1EB2E67C0082C609 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,10 +486,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7ENE4DHQ7N;
 				INFOPLIST_FILE = FitRefresh/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyrill.FitRefresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -491,10 +501,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7ENE4DHQ7N;
 				INFOPLIST_FILE = FitRefresh/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyrill.FitRefresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
