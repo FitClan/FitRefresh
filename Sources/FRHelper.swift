@@ -24,7 +24,7 @@ func FRColor(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
 public typealias FRTask = (_ cancel: Bool) -> Void
 /** 延迟执行 */
 @discardableResult
-func FRDelay(_ time: TimeInterval, task: @escaping ()->()) -> FRTask? {
+public func FRDelay(_ time: TimeInterval, task: @escaping ()->()) -> FRTask? {
     func dispatch_later(block: @escaping ()->()) -> Void {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: block)
     }

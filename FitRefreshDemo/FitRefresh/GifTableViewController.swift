@@ -10,6 +10,8 @@ import UIKit
 
 class GifTableViewController: UITableViewController {
 
+    var task: FRTask?
+    
     var dataArray: Array<String> = []
     
     // FRGifCellID
@@ -43,7 +45,7 @@ class GifTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        dataArray.removeAll()
+        FRCancel(task)
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,7 +69,7 @@ class GifTableViewController: UITableViewController {
     
     func upPullLoadData() {
         //延迟执行 模拟网络延迟，实际开发中去掉
-        FRDelay(2) {
+        task = FRDelay(2) {
             
             for i in 1..<15{
                 self.dataArray.append("数据 - \(i + self.dataArray.count)")
