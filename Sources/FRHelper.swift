@@ -74,15 +74,6 @@ extension NSObject{
         method_exchangeImplementations(class_getClassMethod(self, method1), class_getClassMethod(self, method2));
     }
     
-    
-    // MARK: 执行某个方法
-    func doAction(_ action:Selector){
-        if self.responds(to: action) == true {
-            let timer = Timer.scheduledTimer(timeInterval: 0, target: self, selector:action, userInfo: nil, repeats: false)
-            RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
-        }
-    }
-    
 }
 
 
