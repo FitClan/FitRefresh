@@ -40,7 +40,7 @@ open class Component: UIView {
     fileprivate weak var refreshingTarget:AnyObject!
     
     // 4.执行的方法
-    fileprivate var refreshingAction: Selector = Selector("")
+    fileprivate var refreshingAction: Selector = NSSelectorFromString("")
     
     // 5.真正刷新 回调
     var refreshingClosure: ComponentRefreshingClosure = {}
