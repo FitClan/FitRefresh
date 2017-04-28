@@ -29,6 +29,7 @@
 		E7081C9B1EB321E40082C609 /* GifTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C9A1EB321E40082C609 /* GifTableViewController.swift */; };
 		E7081C9D1EB321F20082C609 /* NormalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C9C1EB321F20082C609 /* NormalTableViewController.swift */; };
 		E7081C9F1EB32B850082C609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7081C9E1EB32B850082C609 /* Assets.xcassets */; };
+		E7081CA71EB33D000082C609 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7081CA61EB33D000082C609 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		E7081C9A1EB321E40082C609 /* GifTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifTableViewController.swift; sourceTree = "<group>"; };
 		E7081C9C1EB321F20082C609 /* NormalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewController.swift; sourceTree = "<group>"; };
 		E7081C9E1EB32B850082C609 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E7081CA51EB33D000082C609 /* FitRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitRefresh.h; sourceTree = "<group>"; };
+		E7081CA61EB33D000082C609 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,8 @@
 				E7081C6E1EB319640082C609 /* FRNormalHeader.swift */,
 				E7081C701EB319640082C609 /* FRStateHeader.swift */,
 				E7081C711EB319640082C609 /* ScrollViewExtension-FitRefresh.swift */,
+				E7081CA51EB33D000082C609 /* FitRefresh.h */,
+				E7081CA61EB33D000082C609 /* Info.plist */,
 			);
 			name = Sources;
 			path = ../Sources;
@@ -292,6 +297,7 @@
 				E7081C261EB2E67C0082C609 /* LaunchScreen.storyboard in Resources */,
 				E7081C7C1EB319640082C609 /* FRResources.bundle in Resources */,
 				E7081C9F1EB32B850082C609 /* Assets.xcassets in Resources */,
+				E7081CA71EB33D000082C609 /* Info.plist in Resources */,
 				E7081C211EB2E67C0082C609 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
