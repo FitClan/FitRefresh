@@ -26,15 +26,15 @@ public enum RefreshState: Int{
 public typealias ComponentRefreshingClosure = ()->()
 
 /** 抽象类，不直接使用，用于继承后，重写*/
-open class Component: UIView {
+public class Component: UIView {
     
     // MARK: - 公共接口
     // MARK: 给外界访问
     // 1.字体颜色
-    open var textColor: UIColor?
+    public var textColor: UIColor?
     
     // 2.字体大小
-    open var font: UIFont?
+    public var font: UIFont?
     
     // 3.刷新的target
     fileprivate weak var refreshingTarget:AnyObject!
@@ -46,7 +46,7 @@ open class Component: UIView {
     var refreshingClosure: ComponentRefreshingClosure = {}
     
     /** 拉拽的百分比 */
-    open var pullingPercent:CGFloat = 1 {
+    public var pullingPercent:CGFloat = 1 {
         didSet {
             if self.state == RefreshState.refreshing { return }
             if self.automaticallyChangeAlpha == true {
@@ -56,7 +56,7 @@ open class Component: UIView {
     }
     
     /** 根据拖拽比例自动切换透明度 */
-    open var automaticallyChangeAlpha:Bool = false {
+    public var automaticallyChangeAlpha:Bool = false {
         didSet {
             if self.state == RefreshState.refreshing { return }
             if automaticallyChangeAlpha == true {
@@ -71,7 +71,7 @@ open class Component: UIView {
     var state = RefreshState.idle
     
     /** 是否在刷新 */
-    open var isRefreshing:Bool{
+    public var isRefreshing:Bool{
         get {
             return self.state == .refreshing || self.state == .willRefresh;
         }
@@ -109,7 +109,7 @@ open class Component: UIView {
     // MARK: 提供给子类重写
     
     /** 开始刷新,进入刷新状态 */
-    open func beginRefreshing() {
+    public func beginRefreshing() {
         UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: { () -> Void in
             self.alpha = 1.0
         })
@@ -127,7 +127,7 @@ open class Component: UIView {
     }
     
     /** 结束刷新 */
-    open func endRefreshing() {
+    public func endRefreshing() {
         self.state = .idle
     }
     
@@ -192,7 +192,7 @@ open class Component: UIView {
     
     
     // 重写父类方法 这个view 会添加到 ScrollView 上去
-    override open func willMove(toSuperview newSuperview: UIView?) {
+    override public func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
         // 1.旧的父控件 移除监听
@@ -251,7 +251,7 @@ open class Component: UIView {
     }
 
     //MARK: drawRect
-    override open func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         super.draw(rect)
         
         if self.state == RefreshState.willRefresh {
@@ -261,13 +261,13 @@ open class Component: UIView {
     }
     
     
-    override open func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         self.placeSubvies()
     }
     
     
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         // 需要这种情况就直接返回
         if !self.isUserInteractionEnabled { return }

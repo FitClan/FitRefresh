@@ -11,7 +11,7 @@ import UIKit
 public class FRAutoFooter: FRFooter {
     //MARK: 公共接口
     /** 是否自动刷新(默认为YES) */
-    open var automaticallyRefresh:Bool = true
+    public var automaticallyRefresh:Bool = true
     
     /** 当底部控件出现多少时就自动刷新(默认为1.0，也就是底部控件完全出现时，才会自动刷新) */
     //    @available(*, deprecated=1.0, message="Use -automaticallyChangeAlpha instead.")
@@ -22,13 +22,13 @@ public class FRAutoFooter: FRFooter {
     }
     
     /** 当底部控件出现多少时就自动刷新(默认为1.0，也就是底部控件完全出现时，才会自动刷新) */
-    open var triggerAutomaticallyRefreshPercent:CGFloat = 1.0
+    public var triggerAutomaticallyRefreshPercent:CGFloat = 1.0
     
     
     //MARK: 重写
     
     //初始化
-    override open func willMove(toSuperview newSuperview: UIView?) {
+    override public func willMove(toSuperview newSuperview: UIView?) {
         
         super.willMove(toSuperview: newSuperview)
         
@@ -118,7 +118,7 @@ public class FRAutoFooter: FRFooter {
     }
     
     
-    override open var isHidden:Bool{
+    override public var isHidden:Bool{
         didSet{
             //如果之前没有隐藏的现在隐藏了，那么要设置状态和去掉底部区域
             if !oldValue && isHidden {

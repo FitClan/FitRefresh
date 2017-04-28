@@ -13,14 +13,14 @@ public class FRGifHeader: FRStateHeader {
     //MARK: 方法接口
     /** 设置刷新状态下,gif的图片 */
     @discardableResult
-    open func setImages(_ images:Array<UIImage>, state:RefreshState) -> Self {
+    public func setImages(_ images:Array<UIImage>, state:RefreshState) -> Self {
         
         return self.setImages(images, duration: TimeInterval(images.count) * 0.1, state: state)
     }
     
     /** 设置刷新状态下,gif的图片,动画每帧相隔的时间 */
     @discardableResult
-    open func setImages(_ images:Array<UIImage>, duration:TimeInterval, state:RefreshState) -> Self {
+    public func setImages(_ images:Array<UIImage>, duration:TimeInterval, state:RefreshState) -> Self {
         //防止空数组 []
         if images.count < 1 { return self}
         
@@ -49,7 +49,7 @@ public class FRGifHeader: FRStateHeader {
     
     
     //MARK: 重写
-    override open var pullingPercent:CGFloat {
+    override public var pullingPercent:CGFloat {
         didSet{
             if  let images = self.stateImages[RefreshState.idle] {
                 

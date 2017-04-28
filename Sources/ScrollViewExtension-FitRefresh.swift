@@ -15,7 +15,7 @@ private var RefreshReloadDataClosureKey:Void?
 
 typealias ClosureParamCountType = (Int)->Void
 
-open class ReloadDataClosureInClass {
+public class ReloadDataClosureInClass {
     var reloadDataClosure: ClosureParamCountType = { (Int)->Void in }
 }
 

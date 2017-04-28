@@ -16,10 +16,10 @@ public class FRHeader: Component {
     var lastUpdatedateKey = ""
     
     /** 忽略多少scrollView的contentInset的top */
-    open var ignoredScrollViewContentInsetTop: CGFloat = 0.0
+    public var ignoredScrollViewContentInsetTop: CGFloat = 0.0
     
     /** 上一次下拉刷新成功的时间 */
-    open var lastUpdatedTime:Date{
+    public var lastUpdatedTime:Date{
         get {
             if let realTmp =  UserDefaults.standard.object(forKey: self.lastUpdatedateKey){
                 
@@ -155,7 +155,7 @@ public class FRHeader: Component {
     }
     
     /** 结束刷新 */
-    override open func endRefreshing() {
+    override public func endRefreshing() {
         
         if self.scrollView.isKind(of: UICollectionView.self){
             

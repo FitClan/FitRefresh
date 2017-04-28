@@ -12,7 +12,7 @@ public class FRNormalHeader: FRStateHeader {
     //MARK: 外界接口
     
     /** 菊花样式 */
-    open var activityIndicatorViewStyle:UIActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
+    public var activityIndicatorViewStyle:UIActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
         
         didSet{
             self.activityView.activityIndicatorViewStyle = activityIndicatorViewStyle
@@ -21,7 +21,7 @@ public class FRNormalHeader: FRStateHeader {
     }
     
     /** 指示器的图片[箭头] */
-    open var arrowImage:UIImage? {
+    public var arrowImage:UIImage? {
         didSet{
             
             self.arrowView.image = arrowImage

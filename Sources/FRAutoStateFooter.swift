@@ -20,10 +20,10 @@ public class FRAutoStateFooter: FRAutoFooter {
         }()
     
     /** 隐藏刷新状态的文字 */
-    open var refreshingTitleHidden:Bool = false
+    public var refreshingTitleHidden:Bool = false
     
     /** 设置状态的显示文字 */
-    open func setTitle(_ title:String, state:RefreshState){
+    public func setTitle(_ title:String, state:RefreshState){
         self.stateLabel.text = self.stateTitles[self.state];
     }
     

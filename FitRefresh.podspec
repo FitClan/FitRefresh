@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name        = "FitRefresh"
-  s.version     = "1.0.2"
+  s.version     = "1.1.0"
   s.summary     = "FitRefresh makes it easy to refresh in Swift3+"
   s.platform     = :ios, "8.0"
   s.homepage    = "https://github.com/CoderCYLee/FitRrefesh"
   s.license     = { :type => "MIT" }
-  s.authors     = { "cyrill" => "lichunyang@outlook.com" }
+  s.authors     = { "Cyrill" => "lichunyang@outlook.com" }
 
   s.requires_arc = true
 

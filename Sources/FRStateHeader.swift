@@ -42,12 +42,12 @@ public class FRStateHeader: FRHeader {
     
     
     /** 设置状态的显示文字 */
-    open func setTitle(_ title:String, state:RefreshState){
+    public func setTitle(_ title:String, state:RefreshState){
         self.stateLabel.text = self.stateTitles[self.state];
     }
     
     /** 文字刷新状态下的显示与隐藏 */
-    open var refreshingTitleHidden:Bool = false {
+    public var refreshingTitleHidden:Bool = false {
         didSet{
             if oldValue == refreshingTitleHidden { return }
             self.stateLabel.isHidden = refreshingTitleHidden
@@ -55,7 +55,7 @@ public class FRStateHeader: FRHeader {
     }
     
     /** 时间刷新状态下的显示与隐藏*/
-    open var refreshingTimeHidden:Bool = false {
+    public var refreshingTimeHidden:Bool = false {
         didSet{
             if oldValue == refreshingTimeHidden { return }
             self.lastUpdatedTimeLabel.isHidden = refreshingTimeHidden

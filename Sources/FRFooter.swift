@@ -11,16 +11,16 @@ import UIKit
 public class FRFooter: Component {
     //MARK: 提供外界访问的
     /** 提示没有更多的数据 */
-    open func noticeNoMoreData(){ self.state = RefreshState.noMoreData }
+    public func noticeNoMoreData(){ self.state = RefreshState.noMoreData }
     
     /** 重置没有更多的数据（消除没有更多数据的状态） */
-    open func resetNoMoreData(){  self.state = RefreshState.idle }
+    public func resetNoMoreData(){  self.state = RefreshState.idle }
     
     /** 忽略多少scrollView的contentInset的bottom */
-    open var ignoredScrollViewContentInsetBottom:CGFloat = 0
+    public var ignoredScrollViewContentInsetBottom:CGFloat = 0
     
     /** 自动根据有无数据来显示和隐藏（有数据就显示，没有数据隐藏） */
-    open var automaticallyHidden:Bool = true
+    public var automaticallyHidden:Bool = true
     
     
     //MARK: 私有的
@@ -31,7 +31,7 @@ public class FRFooter: Component {
         self.height = RefreshFooterHeight
     }
     
-    override open func willMove(toSuperview newSuperview: UIView?) {
+    override public func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
         if let _ = newSuperview {
