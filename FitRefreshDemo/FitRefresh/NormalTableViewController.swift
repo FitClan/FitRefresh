@@ -37,7 +37,7 @@ class NormalTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.tableView.fr_footerView?.isHidden = (dataArray.count == 0)
+        
         return dataArray.count
     }
     
@@ -52,7 +52,7 @@ class NormalTableViewController: UITableViewController {
     
     func upPullLoadData() {
         
-        //延迟执行 模拟网络延迟，实际开发中去掉
+        // 延迟执行 模拟网络延迟，实际开发中去掉
         FRDelay(2) {
             
             for i in 1..<15{

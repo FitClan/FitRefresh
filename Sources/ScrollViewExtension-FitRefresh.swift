@@ -97,7 +97,7 @@ public extension UIScrollView {
                     totalCount += tableView.numberOfRows(inSection: section)
                 }
                 
-            }else if self.isKind(of: UICollectionView.self) {
+            } else if self.isKind(of: UICollectionView.self) {
                 let collectionView = self as! UICollectionView
                 for section in 0..<collectionView.numberOfSections {
                     
@@ -115,5 +115,25 @@ public extension UIScrollView {
     
 }
 
+extension UITableView {
+    // 这里不推荐 initialize 有警告
+    open override class func initialize() {
+        if self != UITableView.self { return }
+        
+        DispatchQueue.once(token: "ex") { 
+            self.exchangeInstanceMethod(#selector(UITableView.reloadData), method2: #selector(UITableView.frReloadData))
+        }
+        
+    }
+    
+    public func frReloadData() {
+        // 正因为交换了方法，所以这里其实是执行的系统自己的 reloadData 方法
+        
+        self.frReloadData()
+        
+        self.executeReloadDataClosure()
+    }
+    
+}
 
 
