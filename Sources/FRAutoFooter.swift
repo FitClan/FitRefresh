@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FRAutoFooter: FRFooter {
+public class FRAutoFooter: FRFooter {
     //MARK: 公共接口
     /** 是否自动刷新(默认为YES) */
     open var automaticallyRefresh:Bool = true

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FRStateHeader: FRHeader {
+public class FRStateHeader: FRHeader {
     
     // MARK: 私有的
     /** 每个状态对应的文字 */

@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class FRHeader: Component {
+public class FRHeader: Component {
 
     // MARK: - 公开
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FRAutoStateFooter: FRAutoFooter {
+public class FRAutoStateFooter: FRAutoFooter {
     //MARK: 外部
     
     /** 显示刷新状态的label */

@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class FRFooter: Component {
+public class FRFooter: Component {
     //MARK: 提供外界访问的
     /** 提示没有更多的数据 */
     open func noticeNoMoreData(){ self.state = RefreshState.noMoreData }

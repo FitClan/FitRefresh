@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FRNormalHeader: FRStateHeader {
+public class FRNormalHeader: FRStateHeader {
     //MARK: 外界接口
     
     /** 菊花样式 */

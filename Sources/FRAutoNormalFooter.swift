@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FRAutoNormalFooter: FRAutoStateFooter {
+public class FRAutoNormalFooter: FRAutoStateFooter {
     //MARK: 外部访问
     /** 菊花样式 */
     open var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
