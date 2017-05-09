@@ -127,7 +127,7 @@ extension UITableView {
     }
     
     public func frReloadData() {
-        // 正因为交换了方法，所以这里其实是执行的系统自己的 reloadData 方法
+        // 因为交换了方法，所以这里其实是执行的系统自己的 reloadData 方法
         
         self.frReloadData()
         
