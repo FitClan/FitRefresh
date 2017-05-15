@@ -45,7 +45,7 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
         self.activityView.center = CGPoint(x: activityViewCenterX, y: activityViewCenterY)
     }
     
-    override var state:RefreshState{
+    override var state:RefreshState {
         didSet {
             if oldValue == state { return }
             

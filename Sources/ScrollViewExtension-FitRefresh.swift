@@ -85,7 +85,7 @@ public extension UIScrollView {
         }
     }
     
-    var totalDataCount:Int{
+    var totalDataCount:Int {
         
         get{
             var totalCount:Int = 0
@@ -109,21 +109,20 @@ public extension UIScrollView {
         }
     }
     
-    func executeReloadDataClosure(){
+    func executeReloadDataClosure() {
         self.reloadDataClosureClass.reloadDataClosure(self.totalDataCount)
     }
     
 }
 
 extension UITableView {
-    // 这里不推荐 initialize 有警告
+    // 这里不推荐 initialize 有警告。正在想替代方法
     open override class func initialize() {
         if self != UITableView.self { return }
         
         DispatchQueue.once(token: "ex") { 
             self.exchangeInstanceMethod(#selector(UITableView.reloadData), method2: #selector(UITableView.frReloadData))
         }
-        
     }
     
     public func frReloadData() {
@@ -133,7 +132,6 @@ extension UITableView {
         
         self.executeReloadDataClosure()
     }
-    
 }
 
 

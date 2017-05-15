@@ -71,7 +71,7 @@ public class Component: UIView {
     var state = RefreshState.idle
     
     /** 是否在刷新 */
-    public var isRefreshing:Bool{
+    public var isRefreshing:Bool {
         get {
             return self.state == .refreshing || self.state == .willRefresh;
         }
@@ -79,7 +79,7 @@ public class Component: UIView {
     
     // MARK 方法
     // 提供方便，有提示
-    func addCallBack(_ block: @escaping ComponentRefreshingClosure){
+    func addCallBack(_ block: @escaping ComponentRefreshingClosure) {
         self.refreshingClosure = block
     }
     
@@ -87,20 +87,20 @@ public class Component: UIView {
     
     /** 闭包回调 */
     public convenience
-    init(ComponentRefreshingClosure: @escaping ComponentRefreshingClosure){
+    init(ComponentRefreshingClosure: @escaping ComponentRefreshingClosure) {
         self.init()
         self.refreshingClosure = ComponentRefreshingClosure
     }
     
     /** target action 回调 [推荐] */
     public convenience
-    init(target: AnyObject, action: Selector){
+    init(target: AnyObject, action: Selector) {
         self.init()
         self.setRefreshingTarget(target, action: action)
     }
     
     /* 1. 设置 回调方法 */
-    func setRefreshingTarget(_ target: AnyObject, action: Selector){
+    func setRefreshingTarget(_ target: AnyObject, action: Selector) {
         self.refreshingTarget = target
         self.refreshingAction = action
         
@@ -140,19 +140,19 @@ public class Component: UIView {
     }
     
     /** 6. 摆放子控件 */
-    func placeSubvies(){}
+    func placeSubvies() {}
     
     /** 7. 当scrollView的contentOffset发生改变的时候调用 */
-    func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?){}
+    func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
     
     /** 8. 当scrollView的contentSize发生改变的时候调用 */
-    func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?){}
+    func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
     
     /** 9. 当scrollView的拖拽状态发生改变的时候调用 */
-    func scrollViewPanStateDidChange(_ change: [NSKeyValueChangeKey : Any]?){}
+    func scrollViewPanStateDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
     
     /** 促发回调 */
-    func executeRefreshingCallback(){
+    func executeRefreshingCallback() {
         
         DispatchQueue.main.async {
             
@@ -199,7 +199,7 @@ public class Component: UIView {
         self.removeObservers()
         
         //2.添加监听
-        if let tmpNewSuperview = newSuperview  {
+        if let tmpNewSuperview = newSuperview {
             
             //2.1设置宽度
             self.width = tmpNewSuperview.width
@@ -223,7 +223,7 @@ public class Component: UIView {
     }
     
     //MARK:  添加监听
-    fileprivate func addObservers(){
+    fileprivate func addObservers() {
         
         let options:NSKeyValueObservingOptions = NSKeyValueObservingOptions.new
         
@@ -237,7 +237,7 @@ public class Component: UIView {
         
     }
     
-    fileprivate func removeObservers(){
+    fileprivate func removeObservers() {
         
         if let realSuperview = self.superview {
             realSuperview.removeObserver(self, forKeyPath: RefreshKeyPathContentOffset)
@@ -298,8 +298,6 @@ extension UILabel {
         return FRLable
     }
 }
-
-
 
 
 

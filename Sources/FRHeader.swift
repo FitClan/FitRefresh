@@ -25,7 +25,7 @@ public class FRHeader: Component {
                 
                 return realTmp as! Date
                 
-            } else{
+            } else {
                 return Date()
             }
         }
@@ -95,18 +95,14 @@ public class FRHeader: Component {
         } else if self.pullingPercent < 1 {
             self.pullingPercent = pullingPercent
         }
-        
-        
     }
-    
-    
     
     
     //MARK: 改变状态后
     /** 刷新控件的状态 */
     override var state: RefreshState {
         
-        didSet{
+        didSet {
             
             //状态和以前的一样就不用改变
             if oldValue == state {
@@ -149,7 +145,6 @@ public class FRHeader: Component {
                     }, completion: { (flag) -> Void in
                         self.executeRefreshingCallback()
                 })
-                
             }
         }
     }

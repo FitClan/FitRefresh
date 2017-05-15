@@ -42,13 +42,13 @@ public class FRStateHeader: FRHeader {
     
     
     /** 设置状态的显示文字 */
-    public func setTitle(_ title:String, state:RefreshState){
+    public func setTitle(_ title:String, state:RefreshState) {
         self.stateLabel.text = self.stateTitles[self.state];
     }
     
     /** 文字刷新状态下的显示与隐藏 */
     public var refreshingTitleHidden:Bool = false {
-        didSet{
+        didSet {
             if oldValue == refreshingTitleHidden { return }
             self.stateLabel.isHidden = refreshingTitleHidden
         }
@@ -56,7 +56,7 @@ public class FRStateHeader: FRHeader {
     
     /** 时间刷新状态下的显示与隐藏*/
     public var refreshingTimeHidden:Bool = false {
-        didSet{
+        didSet {
             if oldValue == refreshingTimeHidden { return }
             self.lastUpdatedTimeLabel.isHidden = refreshingTimeHidden
             
@@ -67,8 +67,8 @@ public class FRStateHeader: FRHeader {
     
     //MARK: 重写
     
-    override var lastUpdatedateKey:String{
-        didSet{
+    override var lastUpdatedateKey:String {
+        didSet {
             if let lastUpdatedTimeDate = UserDefaults.standard.object(forKey: lastUpdatedateKey) {
                 
                 let realLastUpdateTimeDate:Date = lastUpdatedTimeDate as! Date
@@ -88,8 +88,8 @@ public class FRStateHeader: FRHeader {
         }
     }
     
-    override var state:RefreshState{
-        didSet{
+    override var state:RefreshState {
+        didSet {
             if state == oldValue { return }
             self.stateLabel.text = self.stateTitles[self.state];
             

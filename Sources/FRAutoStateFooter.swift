@@ -23,7 +23,7 @@ public class FRAutoStateFooter: FRAutoFooter {
     public var refreshingTitleHidden:Bool = false
     
     /** 设置状态的显示文字 */
-    public func setTitle(_ title:String, state:RefreshState){
+    public func setTitle(_ title:String, state:RefreshState) {
         self.stateLabel.text = self.stateTitles[self.state];
     }
     
@@ -58,12 +58,12 @@ public class FRAutoStateFooter: FRAutoFooter {
     
     
     override var state:RefreshState {
-        didSet{
+        didSet {
             if oldValue == state { return }
             
             if self.refreshingTitleHidden && state == RefreshState.refreshing {
                 self.stateLabel.text = nil
-            }else {
+            } else {
                 self.stateLabel.text = self.stateTitles[state]
             }
         }

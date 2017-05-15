@@ -81,9 +81,9 @@ public class FRNormalHeader: FRStateHeader {
     //从写观察者属性
     /** 辅助记录 旧值 */
     fileprivate var oldState: RefreshState!
-    override var state: RefreshState{
+    override var state: RefreshState {
         
-        didSet{
+        didSet {
             self.oldState = oldValue
             if state == oldValue {return}
             self.switchStateDoSomething(state)
@@ -121,7 +121,7 @@ public class FRNormalHeader: FRStateHeader {
                 })
                 
                 //4.1.2 不然就反正之前的
-            }else{
+            } else {
                 commonFun()
                 UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: { () -> Void in
                     self.arrowView.transform = CGAffineTransform.identity
