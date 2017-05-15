@@ -45,7 +45,7 @@ public class FRAutoStateFooter: FRAutoFooter {
         
     }
     
-    func stateLabelClick(){
+    func stateLabelClick() {
         if self.state == RefreshState.idle {
             self.beginRefreshing()
         }

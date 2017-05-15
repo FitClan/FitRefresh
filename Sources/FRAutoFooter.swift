@@ -16,7 +16,7 @@ public class FRAutoFooter: FRFooter {
     /** 当底部控件出现多少时就自动刷新(默认为1.0，也就是底部控件完全出现时，才会自动刷新) */
     //    @available(*, deprecated=1.0, message="Use -automaticallyChangeAlpha instead.")
     var appearencePercentTriggerAutoRefresh:CGFloat = 1.0 {
-        willSet{
+        willSet {
             self.triggerAutomaticallyRefreshPercent = newValue
         }
     }
@@ -84,7 +84,7 @@ public class FRAutoFooter: FRFooter {
         if self.scrollView.panGestureRecognizer.state == UIGestureRecognizerState.ended {
             
             // 向上拖拽
-            func draggingUp(){
+            func draggingUp() {
                 //如果是向 上拖拽 刷新
                 if self.scrollView.contentOffset.y > -self.scrollView.contentInset.top {
                     beginRefreshing()
@@ -107,7 +107,7 @@ public class FRAutoFooter: FRFooter {
     }
     
     override var state:RefreshState {
-        didSet{
+        didSet {
             if state == oldValue { return }
             if state == RefreshState.refreshing {
                 FRDelay(0.5, task: {
@@ -119,14 +119,14 @@ public class FRAutoFooter: FRFooter {
     
     
     override public var isHidden:Bool{
-        didSet{
+        didSet {
             //如果之前没有隐藏的现在隐藏了，那么要设置状态和去掉底部区域
             if !oldValue && isHidden {
                 self.state = RefreshState.idle
                 self.scrollView.insertBottom -= self.height
                 
                 //如果之前是隐藏的，现在没有隐藏了，那么要增加底部区域
-            }else if oldValue && !isHidden {
+            } else if oldValue && !isHidden {
                 self.scrollView.insertBottom += self.height
                 
                 // 设置位置

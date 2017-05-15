@@ -13,7 +13,7 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     /** 菊花样式 */
     public var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
         
-        didSet{
+        didSet {
             self.activityView.activityIndicatorViewStyle = activityIndicatorViewStyle
             self.setNeedsLayout()
         }
@@ -46,15 +46,15 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     }
     
     override var state:RefreshState{
-        didSet{
+        didSet {
             if oldValue == state { return }
             
             
-            if  state == RefreshState.noMoreData || state == RefreshState.idle {
+            if state == RefreshState.noMoreData || state == RefreshState.idle {
                 
                 self.activityView.stopAnimating()
                 
-            }else if state == RefreshState.refreshing  {
+            } else if state == RefreshState.refreshing  {
                 
                 self.activityView.startAnimating()
             }
