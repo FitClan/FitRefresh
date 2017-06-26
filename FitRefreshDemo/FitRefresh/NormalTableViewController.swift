@@ -70,7 +70,7 @@ class NormalTableViewController: UITableViewController {
     
     func downPullLoadData() {
         
-        //延迟执行 模拟网络延迟，实际开发中去掉
+        // 延迟执行 模拟网络延迟，实际开发中去掉
         FRDelay(2) {
             
             for i in 1..<15{
