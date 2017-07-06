@@ -27,7 +27,6 @@ public class FRAutoStateFooter: FRAutoFooter {
         self.stateLabel.text = self.stateTitles[self.state];
     }
     
-    
     //MARK: 私有的
     /** 每个状态对应的文字 */
     fileprivate var stateTitles:Dictionary<RefreshState, String> = [
