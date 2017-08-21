@@ -30,6 +30,7 @@
 		E7081C9D1EB321F20082C609 /* NormalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C9C1EB321F20082C609 /* NormalTableViewController.swift */; };
 		E7081C9F1EB32B850082C609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7081C9E1EB32B850082C609 /* Assets.xcassets */; };
 		E7081CA71EB33D000082C609 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7081CA61EB33D000082C609 /* Info.plist */; };
+		E7BF078A1F4A806E00AD2338 /* FitRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF07891F4A806E00AD2338 /* FitRefresh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		E7081C9E1EB32B850082C609 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7081CA51EB33D000082C609 /* FitRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitRefresh.h; sourceTree = "<group>"; };
 		E7081CA61EB33D000082C609 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7BF07891F4A806E00AD2338 /* FitRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitRefresh.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				E7081C6E1EB319640082C609 /* FRNormalHeader.swift */,
 				E7081C701EB319640082C609 /* FRStateHeader.swift */,
 				E7081C711EB319640082C609 /* ScrollViewExtension-FitRefresh.swift */,
+				E7BF07891F4A806E00AD2338 /* FitRefresh.swift */,
 				E7081CA51EB33D000082C609 /* FitRefresh.h */,
 				E7081CA61EB33D000082C609 /* Info.plist */,
 			);
@@ -330,6 +333,7 @@
 				E7081C781EB319640082C609 /* FRGifHeader.swift in Sources */,
 				E7081C1E1EB2E67C0082C609 /* ViewController.swift in Sources */,
 				E7081C761EB319640082C609 /* FRConst.swift in Sources */,
+				E7BF078A1F4A806E00AD2338 /* FitRefresh.swift in Sources */,
 				E7081C7B1EB319640082C609 /* FRNormalHeader.swift in Sources */,
 				E7081C731EB319640082C609 /* FRAutoFooter.swift in Sources */,
 				E7081C741EB319640082C609 /* FRAutoNormalFooter.swift in Sources */,

@@ -17,14 +17,14 @@ class NormalTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // target
-        self.tableView.fr_headerView = FRNormalHeader(target: self, action: #selector(NormalTableViewController.upPullLoadData))
-        self.tableView.fr_headerView?.beginRefreshing()
+        self.tableView.fr.headerView = FRNormalHeader(target: self, action: #selector(NormalTableViewController.upPullLoadData))
+        self.tableView.fr.headerView?.beginRefreshing()
         
         
 //        self.tableView.fr_footerView = FRAutoNormalFooter(target: self, action: #selector(NormalTableViewController.downPullLoadData))
         
         // 闭包方法
-        self.tableView.fr_footerView = FRAutoNormalFooter(ComponentRefreshingClosure: { 
+        self.tableView.fr.footerView = FRAutoNormalFooter(ComponentRefreshingClosure: {
             self.downPullLoadData()
         })
         
@@ -61,8 +61,8 @@ class NormalTableViewController: UITableViewController {
             
             self.tableView.reloadData()
             
-            self.tableView.fr_footerView?.endRefreshing()
-            self.tableView.fr_headerView?.endRefreshing()
+            self.tableView.fr.footerView?.endRefreshing()
+            self.tableView.fr.headerView?.endRefreshing()
             
         }
         
@@ -79,7 +79,7 @@ class NormalTableViewController: UITableViewController {
             
             self.tableView.reloadData()
             
-            self.tableView.fr_footerView?.endRefreshing()
+            self.tableView.fr.footerView?.endRefreshing()
         }
     }
 }

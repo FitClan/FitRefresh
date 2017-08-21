@@ -37,8 +37,8 @@ class GifTableViewController: UITableViewController {
         // 根据上拉比例设置透明度
         headerView.automaticallyChangeAlpha = true
 
-        self.tableView.fr_headerView = headerView
-        self.tableView.fr_headerView?.beginRefreshing()
+        self.tableView.fr.headerView = headerView
+        self.tableView.fr.headerView?.beginRefreshing()
         
     }
     
@@ -77,7 +77,7 @@ class GifTableViewController: UITableViewController {
             
             self.tableView.reloadData()
             
-            self.tableView.fr_headerView?.endRefreshing()
+            self.tableView.fr.headerView?.endRefreshing()
             
         }
     }

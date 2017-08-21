@@ -46,7 +46,8 @@ public class FRFooter: Component {
                     self.isHidden = totalCount == 0
                 }
             }
-            self.scrollView.reloadDataClosureClass = tmpClass
+            
+            self.scrollView.fr.reloadDataClosureClass = tmpClass
             
         }
     }
