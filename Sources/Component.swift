@@ -198,31 +198,30 @@ public class Component: UIView {
         // 1.旧的父控件 移除监听
         self.removeObservers()
         
-        //2.添加监听
+        // 2.添加监听
         if let tmpNewSuperview = newSuperview {
             
-            //2.1设置宽度
+            // 2.1设置宽度
             self.width = tmpNewSuperview.width
             
-            //2.2 设置位置
+            // 2.2 设置位置
             self.x = 0
             
-            
-            //2.3记录UIScrollView
+            // 2.3记录UIScrollView
             self.scrollView = tmpNewSuperview as! UIScrollView
             
-            //2.4 设置用于支持 垂直下拉有弹簧的效果
+            // 2.4 设置用于支持 垂直下拉有弹簧的效果
             self.scrollView.alwaysBounceVertical = true;
             
-            //2.5 记录UIScrollView最开始的contentInset
+            // 2.5 记录UIScrollView最开始的contentInset
             self.scrollViewOriginalInset = self.scrollView.contentInset;
             
-            //2.6 添加监听
+            // 2.6 添加监听
             self.addObservers()
         }
     }
     
-    //MARK:  添加监听
+    // MARK:  添加监听
     fileprivate func addObservers() {
         
         let options:NSKeyValueObservingOptions = NSKeyValueObservingOptions.new
@@ -250,7 +249,7 @@ public class Component: UIView {
         self.panGes = nil
     }
 
-    //MARK: drawRect
+    // MARK: drawRect
     override public func draw(_ rect: CGRect) {
         super.draw(rect)
         

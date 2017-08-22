@@ -9,7 +9,7 @@
 import UIKit
 
 public class FRFooter: Component {
-    //MARK: 提供外界访问的
+    // MARK: 提供外界访问的
     /** 提示没有更多的数据 */
     public func noticeNoMoreData() { self.state = RefreshState.noMoreData }
     
@@ -23,9 +23,9 @@ public class FRFooter: Component {
     public var automaticallyHidden: Bool = true
     
     
-    //MARK: 私有的
+    // MARK: 私有的
     
-    //重写父类方法
+    // 重写父类方法
     override func prepare() {
         super.prepare()
         self.height = RefreshFooterHeight
@@ -36,8 +36,8 @@ public class FRFooter: Component {
         
         if let _ = newSuperview {
             
-            //监听scrollView数据的变化
-            //由于闭包是Any 所以不能采用关联对象
+            // 监听scrollView数据的变化
+            // 由于闭包是Any 所以不能采用关联对象
             let tmpClass = ReloadDataClosureInClass()
             tmpClass.reloadDataClosure = { (totalCount:Int) -> Void in
                 

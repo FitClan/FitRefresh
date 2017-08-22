@@ -9,8 +9,8 @@
 import UIKit
 
 public class FRAutoNormalFooter: FRAutoStateFooter {
-    //MARK: 外部访问
-    /** 菊花样式 */
+    // MARK: 外部访问
+    /** loading样式 */
     public var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
         
         didSet {
@@ -20,9 +20,9 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     }
     
     
-    //MARK: 私有
+    // MARK: 私有
     
-    //菊花
+    // loading
     lazy var activityView:UIActivityIndicatorView = {
         
         [unowned self] in
@@ -35,10 +35,10 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
         }()
     
     
-    //MARK: 重写
+    // MARK: 重写
     override func placeSubvies() {
         super.placeSubvies()
-        //菊花
+        // loading
         var activityViewCenterX = self.width * 0.5
         if !self.refreshingTitleHidden { activityViewCenterX -=  RefreshFooterActivityViewDeviation }
         let activityViewCenterY = self.height * 0.5

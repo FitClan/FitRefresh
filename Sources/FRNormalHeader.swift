@@ -9,9 +9,9 @@
 import UIKit
 
 public class FRNormalHeader: FRStateHeader {
-    //MARK: 外界接口
+    // MARK: 外界接口
     
-    /** 菊花样式 */
+    /** loading样式 */
     public var activityIndicatorViewStyle:UIActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
         
         didSet{
@@ -30,8 +30,8 @@ public class FRNormalHeader: FRStateHeader {
     }
     
     
-    //MARK: lazy
-    //图片
+    // MARK: lazy
+    // 图片
     /** 指示图片 */
     lazy  var arrowView:UIImageView = {
         [unowned self] in
@@ -48,7 +48,7 @@ public class FRNormalHeader: FRStateHeader {
     
     
     
-    //菊花
+    // loading
     fileprivate lazy var activityView:UIActivityIndicatorView = {
         
         [unowned self] in
@@ -62,7 +62,7 @@ public class FRNormalHeader: FRStateHeader {
         }()
     
     
-    //MARK: 重写父类方法
+    // MARK: 重写父类方法
     override func placeSubvies() {
         super.placeSubvies()
         //箭头
@@ -74,11 +74,11 @@ public class FRNormalHeader: FRStateHeader {
         let arrowCenterY = self.height * 0.5
         self.arrowView.center = CGPoint(x: arrowCenterX, y: arrowCenterY)
         
-        //菊花
+        // loading
         self.activityView.frame = self.arrowView.frame
     }
     
-    //从写观察者属性
+    // 重写观察者属性
     /** 辅助记录 旧值 */
     fileprivate var oldState: RefreshState!
     override var state: RefreshState {
@@ -98,13 +98,13 @@ public class FRNormalHeader: FRStateHeader {
         }
         
         
-        //4.判断当前的状态
+        // 4.判断当前的状态
         switch state {
             
-        //4.1如果是刷新状态
+        // 4.1如果是刷新状态
         case .idle :
             
-            //4.1.1 旧值等于 真正刷新的状态
+            // 4.1.1 旧值等于 真正刷新的状态
             if self.oldState == RefreshState.refreshing {
                 self.arrowView.transform = CGAffineTransform.identity
                 
@@ -120,7 +120,7 @@ public class FRNormalHeader: FRStateHeader {
                     
                 })
                 
-                //4.1.2 不然就反正之前的
+                // 4.1.2 不然就反正之前的
             } else {
                 commonFun()
                 UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: { () -> Void in
@@ -128,7 +128,7 @@ public class FRNormalHeader: FRStateHeader {
                     
                 })
             }
-        //如果在下拉
+        // 如果继续下拉
         case .pulling:
             commonFun()
             UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: { () -> Void in

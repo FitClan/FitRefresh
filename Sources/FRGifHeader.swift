@@ -10,7 +10,7 @@ import UIKit
 
 public class FRGifHeader: FRStateHeader {
     
-    //MARK: 方法接口
+    // MARK: 方法接口
     /** 设置刷新状态下,gif的图片 */
     @discardableResult
     public func setImages(_ images:Array<UIImage>, state:RefreshState) -> Self {
@@ -21,13 +21,13 @@ public class FRGifHeader: FRStateHeader {
     /** 设置刷新状态下,gif的图片,动画每帧相隔的时间 */
     @discardableResult
     public func setImages(_ images:Array<UIImage>, duration:TimeInterval, state:RefreshState) -> Self {
-        //防止空数组 []
+        // 防止空数组 []
         if images.count < 1 { return self}
         
         self.stateImages[state] = images;
         self.stateDurations[state] = duration;
         
-        //根据图片设置控件的高度
+        // 根据图片设置控件的高度
         let image:UIImage = images.first!
         if image.size.height > self.height {
             self.height = image.size.height
@@ -48,7 +48,7 @@ public class FRGifHeader: FRStateHeader {
     fileprivate var stateDurations: Dictionary<RefreshState, TimeInterval> = [RefreshState.idle : 1, RefreshState.pulling : 1, RefreshState.refreshing : 1]
     
     
-    //MARK: 重写
+    // MARK: 重写
     override public var pullingPercent:CGFloat {
         didSet{
             if  let images = self.stateImages[RefreshState.idle] {
@@ -94,10 +94,10 @@ public class FRGifHeader: FRStateHeader {
             if images.count < 1 { return }
             
             self.gifView.stopAnimating()
-            //单张图片
+            // 单张图片
             if images.count == 1 {
                 self.gifView.image = images.last
-                //多张图片
+                // 多张图片
             } else {
                 self.gifView.animationImages = images
                 self.gifView.animationDuration = self.stateDurations[state]!

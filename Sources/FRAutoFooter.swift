@@ -9,7 +9,7 @@
 import UIKit
 
 public class FRAutoFooter: FRFooter {
-    //MARK: 公共接口
+    // MARK: 公共接口
     /** 是否自动刷新(默认为YES) */
     public var automaticallyRefresh:Bool = true
     
@@ -25,9 +25,9 @@ public class FRAutoFooter: FRFooter {
     public var triggerAutomaticallyRefreshPercent:CGFloat = 1.0
     
     
-    //MARK: 重写
+    // MARK: 重写
     
-    //初始化
+    // 初始化
     override public func willMove(toSuperview newSuperview: UIView?) {
         
         super.willMove(toSuperview: newSuperview)
@@ -36,11 +36,11 @@ public class FRAutoFooter: FRFooter {
             if self.isHidden == false {
                 self.scrollView.insertBottom += self.height
             }
-            //设置位置
+            // 设置位置
             self.y = self.scrollView.contentH
             
         } else { // 被移除了两种结果，一种是手动移除，一种是父控件消除
-            //TODO:防止 是 空的
+            // TODO:防止 是 空的
             if let realScrollView = self.scrollView {
                 if self.isHidden == false {
                     realScrollView.insertBottom -= self.height
@@ -50,11 +50,11 @@ public class FRAutoFooter: FRFooter {
         }
     }
     
-    //MARK: 实现父类的接口
+    // MARK: 实现父类的接口
     override func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentSizeDidChange(change)
         
-        //设置位置
+        // 设置位置
         self.y = self.scrollView.contentH
     }
     
@@ -65,7 +65,7 @@ public class FRAutoFooter: FRFooter {
         
         if self.scrollView.insertTop + self.scrollView.contentH > self.scrollView.height {
             // 内容超过一个屏幕
-            //TODO: 计算公式，判断是不是在拖在到了底部
+            // TODO: 计算公式，判断是不是在拖在到了底部
             if self.scrollView.contentSize.height - self.scrollView.contentOffset.y + self.scrollView.contentInset.bottom + self.height * self.triggerAutomaticallyRefreshPercent - self.height <= self.scrollView.height {
                 
                 self.beginRefreshing()
@@ -80,22 +80,22 @@ public class FRAutoFooter: FRFooter {
         
         if self.state != RefreshState.idle { return }
         
-        //2.1.1 抬起
+        // 2.1.1 抬起
         if self.scrollView.panGestureRecognizer.state == UIGestureRecognizerState.ended {
             
             // 向上拖拽
             func draggingUp() {
-                //如果是向 上拖拽 刷新
+                // 如果是向 上拖拽 刷新
                 if self.scrollView.contentOffset.y > -self.scrollView.contentInset.top {
                     beginRefreshing()
                 }
             }
             
-            //2.2.1.1 不够一个屏幕的滚动 top + content.height 就是内容显示的高度
+            // 2.2.1.1 不够一个屏幕的滚动 top + content.height 就是内容显示的高度
             if self.scrollView.contentInset.top +
                 self.scrollView.contentSize.height < self.scrollView.height {
                 draggingUp()
-                //2.1.1.2 超出一个屏幕 也就是scrollView的
+                // 2.1.1.2 超出一个屏幕 也就是scrollView的
             } else {
                 //拖拽到了底部
                 if self.scrollView.contentSize.height - self.scrollView.contentOffset.y + self.scrollView.contentInset.top + self.scrollView.contentInset.bottom  == self.scrollView.height {
@@ -120,12 +120,12 @@ public class FRAutoFooter: FRFooter {
     
     override public var isHidden:Bool {
         didSet {
-            //如果之前没有隐藏的现在隐藏了，那么要设置状态和去掉底部区域
+            // 如果之前没有隐藏的现在隐藏了，那么要设置状态和去掉底部区域
             if !oldValue && isHidden {
                 self.state = RefreshState.idle
                 self.scrollView.insertBottom -= self.height
                 
-                //如果之前是隐藏的，现在没有隐藏了，那么要增加底部区域
+                // 如果之前是隐藏的，现在没有隐藏了，那么要增加底部区域
             } else if oldValue && !isHidden {
                 self.scrollView.insertBottom += self.height
                 

@@ -113,7 +113,7 @@ var RetainClosureClass = ReloadDataClosureInClass()
 
 public extension UIScrollView {
     // =================
-    //MARK: 1.2 version
+    // MARK: 1.2 version
     // =================
     
     /** reloadDataClosure */

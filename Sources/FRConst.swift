@@ -8,10 +8,10 @@
 
 import UIKit
 
-//文字颜色
+// 文字颜色
 let RefreshLabelTextColor = FRColor(r: 100, g: 100, b: 100)
 
-//字体大小
+// 字体大小
 let RefreshLabelFont = UIFont.boldSystemFont(ofSize: 13)
 
 /** 头部高度 */
@@ -22,7 +22,7 @@ let RefreshFooterHeight: CGFloat = 44
 /** gifView 偏差 */
 let RefreshGifViewWidthDeviation: CGFloat = 99
 
-/** footer 菊花 偏差 */
+/** footer loading 偏差 */
 let RefreshFooterActivityViewDeviation: CGFloat = 100
 
 /** 开始的动画时间 */

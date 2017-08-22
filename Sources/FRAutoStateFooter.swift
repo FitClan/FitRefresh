@@ -9,7 +9,7 @@
 import UIKit
 
 public class FRAutoStateFooter: FRAutoFooter {
-    //MARK: 外部
+    // MARK: 外部
     
     /** 显示刷新状态的label */
     lazy var stateLabel:UILabel = {
@@ -27,7 +27,7 @@ public class FRAutoStateFooter: FRAutoFooter {
         self.stateLabel.text = self.stateTitles[self.state];
     }
     
-    //MARK: 私有的
+    // MARK: 私有的
     /** 每个状态对应的文字 */
     fileprivate var stateTitles:Dictionary<RefreshState, String> = [
         RefreshState.idle : RefreshFooterStateIdleText,

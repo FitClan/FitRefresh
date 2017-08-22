@@ -31,7 +31,7 @@ public class FRHeader: Component {
         }
     }
     
-    //MARK: 覆盖父类方法
+    // MARK: 覆盖父类方法
     override func prepare() {
         super.prepare()
         
@@ -98,22 +98,22 @@ public class FRHeader: Component {
     }
     
     
-    //MARK: 改变状态后
+    // MARK: 改变状态后
     /** 刷新控件的状态 */
     override var state: RefreshState {
         
         didSet {
             
-            //状态和以前的一样就不用改变
+            // 状态和以前的一样就不用改变
             if oldValue == state {
                 return
             }
             
-            //根据状态来做一些事情
+            // 根据状态来做一些事情
             if state == RefreshState.idle {
                 if oldValue != RefreshState.refreshing { return }
                 
-                //保存刷新的时间
+                // 保存刷新的时间
                 UserDefaults.standard.set(Date(), forKey: self.lastUpdatedateKey as String)
                 
                 UserDefaults.standard.synchronize()

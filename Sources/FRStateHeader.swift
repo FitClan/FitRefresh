@@ -32,7 +32,7 @@ public class FRStateHeader: FRHeader {
         }()
     
     
-    /**  显示刷新状态的label */
+    /** 显示刷新状态的label */
     lazy var stateLabel:UILabel = {
         [unowned self] in
         let lable = UILabel.FRlabel()
@@ -65,7 +65,7 @@ public class FRStateHeader: FRHeader {
     }
     
     
-    //MARK: 重写
+    // MARK: 重写
     
     override var lastUpdatedateKey:String {
         didSet {
@@ -73,12 +73,12 @@ public class FRStateHeader: FRHeader {
                 
                 let realLastUpdateTimeDate:Date = lastUpdatedTimeDate as! Date
                 
-                //如果有闭包
+                // 如果有闭包
                 if let internalClosure = self.closureCallLastUpdatedTimeTitle {
                     self.lastUpdatedTimeLabel.text = internalClosure(realLastUpdateTimeDate)
                     return
                 }
-                //得到精准的时间
+                // 得到精准的时间
                 self.lastUpdatedTimeLabel.text = realLastUpdateTimeDate.ConvertStringTime()
                 
             }else{
@@ -93,14 +93,14 @@ public class FRStateHeader: FRHeader {
             if state == oldValue { return }
             self.stateLabel.text = self.stateTitles[self.state];
             
-            //            self.lastUpdatedateKey = self.lastUpdatedateKey.self
+            // self.lastUpdatedateKey = self.lastUpdatedateKey.self
             
         }
     }
     
     override func prepare() {
         super.prepare()
-        //初始化文字
+        // 初始化文字
         self.setTitle(RefreshHeaderStateIdleText, state: .idle)
         self.setTitle(RefreshHeaderStatePullingText, state: .pulling)
         self.setTitle(RefreshHeaderStateRefreshingText, state: .refreshing)
@@ -109,17 +109,17 @@ public class FRStateHeader: FRHeader {
     
     override func placeSubvies() {
         super.placeSubvies()
-        //如果状态隐藏 就直接返回
+        // 如果状态隐藏 就直接返回
         if self.stateLabel.isHidden { return }
         
         if self.lastUpdatedTimeLabel.isHidden {
-            //状态
+            // 状态
             self.stateLabel.frame = self.bounds
         } else {
-            //状态
+            // 状态
             self.stateLabel.frame = CGRect(x: 0, y: 0, width: self.width, height: self.height * 0.5)
             
-            //跟新的时间
+            // 更新的时间
             self.lastUpdatedTimeLabel.x = 0
             self.lastUpdatedTimeLabel.y = self.stateLabel.height
             self.lastUpdatedTimeLabel.width = self.width
