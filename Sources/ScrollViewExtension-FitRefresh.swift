@@ -26,14 +26,14 @@ public class ReloadDataClosureInClass {
 // ============================================================
 extension FitRefresh where Base: ScrollView {
     var reloadDataClosureClass:ReloadDataClosureInClass {
-        set{
+        set {
             
             base.willChangeValue(forKey: "reloadDataClosure")
-            //因为闭包不属于class 所以不合适 AnyObject
+            // 因为闭包不属于class 所以不合适 AnyObject
             objc_setAssociatedObject(base, &RefreshReloadDataClosureKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
             base.didChangeValue(forKey: "reloadDataClosure")
         }
-        get{
+        get {
             if let realClosure = objc_getAssociatedObject(base, &RefreshReloadDataClosureKey) {
                 return realClosure as! ReloadDataClosureInClass
             }
@@ -65,7 +65,7 @@ extension FitRefresh where Base: ScrollView {
     /** 上拉刷新的控件 */
     var footerView: FRFooter? {
         
-        set{
+        set {
             if footerView == newValue { return }
             footerView?.removeFromSuperview()
             objc_setAssociatedObject(base, &RefreshFooterKey, newValue , objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
@@ -74,15 +74,15 @@ extension FitRefresh where Base: ScrollView {
                 base.addSubview(newFooterView)
             }
         }
-        get{
+        get {
             return objc_getAssociatedObject(base, &RefreshFooterKey) as? FRFooter
         }
     }
     
     fileprivate var totalDataCount:Int {
         
-        get{
-            var totalCount:Int = 0
+        get {
+            var totalCount: Int = 0
             if base.isKind(of: UITableView.self){
                 let tableView = base as! UITableView
                 for section in 0..<tableView.numberOfSections {
@@ -119,14 +119,14 @@ public extension UIScrollView {
     /** reloadDataClosure */
     @available(*, deprecated, message: "Extensions directly on scroll Views are deprecated. Use like `scrollView.fr.reloadDataClosureClass` instead.", renamed: "fr.reloadDataClosureClass")
     var reloadDataClosureClass:ReloadDataClosureInClass {
-        set{
+        set {
             
             self.willChangeValue(forKey: "reloadDataClosure")
-            //因为闭包不属于class 所以不合适 AnyObject
+            // 因为闭包不属于class 所以不合适 AnyObject
             objc_setAssociatedObject(self, &RefreshReloadDataClosureKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
             self.didChangeValue(forKey: "reloadDataClosure")
         }
-        get{
+        get {
             if let realClosure = objc_getAssociatedObject(self, &RefreshReloadDataClosureKey) {
                 return realClosure as! ReloadDataClosureInClass
             }
@@ -160,7 +160,7 @@ public extension UIScrollView {
     @available(*, deprecated, message: "Extensions directly on scroll Views are deprecated. Use like `scrollView.fr.footerView` instead.", renamed: "fr.footerView")
     var fr_footerView: FRFooter? {
         
-        set{
+        set {
             if self.fr_footerView == newValue { return }
             self.fr_footerView?.removeFromSuperview()
             objc_setAssociatedObject(self, &RefreshFooterKey, newValue , objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
@@ -169,7 +169,7 @@ public extension UIScrollView {
                 self.addSubview(newFooterView)
             }
         }
-        get{
+        get {
             return objc_getAssociatedObject(self, &RefreshFooterKey) as? FRFooter
         }
     }

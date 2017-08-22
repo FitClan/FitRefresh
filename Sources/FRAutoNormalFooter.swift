@@ -9,7 +9,7 @@
 import UIKit
 
 public class FRAutoNormalFooter: FRAutoStateFooter {
-    // MARK: 外部访问
+    // MARK: - public
     /** loading样式 */
     public var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
         
@@ -20,7 +20,7 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     }
     
     
-    // MARK: 私有
+    // MARK: - private
     
     // loading
     lazy var activityView:UIActivityIndicatorView = {

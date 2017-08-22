@@ -9,7 +9,7 @@
 import UIKit
 
 public class FRAutoFooter: FRFooter {
-    // MARK: 公共接口
+    // MARK: - public
     /** 是否自动刷新(默认为YES) */
     public var automaticallyRefresh:Bool = true
     

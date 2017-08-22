@@ -10,7 +10,7 @@ import UIKit
 
 public class FRHeader: Component {
 
-    // MARK: - 公开
+    // MARK: - public
     
     /** 利用这个key来保存上次的刷新时间（不同界面的刷新控件应该用不同的dateKey，以区分不同界面的刷新时间） */
     var lastUpdatedateKey = ""

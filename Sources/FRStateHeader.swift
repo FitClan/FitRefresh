@@ -10,7 +10,7 @@ import UIKit
 
 public class FRStateHeader: FRHeader {
     
-    // MARK: 私有的
+    // MARK: - private
     /** 每个状态对应的文字 */
     fileprivate var stateTitles: Dictionary<RefreshState, String> = [
         RefreshState.idle : RefreshHeaderStateIdleText,
@@ -18,7 +18,7 @@ public class FRStateHeader: FRHeader {
         RefreshState.pulling : RefreshHeaderStatePullingText
     ]
     
-    // MARK: 外界接口
+    // MARK: - public
     
     /** 利用这个colsure来决定显示的更新时间 */
     var closureCallLastUpdatedTimeTitle:((_ lastUpdatedTime:Date) -> String)?

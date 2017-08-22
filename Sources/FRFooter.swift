@@ -9,7 +9,7 @@
 import UIKit
 
 public class FRFooter: Component {
-    // MARK: 提供外界访问的
+    // MARK: - public
     /** 提示没有更多的数据 */
     public func noticeNoMoreData() { self.state = RefreshState.noMoreData }
     
@@ -23,7 +23,7 @@ public class FRFooter: Component {
     public var automaticallyHidden: Bool = true
     
     
-    // MARK: 私有的
+    // MARK: - private
     
     // 重写父类方法
     override func prepare() {

@@ -28,7 +28,7 @@ public typealias ComponentRefreshingClosure = ()->()
 /** 抽象类，不直接使用，用于继承后，重写*/
 public class Component: UIView {
     
-    // MARK: - 公共接口
+    // MARK: - public
     // MARK: 给外界访问
     // 1.字体颜色
     public var textColor: UIColor?
@@ -169,7 +169,7 @@ public class Component: UIView {
         }
     }
     
-    // MARK: - 私有
+    // MARK: - private
     
     /** 记录scrollView刚开始的inset */
     var scrollViewOriginalInset: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)

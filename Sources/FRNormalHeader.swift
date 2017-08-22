@@ -9,7 +9,7 @@
 import UIKit
 
 public class FRNormalHeader: FRStateHeader {
-    // MARK: 外界接口
+    // MARK: - public
     
     /** loading样式 */
     public var activityIndicatorViewStyle:UIActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
