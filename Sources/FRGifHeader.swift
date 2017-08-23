@@ -13,7 +13,7 @@ public class FRGifHeader: FRStateHeader {
     // MARK: 方法接口
     /** 设置刷新状态下,gif的图片 */
     @discardableResult
-    public func setImages(_ images:Array<UIImage>, state:RefreshState) -> Self {
+    public func setImages(_ images: Array<UIImage>, state: RefreshState) -> Self {
         
         return self.setImages(images, duration: TimeInterval(images.count) * 0.1, state: state)
     }
@@ -28,7 +28,7 @@ public class FRGifHeader: FRStateHeader {
         self.stateDurations[state] = duration;
         
         // 根据图片设置控件的高度
-        let image:UIImage = images.first!
+        let image: UIImage = images.first!
         if image.size.height > self.height {
             self.height = image.size.height
         }
@@ -49,15 +49,15 @@ public class FRGifHeader: FRStateHeader {
     
     
     // MARK: 重写
-    override public var pullingPercent:CGFloat {
+    override public var pullingPercent: CGFloat {
         didSet{
             if  let images = self.stateImages[RefreshState.idle] {
                 
                 if self.state != RefreshState.idle || images.count < 1 { return }
                 
-                //停止动画
+                // 停止动画
                 self.gifView.stopAnimating()
-                //设置当前需要显示的图片,根据百分比显示
+                // 设置当前需要显示的图片,根据百分比显示
                 var index = Int(CGFloat(images.count) * pullingPercent)
                 
                 if index >= images.count { index = images.count - 1 }

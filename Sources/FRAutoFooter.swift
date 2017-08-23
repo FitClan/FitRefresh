@@ -97,7 +97,7 @@ public class FRAutoFooter: FRFooter {
                 draggingUp()
                 // 2.1.1.2 超出一个屏幕 也就是scrollView的
             } else {
-                //拖拽到了底部
+                // 拖拽到了底部
                 if self.scrollView.contentSize.height - self.scrollView.contentOffset.y + self.scrollView.contentInset.top + self.scrollView.contentInset.bottom  == self.scrollView.height {
                     draggingUp()
                 }
@@ -106,7 +106,7 @@ public class FRAutoFooter: FRFooter {
         }
     }
     
-    override var state:RefreshState {
+    override var state: RefreshState {
         didSet {
             if state == oldValue { return }
             if state == RefreshState.refreshing {

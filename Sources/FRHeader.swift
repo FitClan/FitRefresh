@@ -89,7 +89,7 @@ public class FRHeader: Component {
             }
             
         } else if self.state == RefreshState.pulling {
-            //开始刷新
+            // 开始刷新
             self.beginRefreshing()
             
         } else if self.pullingPercent < 1 {
