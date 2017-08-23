@@ -11,18 +11,18 @@ import UIKit
 public class FRAutoFooter: FRFooter {
     // MARK: - public
     /** 是否自动刷新(默认为YES) */
-    public var automaticallyRefresh:Bool = true
+    public var automaticallyRefresh: Bool = true
     
     /** 当底部控件出现多少时就自动刷新(默认为1.0，也就是底部控件完全出现时，才会自动刷新) */
     //    @available(*, deprecated=1.0, message="Use -automaticallyChangeAlpha instead.")
-    var appearencePercentTriggerAutoRefresh:CGFloat = 1.0 {
+    var appearencePercentTriggerAutoRefresh: CGFloat = 1.0 {
         willSet {
             self.triggerAutomaticallyRefreshPercent = newValue
         }
     }
     
     /** 当底部控件出现多少时就自动刷新(默认为1.0，也就是底部控件完全出现时，才会自动刷新) */
-    public var triggerAutomaticallyRefreshPercent:CGFloat = 1.0
+    public var triggerAutomaticallyRefreshPercent: CGFloat = 1.0
     
     
     // MARK: 重写
