@@ -22,6 +22,7 @@ self.tableView.fr.headerView = FRNormalHeader(ComponentRefreshingClosure: {
         })
 self.tableView.fr.headerView?.beginRefreshing()
 
+
 // footer
 // first way
 self.tableView.fr.footerView = FRAutoNormalFooter(target: self, action: #selector(NormalTableViewController.downPullLoadData))
@@ -43,6 +44,7 @@ self.tableView.fr_headerView = FRNormalHeader(ComponentRefreshingClosure: {
             self.upPullLoadData()
         })
 self.tableView.fr_headerView?.beginRefreshing()
+
 
 // footer
 // first way
