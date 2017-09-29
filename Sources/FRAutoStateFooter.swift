@@ -14,7 +14,7 @@ public class FRAutoStateFooter: FRAutoFooter {
     /** 显示刷新状态的label */
     lazy var stateLabel:UILabel = {
         [unowned self] in
-        let label = UILabel.FRlabel()
+        let label = UILabel.FRLabel()
         self.addSubview(label)
         return label
         }()

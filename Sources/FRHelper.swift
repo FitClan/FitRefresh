@@ -113,7 +113,16 @@ extension NSObject {
 
 extension UIScrollView {
     
-    var offSetY:CGFloat {
+    var inset: UIEdgeInsets {
+        get {
+            if #available(iOS 11.0, *) {
+                return self.adjustedContentInset;
+            }
+            return self.contentInset;
+        }
+    }
+    
+    var offSetY: CGFloat {
         get {
             return self.contentOffset.y
         }
@@ -122,7 +131,7 @@ extension UIScrollView {
         }
     }
     
-    var offSetX:CGFloat {
+    var offSetX: CGFloat {
         get {
             return self.contentOffset.x
         }
@@ -131,43 +140,64 @@ extension UIScrollView {
         }
     }
     
-    var insertTop:CGFloat {
+    var insertTop: CGFloat {
         get {
-            return self.contentInset.top
+            return self.inset.top
         }
         set {
-            self.contentInset.top = newValue
+            var finValue = newValue
+            
+            if #available(iOS 11.0, *) {
+                finValue -= (self.adjustedContentInset.top - self.contentInset.top)
+            }
+            
+            self.contentInset.top = finValue
         }
     }
     
     var insertRight:CGFloat {
         get {
-            return self.contentInset.right
+            return self.inset.right
         }
         set {
+            var finValue = newValue
+            
+            if #available(iOS 11.0, *) {
+                finValue -= (self.adjustedContentInset.right - self.contentInset.right)
+            }
             self.contentInset.right = newValue
         }
     }
     
     var insertLeft:CGFloat {
         get {
-            return self.contentInset.left
+            return self.inset.left
         }
         set {
+            var finValue = newValue
+            
+            if #available(iOS 11.0, *) {
+                finValue -= (self.adjustedContentInset.left - self.contentInset.left)
+            }
             self.contentInset.left = newValue
         }
     }
     var insertBottom:CGFloat {
         get {
-            return self.contentInset.bottom
+            return self.inset.bottom
         }
         set {
+            var finValue = newValue
+            
+            if #available(iOS 11.0, *) {
+                finValue -= (self.adjustedContentInset.bottom - self.contentInset.bottom)
+            }
             self.contentInset.bottom = newValue
         }
     }
     
-    var contentW:CGFloat {
-        get{
+    var contentW: CGFloat {
+        get {
             return self.contentSize.width
         }
         
@@ -176,8 +206,8 @@ extension UIScrollView {
         }
     }
     
-    var contentH:CGFloat {
-        get{
+    var contentH: CGFloat {
+        get {
             return self.contentSize.height
         }
         
@@ -194,7 +224,7 @@ extension UIScrollView {
 
 extension UIView {
     
-    var x:CGFloat {
+    var x: CGFloat {
         get {
             return self.frame.origin.x
         }
@@ -203,7 +233,7 @@ extension UIView {
         }
     }
     
-    var y:CGFloat {
+    var y: CGFloat {
         get {
             return self.frame.origin.y
         }
@@ -212,7 +242,7 @@ extension UIView {
         }
     }
     
-    var width:CGFloat {
+    var width: CGFloat {
         get {
             return self.frame.size.width
         }
@@ -221,7 +251,7 @@ extension UIView {
         }
     }
     
-    var height:CGFloat {
+    var height: CGFloat {
         get {
             return self.frame.size.height
         }
@@ -230,7 +260,7 @@ extension UIView {
         }
     }
     
-    var size:CGSize {
+    var size: CGSize {
         get {
             return self.frame.size
         }
@@ -238,7 +268,8 @@ extension UIView {
             self.frame.size = newValue
         }
     }
-    var CY_origin:CGPoint {
+    
+    var CY_origin: CGPoint {
         get {
             return self.frame.origin
         }
@@ -247,7 +278,7 @@ extension UIView {
         }
     }
     
-    var centerX:CGFloat {
+    var centerX: CGFloat {
         get {
             return self.center.x
         }
@@ -256,7 +287,7 @@ extension UIView {
         }
     }
     
-    var centerY:CGFloat {
+    var centerY: CGFloat {
         get {
             return self.center.y
         }

@@ -24,7 +24,6 @@ public class FRFooter: Component {
     
     
     // MARK: - private
-    
     // 重写父类方法
     override func prepare() {
         super.prepare()
@@ -42,8 +41,8 @@ public class FRFooter: Component {
             tmpClass.reloadDataClosure = { (totalCount:Int) -> Void in
                 
                 if self.automaticallyHidden == true {
-                    //如果开启了自动隐藏，那就是在检查到总数量为 请求后的加载0 的时候就隐藏
-                    self.isHidden = totalCount == 0
+                    // 如果开启了自动隐藏，那就是在检查到总数量为 请求后的加载0 的时候就隐藏
+                    self.isHidden = (totalCount == 0)
                 }
             }
             

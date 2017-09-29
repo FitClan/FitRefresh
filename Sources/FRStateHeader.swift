@@ -26,7 +26,7 @@ public class FRStateHeader: FRHeader {
     /** 显示上一次刷新时间的label */
     lazy var lastUpdatedTimeLabel:UILabel = {
         [unowned self] in
-        let lable = UILabel.FRlabel()
+        let lable = UILabel.FRLabel()
         self.addSubview(lable)
         return lable
         }()
@@ -35,7 +35,7 @@ public class FRStateHeader: FRHeader {
     /** 显示刷新状态的label */
     lazy var stateLabel:UILabel = {
         [unowned self] in
-        let lable = UILabel.FRlabel()
+        let lable = UILabel.FRLabel()
         self.addSubview(lable)
         return lable
         }()

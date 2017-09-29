@@ -26,7 +26,6 @@ public class FRAutoFooter: FRFooter {
     
     
     // MARK: 重写
-    
     // 初始化
     override public func willMove(toSuperview newSuperview: UIView?) {
         
@@ -46,7 +45,6 @@ public class FRAutoFooter: FRFooter {
                     realScrollView.insertBottom -= self.height
                 }
             }
-            
         }
     }
     
@@ -66,7 +64,7 @@ public class FRAutoFooter: FRFooter {
         if self.scrollView.insertTop + self.scrollView.contentH > self.scrollView.height {
             // 内容超过一个屏幕
             // TODO: 计算公式，判断是不是在拖在到了底部
-            if self.scrollView.contentSize.height - self.scrollView.contentOffset.y + self.scrollView.contentInset.bottom + self.height * self.triggerAutomaticallyRefreshPercent - self.height <= self.scrollView.height {
+            if self.scrollView.offSetY >= self.scrollView.contentH - self.scrollView.height + self.scrollView.insertBottom + self.height * self.triggerAutomaticallyRefreshPercent - self.height {
                 
                 self.beginRefreshing()
                 
@@ -83,23 +81,18 @@ public class FRAutoFooter: FRFooter {
         // 2.1.1 抬起
         if self.scrollView.panGestureRecognizer.state == UIGestureRecognizerState.ended {
             
-            // 向上拖拽
-            func draggingUp() {
-                // 如果是向 上拖拽 刷新
-                if self.scrollView.contentOffset.y > -self.scrollView.contentInset.top {
+            // 2.2.1.1 不够一个屏幕的滚动 top + content.height 就是内容显示的高度
+            if self.scrollView.insertTop +
+                self.scrollView.contentH <= self.scrollView.height {
+                // 向上拖拽
+                if self.scrollView.offSetY >= -self.scrollView.insertTop {
                     beginRefreshing()
                 }
-            }
-            
-            // 2.2.1.1 不够一个屏幕的滚动 top + content.height 就是内容显示的高度
-            if self.scrollView.contentInset.top +
-                self.scrollView.contentSize.height < self.scrollView.height {
-                draggingUp()
                 // 2.1.1.2 超出一个屏幕 也就是scrollView的
             } else {
                 // 拖拽到了底部
-                if self.scrollView.contentSize.height - self.scrollView.contentOffset.y + self.scrollView.contentInset.top + self.scrollView.contentInset.bottom  == self.scrollView.height {
-                    draggingUp()
+                if self.scrollView.offSetY >= self.scrollView.contentH + self.scrollView.insertBottom - self.scrollView.height {
+                    beginRefreshing()
                 }
                 
             }

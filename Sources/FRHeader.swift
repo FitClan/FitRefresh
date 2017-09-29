@@ -57,10 +57,8 @@ public class FRHeader: Component {
         if self.state == RefreshState.refreshing { return }
         
         // 跳转到下一个控制器时，contentInset可能会变
-        self.scrollViewOriginalInset = self.scrollView.contentInset
+        self.scrollViewOriginalInset = self.scrollView.inset
         
-        
-        // 当前的contentOffset
         let offsetY = self.scrollView.offSetY
         
         // 头部控件刚好出现的offsetY
@@ -140,8 +138,7 @@ public class FRHeader: Component {
                     
                     // 设置滚动位置
                     self.scrollView.offSetY = -top
-                    
-                    
+
                     }, completion: { (flag) -> Void in
                         self.executeRefreshingCallback()
                 })

@@ -37,7 +37,7 @@ public class Component: UIView {
     public var font: UIFont?
     
     // 3.刷新的target
-    fileprivate weak var refreshingTarget:AnyObject!
+    fileprivate weak var refreshingTarget: AnyObject!
     
     // 4.执行的方法
     fileprivate var refreshingAction: Selector = NSSelectorFromString("")
@@ -46,7 +46,7 @@ public class Component: UIView {
     var refreshingClosure: ComponentRefreshingClosure = {}
     
     /** 拉拽的百分比 */
-    public var pullingPercent:CGFloat = 1 {
+    public var pullingPercent: CGFloat = 1 {
         didSet {
             if self.state == RefreshState.refreshing { return }
             if self.automaticallyChangeAlpha == true {
@@ -56,7 +56,7 @@ public class Component: UIView {
     }
     
     /** 根据拖拽比例自动切换透明度 */
-    public var automaticallyChangeAlpha:Bool = false {
+    public var automaticallyChangeAlpha: Bool = false {
         didSet {
             if self.state == RefreshState.refreshing { return }
             if automaticallyChangeAlpha == true {
@@ -71,7 +71,7 @@ public class Component: UIView {
     var state = RefreshState.idle
     
     /** 是否在刷新 */
-    public var isRefreshing:Bool {
+    public var isRefreshing: Bool {
         get {
             return self.state == .refreshing || self.state == .willRefresh;
         }
@@ -84,7 +84,6 @@ public class Component: UIView {
     }
     
     // MARK: 遍历构造方法
-    
     /** 闭包回调 */
     public convenience
     init(ComponentRefreshingClosure: @escaping ComponentRefreshingClosure) {
@@ -106,8 +105,8 @@ public class Component: UIView {
         
     }
     
-    // MARK: 提供给子类重写
     
+    // MARK: 提供给子类重写
     /** 开始刷新,进入刷新状态 */
     public func beginRefreshing() {
         UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: { () -> Void in
@@ -130,7 +129,6 @@ public class Component: UIView {
     public func endRefreshing() {
         self.state = .idle
     }
-    
     
     // MARK: 初始化
     func prepare() {
@@ -170,7 +168,6 @@ public class Component: UIView {
     }
     
     // MARK: - private
-    
     /** 记录scrollView刚开始的inset */
     var scrollViewOriginalInset: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
     /** 父控件 */
@@ -214,7 +211,7 @@ public class Component: UIView {
             self.scrollView.alwaysBounceVertical = true;
             
             // 2.5 记录UIScrollView最开始的contentInset
-            self.scrollViewOriginalInset = self.scrollView.contentInset;
+            self.scrollViewOriginalInset = self.scrollView.inset;
             
             // 2.6 添加监听
             self.addObservers()
@@ -224,7 +221,7 @@ public class Component: UIView {
     // MARK:  添加监听
     fileprivate func addObservers() {
         
-        let options:NSKeyValueObservingOptions = NSKeyValueObservingOptions.new
+        let options: NSKeyValueObservingOptions = NSKeyValueObservingOptions.new
         
         self.scrollView.addObserver(self , forKeyPath: RefreshKeyPathContentSize, options: options, context: nil)
         
@@ -232,7 +229,7 @@ public class Component: UIView {
         
         self.panGes = self.scrollView.panGestureRecognizer
         
-        self.panGes.addObserver(self , forKeyPath: RefreshKeyPathPanKeyPathState, options: options, context: nil)
+        self.panGes.addObserver(self, forKeyPath: RefreshKeyPathPanKeyPathState, options: options, context: nil)
         
     }
     
@@ -259,12 +256,10 @@ public class Component: UIView {
         }
     }
     
-    
     override public func layoutSubviews() {
         super.layoutSubviews()
         self.placeSubvies()
     }
-    
     
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
@@ -283,11 +278,10 @@ public class Component: UIView {
             self.scrollViewPanStateDidChange(change)
         }
     }
-    
 }
 
 extension UILabel {
-    class func FRlabel() -> UILabel {
+    class func FRLabel() -> UILabel {
         let FRLable = UILabel()
         FRLable.font = RefreshLabelFont;
         FRLable.textColor = RefreshLabelTextColor;
@@ -297,6 +291,4 @@ extension UILabel {
         return FRLable
     }
 }
-
-
 
