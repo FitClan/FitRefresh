@@ -11,7 +11,7 @@ import UIKit
 private var RefreshHeaderKey: Void?
 private var RefreshFooterKey: Void?
 
-private var RefreshReloadDataClosureKey:Void?
+private var RefreshReloadDataClosureKey: Void?
 
 typealias ClosureParamCountType = (Int)->Void
 

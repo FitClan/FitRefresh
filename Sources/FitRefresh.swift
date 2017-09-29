@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
 import UIKit
+
 public typealias ScrollView = UIScrollView
 typealias TableView = UITableView
 typealias CollectionView = UICollectionView

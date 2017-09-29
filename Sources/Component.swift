@@ -9,7 +9,7 @@
 import UIKit
 
 /** 刷新状态 */
-public enum RefreshState: Int{
+public enum RefreshState: Int {
     /**普通闲置状态 */
     case idle = 1
     /** 松开可以进行刷新状态 */
