@@ -16,7 +16,7 @@ Swift 3+ 的 下拉刷新
 
 ## 使用
 
-### Version 1.3
+### Version 1.3 Later
 
 ```swift
 // header
