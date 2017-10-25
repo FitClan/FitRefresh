@@ -215,7 +215,7 @@ extension UITableView {
             self.exchangeInstanceMethod(#selector(UITableView.reloadData), method2: #selector(UITableView.frReloadData))
         }
     }
-    public func frReloadData() {
+    @objc public func frReloadData() {
         // 因为交换了方法，所以这里其实是执行的系统自己的 reloadData 方法
         
         self.frReloadData()
