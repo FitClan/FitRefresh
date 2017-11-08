@@ -206,22 +206,6 @@ public extension UIScrollView {
     
 }
 
-extension UITableView {
-    // 这里不推荐 initialize 有警告。
-    open override class func initialize() {
-        if self != UITableView.self { return }
-        
-        DispatchQueue.once(token: "ex") { 
-            self.exchangeInstanceMethod(#selector(UITableView.reloadData), method2: #selector(UITableView.frReloadData))
-        }
-    }
-    @objc public func frReloadData() {
-        // 因为交换了方法，所以这里其实是执行的系统自己的 reloadData 方法
-        
-        self.frReloadData()
-        
-        self.fr.executeReloadDataClosure()
-    }
-}
+
 
 

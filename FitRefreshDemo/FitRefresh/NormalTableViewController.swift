@@ -50,7 +50,7 @@ class NormalTableViewController: UITableViewController {
         return cell
     }
     
-    func upPullLoadData() {
+    @objc func upPullLoadData() {
         
         // 延迟执行 模拟网络延迟，实际开发中去掉
         FRDelay(2) {

@@ -96,12 +96,12 @@ public extension DispatchQueue {
 extension NSObject {
     // MARK: runtime
     class func exchangeInstanceMethod(_ method1:Selector, method2:Selector){
-        method_exchangeImplementations(class_getInstanceMethod(self, method1), class_getInstanceMethod(self, method2))
+        method_exchangeImplementations(class_getInstanceMethod(self, method1)!, class_getInstanceMethod(self, method2)!)
     }
     
     class func exchangeClassMethod(_ method1:Selector, method2:Selector){
         
-        method_exchangeImplementations(class_getClassMethod(self, method1), class_getClassMethod(self, method2));
+        method_exchangeImplementations(class_getClassMethod(self, method1)!, class_getClassMethod(self, method2)!);
     }
     
 }

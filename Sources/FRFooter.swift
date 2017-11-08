@@ -18,11 +18,7 @@ public class FRFooter: Component {
     
     /** 忽略多少scrollView的contentInset的bottom */
     public var ignoredScrollViewContentInsetBottom:CGFloat = 0
-    
-    /** 自动根据有无数据来显示和隐藏（有数据就显示，没有数据隐藏） */
-    public var automaticallyHidden: Bool = true
-    
-    
+        
     // MARK: - private
     // 重写父类方法
     override func prepare() {
@@ -38,13 +34,6 @@ public class FRFooter: Component {
             // 监听scrollView数据的变化
             // 由于闭包是Any 所以不能采用关联对象
             let tmpClass = ReloadDataClosureInClass()
-            tmpClass.reloadDataClosure = { (totalCount:Int) -> Void in
-                
-                if self.automaticallyHidden == true {
-                    // 如果开启了自动隐藏，那就是在检查到总数量为 请求后的加载0 的时候就隐藏
-                    self.isHidden = (totalCount == 0)
-                }
-            }
             
             self.scrollView.fr.reloadDataClosureClass = tmpClass
             
