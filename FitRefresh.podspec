@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name        = "FitRefresh"
-  s.version     = "1.4.1"
-  s.summary     = "FitRefresh makes it easy to refresh in Swift3+"
+  s.version     = "1.4.3"
+  s.summary     = "FitRefresh makes it easy to refresh in Swift4+"
   s.platform     = :ios, "8.0"
   s.homepage    = "https://github.com/cywd/FitRrefesh"
   s.license     = { :type => "MIT" }
@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.source_files = "Sources/*.swift"
   s.resource = "Sources/*.bundle"
   s.pod_target_xcconfig =  {
-        'SWIFT_VERSION' => '3.0',
+        'SWIFT_VERSION' => '4.0',
   }
 end
