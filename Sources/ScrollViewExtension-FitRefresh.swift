@@ -25,7 +25,7 @@ public class ReloadDataClosureInClass {
 // Description: 替换成 fr. 的调用方式
 // ============================================================
 extension FitRefresh where Base: ScrollView {
-    var reloadDataClosureClass:ReloadDataClosureInClass {
+    var reloadDataClosureClass: ReloadDataClosureInClass {
         set {
             
             base.willChangeValue(forKey: "reloadDataClosure")
@@ -207,7 +207,7 @@ public extension UIScrollView {
 }
 
 extension UITableView {
-    // 这里不推荐 initialize 有警告。正在想替代方法
+    // 这里不推荐 initialize 有警告。
     open override class func initialize() {
         if self != UITableView.self { return }
         
