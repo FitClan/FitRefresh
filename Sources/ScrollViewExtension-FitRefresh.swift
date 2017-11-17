@@ -79,7 +79,7 @@ extension FitRefresh where Base: ScrollView {
         }
     }
     
-    fileprivate var totalDataCount:Int {
+    fileprivate var totalDataCount: Int {
         
         get {
             var totalCount: Int = 0
@@ -143,7 +143,7 @@ public extension UIScrollView {
             if self.fr_headerView == newValue { return }
             
             self.fr_headerView?.removeFromSuperview()
-            objc_setAssociatedObject(self,&RefreshHeaderKey, newValue , objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+            objc_setAssociatedObject(self, &RefreshHeaderKey, newValue , objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
             
             if let newHeaderView = newValue {
                 self.addSubview(newHeaderView)
@@ -175,9 +175,8 @@ public extension UIScrollView {
     }
     
     
-    fileprivate var totalDataCount:Int {
-        
-        get{
+    fileprivate var totalDataCount: Int {
+        get {
             var totalCount:Int = 0
             if self.isKind(of: UITableView.self){
                 let tableView = self as! UITableView
@@ -195,7 +194,6 @@ public extension UIScrollView {
                 }
             }
             return totalCount
-            
         }
     }
     
@@ -205,7 +203,3 @@ public extension UIScrollView {
     }
     
 }
-
-
-
-

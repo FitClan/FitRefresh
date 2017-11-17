@@ -25,7 +25,7 @@ public enum RefreshState: Int {
 /** 闭包的类型 ()->() */
 public typealias ComponentRefreshingClosure = ()->()
 
-/** 抽象类，不直接使用，用于继承后，重写*/
+/** 抽象类，不直接使用，用于继承后，重写 */
 public class Component: UIView {
     
     // MARK: - public

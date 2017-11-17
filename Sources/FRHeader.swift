@@ -19,12 +19,11 @@ public class FRHeader: Component {
     public var ignoredScrollViewContentInsetTop: CGFloat = 0.0
     
     /** 上一次下拉刷新成功的时间 */
-    public var lastUpdatedTime:Date{
+    public var lastUpdatedTime: Date {
         get {
             if let realTmp =  UserDefaults.standard.object(forKey: self.lastUpdatedateKey){
                 
                 return realTmp as! Date
-                
             } else {
                 return Date()
             }
@@ -150,13 +149,10 @@ public class FRHeader: Component {
     override public func endRefreshing() {
         
         if self.scrollView.isKind(of: UICollectionView.self){
-            
             FRDelay(0.1, task: { 
                 super.endRefreshing()
             })
-            
         } else {
-            
             super.endRefreshing()
         }
         

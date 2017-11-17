@@ -21,10 +21,10 @@ public class FRStateHeader: FRHeader {
     // MARK: - public
     
     /** 利用这个colsure来决定显示的更新时间 */
-    var closureCallLastUpdatedTimeTitle:((_ lastUpdatedTime:Date) -> String)?
+    var closureCallLastUpdatedTimeTitle: ((_ lastUpdatedTime:Date) -> String)?
     
     /** 显示上一次刷新时间的label */
-    lazy var lastUpdatedTimeLabel:UILabel = {
+    lazy var lastUpdatedTimeLabel: UILabel = {
         [unowned self] in
         let lable = UILabel.FRLabel()
         self.addSubview(lable)
@@ -33,7 +33,7 @@ public class FRStateHeader: FRHeader {
     
     
     /** 显示刷新状态的label */
-    lazy var stateLabel:UILabel = {
+    lazy var stateLabel: UILabel = {
         [unowned self] in
         let lable = UILabel.FRLabel()
         self.addSubview(lable)
@@ -42,12 +42,12 @@ public class FRStateHeader: FRHeader {
     
     
     /** 设置状态的显示文字 */
-    public func setTitle(_ title:String, state:RefreshState) {
+    public func setTitle(_ title:String, state: RefreshState) {
         self.stateLabel.text = self.stateTitles[self.state];
     }
     
     /** 文字刷新状态下的显示与隐藏 */
-    public var refreshingTitleHidden:Bool = false {
+    public var refreshingTitleHidden: Bool = false {
         didSet {
             if oldValue == refreshingTitleHidden { return }
             self.stateLabel.isHidden = refreshingTitleHidden
@@ -55,7 +55,7 @@ public class FRStateHeader: FRHeader {
     }
     
     /** 时间刷新状态下的显示与隐藏*/
-    public var refreshingTimeHidden:Bool = false {
+    public var refreshingTimeHidden: Bool = false {
         didSet {
             if oldValue == refreshingTimeHidden { return }
             self.lastUpdatedTimeLabel.isHidden = refreshingTimeHidden
@@ -67,7 +67,7 @@ public class FRStateHeader: FRHeader {
     
     // MARK: 重写
     
-    override var lastUpdatedateKey:String {
+    override var lastUpdatedateKey: String {
         didSet {
             if let lastUpdatedTimeDate = UserDefaults.standard.object(forKey: lastUpdatedateKey) {
                 
@@ -88,7 +88,7 @@ public class FRStateHeader: FRHeader {
         }
     }
     
-    override var state:RefreshState {
+    override var state: RefreshState {
         didSet {
             if state == oldValue { return }
             self.stateLabel.text = self.stateTitles[self.state];

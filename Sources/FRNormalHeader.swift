@@ -21,7 +21,7 @@ public class FRNormalHeader: FRStateHeader {
     }
     
     /** 指示器的图片[箭头] */
-    public var arrowImage:UIImage? {
+    public var arrowImage: UIImage? {
         didSet{
             
             self.arrowView.image = arrowImage
@@ -33,7 +33,7 @@ public class FRNormalHeader: FRStateHeader {
     // MARK: lazy
     // 图片
     /** 指示图片 */
-    lazy  var arrowView:UIImageView = {
+    lazy  var arrowView: UIImageView = {
         [unowned self] in
         
         var image = UIImage(named: FRIconSrcPath)
@@ -49,7 +49,7 @@ public class FRNormalHeader: FRStateHeader {
     
     
     // loading
-    fileprivate lazy var activityView:UIActivityIndicatorView = {
+    fileprivate lazy var activityView: UIActivityIndicatorView = {
         
         [unowned self] in
         

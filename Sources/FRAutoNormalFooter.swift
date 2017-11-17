@@ -21,7 +21,6 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     
     
     // MARK: - private
-    
     // loading
     lazy var activityView: UIActivityIndicatorView = {
         
@@ -35,7 +34,7 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
         }()
     
     
-    // MARK: 重写
+    // MARK: 重写 rewrite
     override func placeSubvies() {
         super.placeSubvies()
         // loading

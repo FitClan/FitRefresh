@@ -17,7 +17,7 @@ public class FRFooter: Component {
     public func resetNoMoreData() {  self.state = RefreshState.idle }
     
     /** 忽略多少scrollView的contentInset的bottom */
-    public var ignoredScrollViewContentInsetBottom:CGFloat = 0
+    public var ignoredScrollViewContentInsetBottom: CGFloat = 0
         
     // MARK: - private
     // 重写父类方法

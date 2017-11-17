@@ -12,7 +12,7 @@ public class FRAutoStateFooter: FRAutoFooter {
     // MARK: - public
     
     /** 显示刷新状态的label */
-    lazy var stateLabel:UILabel = {
+    lazy var stateLabel: UILabel = {
         [unowned self] in
         let label = UILabel.FRLabel()
         self.addSubview(label)
@@ -20,7 +20,7 @@ public class FRAutoStateFooter: FRAutoFooter {
         }()
     
     /** 隐藏刷新状态的文字 */
-    public var refreshingTitleHidden:Bool = false
+    public var refreshingTitleHidden: Bool = false
     
     /** 设置状态的显示文字 */
     public func setTitle(_ title:String, state:RefreshState) {
@@ -29,7 +29,7 @@ public class FRAutoStateFooter: FRAutoFooter {
     
     // MARK: - private
     /** 每个状态对应的文字 */
-    fileprivate var stateTitles:Dictionary<RefreshState, String> = [
+    fileprivate var stateTitles: Dictionary<RefreshState, String> = [
         RefreshState.idle : RefreshFooterStateIdleText,
         RefreshState.refreshing : RefreshFooterStateRefreshingText,
         RefreshState.noMoreData : RefreshFooterStateNoMoreDataText
@@ -56,7 +56,7 @@ public class FRAutoStateFooter: FRAutoFooter {
     }
     
     
-    override var state:RefreshState {
+    override var state: RefreshState {
         didSet {
             if oldValue == state { return }
             

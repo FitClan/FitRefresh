@@ -111,7 +111,7 @@ public class FRAutoFooter: FRFooter {
     }
     
     
-    override public var isHidden:Bool {
+    override public var isHidden: Bool {
         didSet {
             // 如果之前没有隐藏的现在隐藏了，那么要设置状态和去掉底部区域
             if !oldValue && isHidden {
