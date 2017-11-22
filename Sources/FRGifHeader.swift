@@ -79,7 +79,7 @@ public class FRGifHeader: FRStateHeader {
         }
     }
     
-    override var state:RefreshState{
+    override var state: RefreshState{
         didSet{
             if state == oldValue { return }
             self.switchStateDoSomething(state)

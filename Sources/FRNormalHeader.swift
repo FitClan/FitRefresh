@@ -14,7 +14,7 @@ public class FRNormalHeader: FRStateHeader {
     /** loading样式 */
     public var activityIndicatorViewStyle:UIActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
         
-        didSet{
+        didSet {
             self.activityView.activityIndicatorViewStyle = activityIndicatorViewStyle
             self.setNeedsLayout()
         }
@@ -22,7 +22,7 @@ public class FRNormalHeader: FRStateHeader {
     
     /** 指示器的图片[箭头] */
     public var arrowImage: UIImage? {
-        didSet{
+        didSet {
             
             self.arrowView.image = arrowImage
             self.placeSubvies()
