@@ -8,7 +8,6 @@
 [![CocoaPods](http://img.shields.io/cocoapods/p/FitRefresh.svg?style=flat)](http://cocoapods.org/?q=FitRefresh) 
 
 
-# 重要： fr.headerView 的使用方式出现bug，请使用 fr_headerView  
 
 
 ## 描述
