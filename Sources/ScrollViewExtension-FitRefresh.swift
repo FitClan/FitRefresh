@@ -43,7 +43,7 @@ extension FitRefresh where Base: ScrollView {
     }
     
     /** 下拉刷新的控件 */
-    var headerView: FRHeader? {
+    public var headerView: FRHeader? {
         
         set {
             if headerView == newValue { return }
@@ -63,7 +63,7 @@ extension FitRefresh where Base: ScrollView {
     
     
     /** 上拉刷新的控件 */
-    var footerView: FRFooter? {
+    public var footerView: FRFooter? {
         
         set {
             if footerView == newValue { return }
@@ -118,7 +118,7 @@ public extension UIScrollView {
     
     /** reloadDataClosure */
     @available(*, deprecated, message: "Extensions directly on scroll Views are deprecated. Use like `scrollView.fr.reloadDataClosureClass` instead.", renamed: "fr.reloadDataClosureClass")
-    var reloadDataClosureClass:ReloadDataClosureInClass {
+    public var reloadDataClosureClass:ReloadDataClosureInClass {
         set {
             
             self.willChangeValue(forKey: "reloadDataClosure")
@@ -137,7 +137,7 @@ public extension UIScrollView {
         
     /** 下拉刷新的控件 */
     @available(*, deprecated, message: "Extensions directly on scroll Views are deprecated. Use like `scrollView.fr.headerView` instead.", renamed: "fr.headerView")
-    var fr_headerView: FRHeader? {
+    public var fr_headerView: FRHeader? {
         
         set {
             if self.fr_headerView == newValue { return }
