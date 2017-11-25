@@ -30,6 +30,7 @@
 		E7081C9D1EB321F20082C609 /* NormalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C9C1EB321F20082C609 /* NormalTableViewController.swift */; };
 		E7081C9F1EB32B850082C609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7081C9E1EB32B850082C609 /* Assets.xcassets */; };
 		E7081CA71EB33D000082C609 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7081CA61EB33D000082C609 /* Info.plist */; };
+		E767470F1FC9B8DA0087A2DF /* FRHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C6D1EB319640082C609 /* FRHelper.swift */; };
 		E7BF078A1F4A806E00AD2338 /* FitRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF07891F4A806E00AD2338 /* FitRefresh.swift */; };
 /* End PBXBuildFile section */
 
@@ -362,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7081C3C1EB2E67C0082C609 /* FitRefreshUITests.swift in Sources */,
+				E767470F1FC9B8DA0087A2DF /* FRHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

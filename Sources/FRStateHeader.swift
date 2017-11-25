@@ -82,7 +82,7 @@ public class FRStateHeader: FRHeader {
                 self.lastUpdatedTimeLabel.text = realLastUpdateTimeDate.ConvertStringTime()
                 
             }else{
-                self.lastUpdatedTimeLabel.text = "最后更新:无记录"
+                self.lastUpdatedTimeLabel.text = Bundle.fit_localizedStringForKey("FitRefreshHeaderLastTimeText", value: "最后更新") + ":" + Bundle.fit_localizedStringForKey("FitRefreshHeaderNoneLastDateText", value: "无记录")
                 
             }
         }
