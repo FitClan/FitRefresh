@@ -14,6 +14,16 @@
 
 Swift 4+ 的 下拉刷新
 
+## 集成
+
+the sample way
+
+```ruby
+pod 'FitRrefesh
+'```
+
+else drop the `Sources` to your project
+
 ## 使用
 
 ### Version 1.3 Later
@@ -61,10 +71,5 @@ self.tableView.fr_footerView = FRAutoNormalFooter(ComponentRefreshingClosure: {
             self.downPullLoadData()
         })
 ```
-
-
-
-
-
 
 
