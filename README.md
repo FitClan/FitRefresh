@@ -16,13 +16,14 @@ Swift 4+ 的 下拉刷新
 
 ## 集成
 
-the sample way
+The sample way.
 
 ```ruby
 pod 'FitRrefesh'
 ```
 
-else drop the `Sources` to your project
+else 
+You can also drop the `Sources` to your project.
 
 ## 使用
 
