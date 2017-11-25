@@ -19,8 +19,8 @@ Swift 4+ 的 下拉刷新
 the sample way
 
 ```ruby
-pod 'FitRrefesh
-'```
+pod 'FitRrefesh'
+```
 
 else drop the `Sources` to your project
 
