@@ -13,7 +13,7 @@
 		E7081C261EB2E67C0082C609 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7081C241EB2E67C0082C609 /* LaunchScreen.storyboard */; };
 		E7081C311EB2E67C0082C609 /* FitRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C301EB2E67C0082C609 /* FitRefreshTests.swift */; };
 		E7081C3C1EB2E67C0082C609 /* FitRefreshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C3B1EB2E67C0082C609 /* FitRefreshUITests.swift */; };
-		E7081C721EB319640082C609 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C651EB319640082C609 /* Component.swift */; };
+		E7081C721EB319640082C609 /* FRComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C651EB319640082C609 /* FRComponent.swift */; };
 		E7081C731EB319640082C609 /* FRAutoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C661EB319640082C609 /* FRAutoFooter.swift */; };
 		E7081C741EB319640082C609 /* FRAutoNormalFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C671EB319640082C609 /* FRAutoNormalFooter.swift */; };
 		E7081C751EB319640082C609 /* FRAutoStateFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C681EB319640082C609 /* FRAutoStateFooter.swift */; };
@@ -64,7 +64,7 @@
 		E7081C371EB2E67C0082C609 /* FitRefreshUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitRefreshUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7081C3B1EB2E67C0082C609 /* FitRefreshUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitRefreshUITests.swift; sourceTree = "<group>"; };
 		E7081C3D1EB2E67C0082C609 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7081C651EB319640082C609 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		E7081C651EB319640082C609 /* FRComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRComponent.swift; sourceTree = "<group>"; };
 		E7081C661EB319640082C609 /* FRAutoFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRAutoFooter.swift; sourceTree = "<group>"; };
 		E7081C671EB319640082C609 /* FRAutoNormalFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRAutoNormalFooter.swift; sourceTree = "<group>"; };
 		E7081C681EB319640082C609 /* FRAutoStateFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRAutoStateFooter.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				E7081C6F1EB319640082C609 /* FRResources.bundle */,
-				E7081C651EB319640082C609 /* Component.swift */,
+				E7081C651EB319640082C609 /* FRComponent.swift */,
 				E7081C661EB319640082C609 /* FRAutoFooter.swift */,
 				E7081C671EB319640082C609 /* FRAutoNormalFooter.swift */,
 				E7081C681EB319640082C609 /* FRAutoStateFooter.swift */,
@@ -343,7 +343,7 @@
 				E7081C741EB319640082C609 /* FRAutoNormalFooter.swift in Sources */,
 				E7081C9D1EB321F20082C609 /* NormalTableViewController.swift in Sources */,
 				E7081C751EB319640082C609 /* FRAutoStateFooter.swift in Sources */,
-				E7081C721EB319640082C609 /* Component.swift in Sources */,
+				E7081C721EB319640082C609 /* FRComponent.swift in Sources */,
 				E7081C791EB319640082C609 /* FRHeader.swift in Sources */,
 				E7081C9B1EB321E40082C609 /* GifTableViewController.swift in Sources */,
 				E7081C1C1EB2E67C0082C609 /* AppDelegate.swift in Sources */,

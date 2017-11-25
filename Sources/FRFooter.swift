@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class FRFooter: Component {
+public class FRFooter: FRComponent {
     // MARK: - public
     /** 提示没有更多的数据 */
     public func noticeNoMoreData() { self.state = RefreshState.noMoreData }

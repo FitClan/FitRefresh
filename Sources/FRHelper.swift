@@ -302,12 +302,16 @@ extension UIView {
 // =======================================
 extension Bundle {
     
+    class func fit_refreshBundle() -> Bundle? {
+        return Bundle(path: (Bundle(for: FRComponent.self).path(forResource: "FRResources", ofType: "bundle"))!)
+    }
+    
     class func fit_localizedStringForKey(_ key: String) -> String {
         return self.fit_localizedStringForKey(key, value: nil)
     }
     
     class func fit_localizedStringForKey(_ key: String, value: String?) -> String {
-        var v1 = value
+        var varValue = value
         var bundle: Bundle? = nil
         if bundle == nil {
             var language: String = NSLocale.preferredLanguages.first!
@@ -316,18 +320,16 @@ extension Bundle {
             } else {
                 language = "en"
             }
+
+            let res_Bundle = self.fit_refreshBundle()
             
-            let aa = Bundle.main.path(forResource: "FRResources", ofType: "bundle")
-            
-            let bb = Bundle(path: aa!)
-            
-            let path = bb?.path(forResource: language, ofType: "lproj")
+            let path = res_Bundle?.path(forResource: language, ofType: "lproj")
             
             bundle = Bundle(path: path!)
         }
         
-        v1 = bundle!.localizedString(forKey: key, value: v1, table: nil)
-        return Bundle.main.localizedString(forKey: key, value: v1, table: nil)
+        varValue = bundle!.localizedString(forKey: key, value: varValue, table: nil)
+        return Bundle.main.localizedString(forKey: key, value: varValue, table: nil)
     }
 }
 

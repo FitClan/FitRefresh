@@ -1,5 +1,5 @@
 //
-//  Component.swift
+//  FitRefresh.swift
 //  FitRefresh
 //
 //  Created by Cyrill on 2016/12/28.

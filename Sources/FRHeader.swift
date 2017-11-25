@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class FRHeader: Component {
+public class FRHeader: FRComponent {
 
     // MARK: - public
     

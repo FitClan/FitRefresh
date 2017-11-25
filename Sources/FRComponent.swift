@@ -1,5 +1,5 @@
 //
-//  Component.swift
+//  FRComponent.swift
 //  FitRefresh
 //
 //  Created by Cyrill on 2016/12/28.
@@ -26,7 +26,7 @@ public enum RefreshState: Int {
 public typealias ComponentRefreshingClosure = ()->()
 
 /** 抽象类，不直接使用，用于继承后，重写 */
-public class Component: UIView {
+public class FRComponent: UIView {
     
     // MARK: - public
     // MARK: 给外界访问
