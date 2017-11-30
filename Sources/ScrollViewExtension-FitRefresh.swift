@@ -44,7 +44,6 @@ extension FitRefresh where Base: ScrollView {
     
     /** 下拉刷新的控件 */
     public var headerView: FRHeader? {
-        
         set {
             if headerView == newValue { return }
             
@@ -64,7 +63,6 @@ extension FitRefresh where Base: ScrollView {
     
     /** 上拉刷新的控件 */
     public var footerView: FRFooter? {
-        
         set {
             if footerView == newValue { return }
             footerView?.removeFromSuperview()
@@ -80,7 +78,6 @@ extension FitRefresh where Base: ScrollView {
     }
     
     fileprivate var totalDataCount: Int {
-        
         get {
             var totalCount: Int = 0
             if base.isKind(of: UITableView.self){
@@ -120,7 +117,6 @@ public extension UIScrollView {
     @available(*, deprecated, message: "Extensions directly on scroll Views are deprecated. Use like `scrollView.fr.reloadDataClosureClass` instead.", renamed: "fr.reloadDataClosureClass")
     public var reloadDataClosureClass:ReloadDataClosureInClass {
         set {
-            
             self.willChangeValue(forKey: "reloadDataClosure")
             // 因为闭包不属于class 所以不合适 AnyObject
             objc_setAssociatedObject(self, &RefreshReloadDataClosureKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
@@ -132,13 +128,11 @@ public extension UIScrollView {
             }
             return ReloadDataClosureInClass()
         }
-        
     }
         
     /** 下拉刷新的控件 */
     @available(*, deprecated, message: "Extensions directly on scroll Views are deprecated. Use like `scrollView.fr.headerView` instead.", renamed: "fr.headerView")
     public var fr_headerView: FRHeader? {
-        
         set {
             if self.fr_headerView == newValue { return }
             
@@ -154,12 +148,9 @@ public extension UIScrollView {
         }
     }
     
-    
-    
     /** 上拉刷新的控件 */
     @available(*, deprecated, message: "Extensions directly on scroll Views are deprecated. Use like `scrollView.fr.footerView` instead.", renamed: "fr.footerView")
     var fr_footerView: FRFooter? {
-        
         set {
             if self.fr_footerView == newValue { return }
             self.fr_footerView?.removeFromSuperview()
@@ -174,7 +165,6 @@ public extension UIScrollView {
         }
     }
     
-    
     fileprivate var totalDataCount: Int {
         get {
             var totalCount:Int = 0
@@ -182,10 +172,8 @@ public extension UIScrollView {
                 let tableView = self as! UITableView
                 for section in 0..<tableView.numberOfSections {
                     
-                    
                     totalCount += tableView.numberOfRows(inSection: section)
                 }
-                
             } else if self.isKind(of: UICollectionView.self) {
                 let collectionView = self as! UICollectionView
                 for section in 0..<collectionView.numberOfSections {

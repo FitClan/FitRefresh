@@ -97,7 +97,6 @@ public class FRNormalHeader: FRStateHeader {
             self.arrowView.isHidden = false
         }
         
-        
         // 4.判断当前的状态
         switch state {
             

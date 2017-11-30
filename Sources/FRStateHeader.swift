@@ -31,7 +31,6 @@ public class FRStateHeader: FRHeader {
         return lable
         }()
     
-    
     /** 显示刷新状态的label */
     lazy var stateLabel: UILabel = {
         [unowned self] in
@@ -66,7 +65,6 @@ public class FRStateHeader: FRHeader {
     
     
     // MARK: 重写
-    
     override var lastUpdatedateKey: String {
         didSet {
             if let lastUpdatedTimeDate = UserDefaults.standard.object(forKey: lastUpdatedateKey) {
