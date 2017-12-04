@@ -344,7 +344,7 @@ extension Date {
     func ConvertStringTime() -> String {
         
         // 1.获得年月日
-        let calender = Calendar.current
+        let calender = self.currentCalendar()
         
         let unitFlags = NSCalendar.Unit.day
         
@@ -361,5 +361,13 @@ extension Date {
             formatter.dateFormat = "MM-dd HH:mm"
         }
         return Bundle.fit_localizedStringForKey("FitRefreshHeaderLastTimeText", value: "最后更新") + ":" + formatter.string(from: self)
+    }
+    
+    func currentCalendar() -> Calendar {
+        if #available(iOS 8.0, *) {
+            return Calendar(identifier: Calendar.Identifier.gregorian)
+        } else {
+            return Calendar.current
+        }
     }
 }

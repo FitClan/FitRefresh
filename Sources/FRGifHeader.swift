@@ -20,7 +20,7 @@ public class FRGifHeader: FRStateHeader {
     
     /** 设置刷新状态下,gif的图片,动画每帧相隔的时间 */
     @discardableResult
-    public func setImages(_ images:Array<UIImage>, duration:TimeInterval, state:RefreshState) -> Self {
+    public func setImages(_ images: Array<UIImage>, duration:TimeInterval, state:RefreshState) -> Self {
         // 防止空数组 []
         if images.count < 1 { return self}
         
