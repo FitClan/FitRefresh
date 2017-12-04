@@ -58,9 +58,7 @@ public class FRStateHeader: FRHeader {
         didSet {
             if oldValue == refreshingTimeHidden { return }
             self.lastUpdatedTimeLabel.isHidden = refreshingTimeHidden
-            
         }
-        
     }
     
     
@@ -69,7 +67,7 @@ public class FRStateHeader: FRHeader {
         didSet {
             if let lastUpdatedTimeDate = UserDefaults.standard.object(forKey: lastUpdatedateKey) {
                 
-                let realLastUpdateTimeDate:Date = lastUpdatedTimeDate as! Date
+                let realLastUpdateTimeDate: Date = lastUpdatedTimeDate as! Date
                 
                 // 如果有闭包
                 if let internalClosure = self.closureCallLastUpdatedTimeTitle {
@@ -79,7 +77,7 @@ public class FRStateHeader: FRHeader {
                 // 得到精准的时间
                 self.lastUpdatedTimeLabel.text = realLastUpdateTimeDate.ConvertStringTime()
                 
-            }else{
+            } else {
                 self.lastUpdatedTimeLabel.text = Bundle.fit_localizedStringForKey("FitRefreshHeaderLastTimeText", value: "最后更新") + ":" + Bundle.fit_localizedStringForKey("FitRefreshHeaderNoneLastDateText", value: "无记录")
                 
             }
@@ -91,8 +89,8 @@ public class FRStateHeader: FRHeader {
             if state == oldValue { return }
             self.stateLabel.text = self.stateTitles[self.state];
             
-            // self.lastUpdatedateKey = self.lastUpdatedateKey.self
-            
+            let tmpString = self.lastUpdatedateKey
+            self.lastUpdatedateKey = tmpString
         }
     }
     

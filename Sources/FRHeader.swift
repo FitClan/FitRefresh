@@ -21,8 +21,7 @@ public class FRHeader: FRComponent {
     /** 上一次下拉刷新成功的时间 */
     public var lastUpdatedTime: Date {
         get {
-            if let realTmp =  UserDefaults.standard.object(forKey: self.lastUpdatedateKey){
-                
+            if let realTmp =  UserDefaults.standard.object(forKey: self.lastUpdatedateKey) {
                 return realTmp as! Date
             } else {
                 return Date()
@@ -98,9 +97,7 @@ public class FRHeader: FRComponent {
     // MARK: 改变状态后
     /** 刷新控件的状态 */
     override var state: RefreshState {
-        
         didSet {
-            
             // 状态和以前的一样就不用改变
             if oldValue == state {
                 return
@@ -148,7 +145,7 @@ public class FRHeader: FRComponent {
     /** 结束刷新 */
     override public func endRefreshing() {
         
-        if self.scrollView.isKind(of: UICollectionView.self){
+        if self.scrollView.isKind(of: UICollectionView.self) {
             FRDelay(0.1, task: { 
                 super.endRefreshing()
             })
