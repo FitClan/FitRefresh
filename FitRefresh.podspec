@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "FitRefresh"
-  s.version     = "2.3.1"
+  s.version     = "2.3.2"
   s.summary     = "FitRefresh makes it easy to refresh in Swift4+"
   s.platform     = :ios, "8.0"
   s.homepage    = "https://github.com/cywd/FitRrefesh"
