@@ -1,20 +1,19 @@
 //
-//  GifHeader.swift
+//  FRAutoGifFooter.swift
 //  FitRefresh
 //
-//  Created by Cyrill on 2016/12/28.
-//  Copyright © 2016年 Cyrill. All rights reserved.
+//  Created by Cyrill on 2017/12/5.
+//  Copyright © 2017年 Cyrill. All rights reserved.
 //
 
 import UIKit
 
-public class FRGifHeader: FRStateHeader {
-    
+class FRAutoGifFooter: FRAutoStateFooter {
+
     // MARK: 方法接口
     /** 设置刷新状态下,gif的图片 */
     @discardableResult
     public func setImages(_ images: Array<UIImage>, state: RefreshState) -> Self {
-        
         return self.setImages(images, duration: TimeInterval(images.count) * 0.1, state: state)
     }
     
@@ -48,33 +47,19 @@ public class FRGifHeader: FRStateHeader {
     
     
     // MARK: 重写
-    override public var pullingPercent: CGFloat {
-        didSet {
-            if  let images = self.stateImages[RefreshState.idle] {
-                
-                if self.state != RefreshState.idle || images.count < 1 { return }
-                
-                // 停止动画
-                self.gifView.stopAnimating()
-                // 设置当前需要显示的图片,根据百分比显示
-                var index = Int(CGFloat(images.count) * pullingPercent)
-                
-                if index >= images.count { index = images.count - 1 }
-                
-                self.gifView.image = images[index]
-            }
-        }
+    override public func prepare() {
+        super.prepare()
     }
     
     override func placeSubvies() {
         super.placeSubvies()
         
         self.gifView.frame = self.bounds
-        if self.stateLabel.isHidden && self.lastUpdatedTimeLabel.isHidden {
+        if self.refreshingTitleHidden {
             self.gifView.contentMode = UIViewContentMode.center
         } else {
             self.gifView.contentMode = UIViewContentMode.right
-            self.gifView.width = self.width * 0.5 - RefreshGifViewWidthDeviation
+            self.gifView.width = self.width * 0.5 - 20 - self.stateLabel.fr_textWidth() * 0.5
         }
     }
     
@@ -85,23 +70,29 @@ public class FRGifHeader: FRStateHeader {
         }
     }
     
-    fileprivate func switchStateDoSomething(_ state:RefreshState) {
+    fileprivate func switchStateDoSomething(_ state: RefreshState) {
         
         if !(state == RefreshState.pulling || state == RefreshState.refreshing) { return }
         
-        if let images = self.stateImages[state] {
-            if images.count < 1 { return }
-            
-            self.gifView.stopAnimating()
-            // 单张图片
-            if images.count == 1 {
-                self.gifView.image = images.last
-                // 多张图片
-            } else {
-                self.gifView.animationImages = images
-                self.gifView.animationDuration = self.stateDurations[state]!
-                self.gifView.startAnimating()
+        if state == RefreshState.refreshing {
+            if let images = self.stateImages[state] {
+                if images.count < 1 { return }
+                
+                self.gifView.stopAnimating()
+                self.gifView.isHidden = false
+                // 单张图片
+                if images.count == 1 {
+                    self.gifView.image = images.last
+                    // 多张图片
+                } else {
+                    self.gifView.animationImages = images
+                    self.gifView.animationDuration = self.stateDurations[state]!
+                    self.gifView.startAnimating()
+                }
             }
+        } else if (state == RefreshState.pulling || state == RefreshState.idle) {
+            self.gifView.stopAnimating()
+            self.gifView.isHidden = true
         }
         
     }

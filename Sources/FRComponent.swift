@@ -290,5 +290,19 @@ extension UILabel {
         FRLable.backgroundColor = UIColor.clear;
         return FRLable
     }
+    
+    func fr_textWidth() -> CGFloat {
+        var stringWidth: CGFloat = 0
+        
+        let size = CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT))
+        
+        if let text = self.text {
+            if text.count > 0 {
+                stringWidth = text.boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : self.font], context: nil).size.width
+            }
+        }
+       
+        return stringWidth
+    }
 }
 

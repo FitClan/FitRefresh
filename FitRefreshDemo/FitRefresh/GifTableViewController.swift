@@ -40,6 +40,13 @@ class GifTableViewController: UITableViewController {
         self.tableView.fr.headerView = headerView
         self.tableView.fr.headerView?.beginRefreshing()
         
+        
+        let footerView = FRAutoGifFooter(target: self, action: #selector(GifTableViewController.downPullLoadData))
+        footerView.setImages(images, duration: 2.0, state: RefreshState.idle)
+        footerView.setImages(images, duration: 2.0, state: RefreshState.refreshing)
+        footerView.refreshingTitleHidden = true
+        self.tableView.fr.footerView = footerView
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,6 +72,21 @@ class GifTableViewController: UITableViewController {
         cell.textLabel?.text = dataArray[indexPath.row]
 
         return cell
+    }
+    
+    @objc func downPullLoadData() {
+        // 延迟执行 模拟网络延迟，实际开发中去掉
+        task = FRDelay(2) {
+            
+            for i in 1..<15{
+                self.dataArray.append("数据 - \(i + self.dataArray.count)")
+            }
+            
+            self.tableView.reloadData()
+            
+            self.tableView.fr.footerView?.endRefreshing()
+            
+        }
     }
     
     @objc func upPullLoadData() {

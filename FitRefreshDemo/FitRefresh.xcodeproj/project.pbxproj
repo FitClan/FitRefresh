@@ -31,6 +31,7 @@
 		E7081C9F1EB32B850082C609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7081C9E1EB32B850082C609 /* Assets.xcassets */; };
 		E7081CA71EB33D000082C609 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7081CA61EB33D000082C609 /* Info.plist */; };
 		E767470F1FC9B8DA0087A2DF /* FRHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C6D1EB319640082C609 /* FRHelper.swift */; };
+		E7A6DF451FD62F5A00EA3449 /* FRAutoGifFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A6DF441FD62F5A00EA3449 /* FRAutoGifFooter.swift */; };
 		E7BF078A1F4A806E00AD2338 /* FitRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF07891F4A806E00AD2338 /* FitRefresh.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		E7081C9E1EB32B850082C609 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7081CA51EB33D000082C609 /* FitRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitRefresh.h; sourceTree = "<group>"; };
 		E7081CA61EB33D000082C609 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7A6DF441FD62F5A00EA3449 /* FRAutoGifFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRAutoGifFooter.swift; sourceTree = "<group>"; };
 		E7BF07891F4A806E00AD2338 /* FitRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitRefresh.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +172,7 @@
 				E7081C6F1EB319640082C609 /* FRResources.bundle */,
 				E7081C651EB319640082C609 /* FRComponent.swift */,
 				E7081C661EB319640082C609 /* FRAutoFooter.swift */,
+				E7A6DF441FD62F5A00EA3449 /* FRAutoGifFooter.swift */,
 				E7081C671EB319640082C609 /* FRAutoNormalFooter.swift */,
 				E7081C681EB319640082C609 /* FRAutoStateFooter.swift */,
 				E7081C691EB319640082C609 /* FRConst.swift */,
@@ -332,6 +335,7 @@
 			files = (
 				E7081C7A1EB319640082C609 /* FRHelper.swift in Sources */,
 				E7081C7D1EB319640082C609 /* FRStateHeader.swift in Sources */,
+				E7A6DF451FD62F5A00EA3449 /* FRAutoGifFooter.swift in Sources */,
 				E7081C771EB319640082C609 /* FRFooter.swift in Sources */,
 				E7081C7E1EB319640082C609 /* ScrollViewExtension-FitRefresh.swift in Sources */,
 				E7081C781EB319640082C609 /* FRGifHeader.swift in Sources */,
