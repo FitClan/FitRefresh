@@ -29,7 +29,6 @@ public class FRNormalHeader: FRStateHeader {
         }
     }
     
-    
     // MARK: lazy
     // 图片
     /** 指示图片 */
@@ -46,8 +45,6 @@ public class FRNormalHeader: FRStateHeader {
         return imageView
         }()
     
-    
-    
     // loading
     fileprivate lazy var activityView: UIActivityIndicatorView = {
         
@@ -60,7 +57,6 @@ public class FRNormalHeader: FRStateHeader {
         
         return activityView
         }()
-    
     
     // MARK: 重写父类方法
     override func placeSubvies() {

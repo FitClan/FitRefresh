@@ -94,7 +94,6 @@ class FRAutoGifFooter: FRAutoStateFooter {
             self.gifView.stopAnimating()
             self.gifView.isHidden = true
         }
-        
     }
 
 }

@@ -54,5 +54,3 @@ let RefreshFooterStateNoMoreDataText = Bundle.fit_localizedStringForKey("FitRefr
 /** 图片路径 */
 let FRIconSrcPath: String = "Frameworks/FitRefresh.framework/FRResources.bundle/fr_down.png"
 let FRIconLocalPath: String = "FRResources.bundle/fr_down.png"
-
-

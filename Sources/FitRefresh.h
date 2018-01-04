@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double FitRefreshVersionNumber;
 FOUNDATION_EXPORT const unsigned char FitRefreshVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <FitRefresh/PublicHeader.h>
-
-

@@ -46,7 +46,6 @@ public class FRGifHeader: FRStateHeader {
     fileprivate var stateImages: Dictionary<RefreshState, Array<UIImage>> = [RefreshState.idle : []]
     fileprivate var stateDurations: Dictionary<RefreshState, TimeInterval> = [RefreshState.idle : 1, RefreshState.pulling : 1, RefreshState.refreshing : 1]
     
-    
     // MARK: 重写
     override public var pullingPercent: CGFloat {
         didSet {
@@ -103,7 +102,5 @@ public class FRGifHeader: FRStateHeader {
                 self.gifView.startAnimating()
             }
         }
-        
     }
-
 }

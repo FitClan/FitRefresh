@@ -9,6 +9,7 @@
 import UIKit
 
 public class FRAutoFooter: FRFooter {
+    
     // MARK: - public
     /** 是否自动刷新(默认为YES) */
     public var automaticallyRefresh: Bool = true
@@ -109,7 +110,6 @@ public class FRAutoFooter: FRFooter {
             }
         }
     }
-    
     
     override public var isHidden: Bool {
         didSet {

@@ -39,7 +39,6 @@ public class FRStateHeader: FRHeader {
         return lable
         }()
     
-    
     /** 设置状态的显示文字 */
     public func setTitle(_ title:String, state: RefreshState) {
         self.stateLabel.text = self.stateTitles[self.state];
@@ -61,7 +60,6 @@ public class FRStateHeader: FRHeader {
         }
     }
     
-    
     // MARK: 重写
     override var lastUpdatedateKey: String {
         didSet {
@@ -76,10 +74,8 @@ public class FRStateHeader: FRHeader {
                 }
                 // 得到精准的时间
                 self.lastUpdatedTimeLabel.text = realLastUpdateTimeDate.ConvertStringTime()
-                
             } else {
                 self.lastUpdatedTimeLabel.text = Bundle.fit_localizedStringForKey("FitRefreshHeaderLastTimeText", value: "最后更新") + ":" + Bundle.fit_localizedStringForKey("FitRefreshHeaderNoneLastDateText", value: "无记录")
-                
             }
         }
     }
@@ -120,9 +116,7 @@ public class FRStateHeader: FRHeader {
             self.lastUpdatedTimeLabel.y = self.stateLabel.height
             self.lastUpdatedTimeLabel.width = self.width
             self.lastUpdatedTimeLabel.height = self.height - self.lastUpdatedTimeLabel.y
-            
         }
-        
     }
 
 }

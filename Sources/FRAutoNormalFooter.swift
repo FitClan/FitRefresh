@@ -9,6 +9,7 @@
 import UIKit
 
 public class FRAutoNormalFooter: FRAutoStateFooter {
+    
     // MARK: - public
     /** loading样式 */
     public var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
@@ -18,7 +19,6 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
             self.setNeedsLayout()
         }
     }
-    
     
     // MARK: - private
     // loading
