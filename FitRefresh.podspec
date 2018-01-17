@@ -3,14 +3,14 @@ Pod::Spec.new do |s|
   s.version     = "2.4.0"
   s.summary     = "FitRefresh makes it easy to refresh in Swift4+"
   s.platform     = :ios, "8.0"
-  s.homepage    = "https://github.com/cywd/FitRrefesh"
+  s.homepage    = "https://github.com/FitClan/FitRefresh"
   s.license     = { :type => "MIT" }
   s.authors     = { "Cyrill" => "lichunyang@outlook.com" }
 
   s.requires_arc = true
 
-  s.source   = { :git => "https://github.com/cywd/FitRrefesh.git", :tag => s.version }
-  s.source_files = ["Sources/*.swift", "Sources/FitRrefesh.h", "Sources/FitRrefesh.swift"]
+  s.source   = { :git => "https://github.com/FitClan/FitRefresh.git", :tag => s.version }
+  s.source_files = ["Sources/*.swift", "Sources/FitRefresh.h", "Sources/FitRefresh.swift"]
   
   s.resource = "Sources/*.bundle"
 
