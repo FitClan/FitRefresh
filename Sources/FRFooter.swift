@@ -18,7 +18,7 @@ public class FRFooter: FRComponent {
         }
     }
     
-    public func noticeNoMoreData() { self.state = RefreshState.noMoreData }
+    public func noticeNoMoreData() { self.endRefreshingWithNoMoreData() }
     
     /** 重置没有更多的数据（消除没有更多数据的状态） */
     public func resetNoMoreData() {

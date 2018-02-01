@@ -135,7 +135,9 @@ public class FRComponent: UIView {
     
     /** 结束刷新 */
     public func endRefreshing() {
-        self.state = .idle
+        DispatchQueue.main.async {
+            self.state = .idle
+        }
     }
     
     // MARK: 初始化

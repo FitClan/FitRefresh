@@ -11,9 +11,11 @@ import UIKit
 public class FRHeader: FRComponent {
 
     // MARK: - public
+    var insetTopDelta: CGFloat = 0.0
+    
     
     /** 利用这个key来保存上次的刷新时间（不同界面的刷新控件应该用不同的dateKey，以区分不同界面的刷新时间） */
-    var lastUpdatedateKey = ""
+    var lastUpdatedateKey = RefreshHeaderLastUpdatedTimeKey
     
     /** 忽略多少scrollView的contentInset的top */
     public var ignoredScrollViewContentInsetTop: CGFloat = 0.0
@@ -32,13 +34,8 @@ public class FRHeader: FRComponent {
     // MARK: 覆盖父类方法
     override func prepare() {
         super.prepare()
-        
-        // 设置key
-        self.lastUpdatedateKey = RefreshHeaderLastUpdatedTimeKey
-        
         // 设置高度
         self.height = RefreshHeaderHeight
-        
     }
     
     override func placeSubvies() {
@@ -52,7 +49,13 @@ public class FRHeader: FRComponent {
         super.scrollViewContentOffsetDidChange(change)
         
         // 在刷新的refreshing状态
-        if self.state == RefreshState.refreshing { return }
+        if self.state == RefreshState.refreshing {
+            var insetTop = max(-self.scrollView.offSetY, scrollViewOriginalInset.top)
+            insetTop = min(insetTop, self.height + scrollViewOriginalInset.top)
+            self.scrollView.insetTop = insetTop
+            self.insetTopDelta = scrollViewOriginalInset.top - insetTop
+            return
+        }
         
         // 跳转到下一个控制器时，contentInset可能会变
         self.scrollViewOriginalInset = self.scrollView.inset
@@ -73,7 +76,6 @@ public class FRHeader: FRComponent {
         if self.scrollView.isDragging {
             self.pullingPercent = pullingPercent
             
-            
             if self.state == RefreshState.idle && offsetY < normal2pullingOffsetY {
                 // 转为即将刷新状态
                 self.state = RefreshState.pulling
@@ -87,7 +89,6 @@ public class FRHeader: FRComponent {
         } else if self.state == RefreshState.pulling {
             // 开始刷新
             self.beginRefreshing()
-            
         } else if self.pullingPercent < 1 {
             self.pullingPercent = pullingPercent
         }
@@ -99,25 +100,23 @@ public class FRHeader: FRComponent {
     override var state: RefreshState {
         didSet {
             // 状态和以前的一样就不用改变
-            if oldValue == state {
-                return
-            }
+            if oldValue == state { return }
             
             // 根据状态来做一些事情
             if state == RefreshState.idle {
+                
                 if oldValue != RefreshState.refreshing { return }
                 
                 // 保存刷新的时间
                 UserDefaults.standard.set(Date(), forKey: self.lastUpdatedateKey as String)
-                
                 UserDefaults.standard.synchronize()
                 
                 // 恢复inset和offset
                 UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: { [unowned self] () -> Void in
-                    self.scrollView.insertTop -= self.height
+                    self.scrollView.insetTop += self.insetTopDelta
                     
                     // 自动调整透明度
-                    if self.isAutomaticallyChangeAlpha {self.alpha = 0.0}
+                    if self.isAutomaticallyChangeAlpha { self.alpha = 0.0 }
                     
                     }, completion: { [unowned self] (flag) -> Void in
                         
@@ -127,12 +126,12 @@ public class FRHeader: FRComponent {
                 })
                 
             } else if state == RefreshState.refreshing {
-                UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: {[unowned self] () -> Void in
+                UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: { [unowned self] () -> Void in
                     
                     let top = self.scrollViewOriginalInset.top + self.height
                     
                     // 增加滚动区域
-                    self.scrollView.insertTop = top
+                    self.scrollView.insetTop = top
                     
                     // 设置滚动位置
                     self.scrollView.offSetY = -top
@@ -143,20 +142,6 @@ public class FRHeader: FRComponent {
             }
         }
     }
-    
-    /** 结束刷新 */
-    override public func endRefreshing() {
-        
-        if self.scrollView.isKind(of: UICollectionView.self) {
-            FRDelay(0.1, task: { 
-                super.endRefreshing()
-            })
-        } else {
-            super.endRefreshing()
-        }
-        
-    }
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

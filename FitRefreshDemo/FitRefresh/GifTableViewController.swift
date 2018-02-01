@@ -10,6 +10,7 @@ import UIKit
 
 class GifTableViewController: UITableViewController {
 
+    var tmpCount = 0
     var task: FRTask?
     
     var dataArray: Array<String> = []
@@ -77,8 +78,9 @@ class GifTableViewController: UITableViewController {
         // 延迟执行 模拟网络延迟，实际开发中去掉
         task = FRDelay(2) {
             
-            for i in 1..<15{
-                self.dataArray.append("数据 - \(i + self.dataArray.count)")
+            for _ in 1...15{
+                self.tmpCount += 1
+                self.dataArray.append("数据 - \(self.tmpCount)")
             }
             
             self.tableView.reloadData()
@@ -91,9 +93,11 @@ class GifTableViewController: UITableViewController {
     @objc func upPullLoadData() {
         // 延迟执行 模拟网络延迟，实际开发中去掉
         task = FRDelay(2) {
-            
-            for i in 1..<15{
-                self.dataArray.append("数据 - \(i + self.dataArray.count)")
+            self.tmpCount = 0
+            self.dataArray.removeAll()
+            for _ in 1...15{
+                self.tmpCount += 1
+                self.dataArray.append("数据 - \(self.tmpCount)")
             }
             
             self.tableView.reloadData()
