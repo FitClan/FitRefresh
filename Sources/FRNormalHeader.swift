@@ -13,7 +13,6 @@ public class FRNormalHeader: FRStateHeader {
     
     /** loading样式 */
     public var activityIndicatorViewStyle:UIActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
-        
         didSet {
             self.activityView.activityIndicatorViewStyle = activityIndicatorViewStyle
             self.setNeedsLayout()
@@ -23,7 +22,6 @@ public class FRNormalHeader: FRStateHeader {
     /** 指示器的图片[箭头] */
     public var arrowImage: UIImage? {
         didSet {
-            
             self.arrowView.image = arrowImage
             self.placeSubvies()
         }
@@ -32,7 +30,7 @@ public class FRNormalHeader: FRStateHeader {
     // MARK: lazy
     // 图片
     /** 指示图片 */
-    lazy  var arrowView: UIImageView = {
+    lazy var arrowView: UIImageView = {
         [unowned self] in
         
         var image = UIImage(named: FRIconSrcPath)
@@ -47,7 +45,6 @@ public class FRNormalHeader: FRStateHeader {
     
     // loading
     fileprivate lazy var activityView: UIActivityIndicatorView = {
-        
         [unowned self] in
         
         let activityView = UIActivityIndicatorView(activityIndicatorStyle: self.activityIndicatorViewStyle)
@@ -78,7 +75,6 @@ public class FRNormalHeader: FRStateHeader {
     /** 辅助记录 旧值 */
     fileprivate var oldState: RefreshState!
     override var state: RefreshState {
-        
         didSet {
             self.oldState = oldValue
             if state == oldValue {return}
@@ -86,8 +82,7 @@ public class FRNormalHeader: FRStateHeader {
         }
     }
     
-    fileprivate func switchStateDoSomething(_ state: RefreshState){
-        
+    fileprivate func switchStateDoSomething(_ state: RefreshState) {
         func commonFun() {
             self.activityView.stopAnimating()
             self.arrowView.isHidden = false

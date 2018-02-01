@@ -10,8 +10,9 @@ import UIKit
 
 public class FRAutoStateFooter: FRAutoFooter {
     // MARK: - public
+    public var labelLeftInset: CGFloat = 20
     
-    /** 显示刷新状态的label */
+    /// 显示刷新状态的label
     lazy var stateLabel: UILabel = {
         [unowned self] in
         let label = UILabel.FRLabel()
@@ -19,12 +20,15 @@ public class FRAutoStateFooter: FRAutoFooter {
         return label
         }()
     
-    /** 隐藏刷新状态的文字 */
+    /// 隐藏刷新状态的文字
     public var isRefreshingTitleHidden: Bool = false
     
-    /** 设置状态的显示文字 */
-    public func setTitle(_ title:String, state:RefreshState) {
-        self.stateLabel.text = self.stateTitles[self.state];
+    /// 设置状态的显示文字
+    public func setTitle(_ title: String?, state:RefreshState) {
+        if let text = title {
+            self.stateTitles[self.state] = text
+            self.stateLabel.text = self.stateTitles[self.state];
+        }
     }
     
     // MARK: - private
@@ -38,10 +42,10 @@ public class FRAutoStateFooter: FRAutoFooter {
     override func prepare() {
         super.prepare()
         
-        self.stateLabel.isUserInteractionEnabled = true
-        self.stateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(FRAutoStateFooter.stateLabelClick)))
         self.stateLabel.text = self.stateTitles[state]
         
+        self.stateLabel.isUserInteractionEnabled = true
+        self.stateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(FRAutoStateFooter.stateLabelClick)))
     }
     
     @objc func stateLabelClick() {
@@ -55,11 +59,9 @@ public class FRAutoStateFooter: FRAutoFooter {
         self.stateLabel.frame = self.bounds
     }
     
-    
     override var state: RefreshState {
         didSet {
             if oldValue == state { return }
-            
             if self.isRefreshingTitleHidden && state == RefreshState.refreshing {
                 self.stateLabel.text = nil
             } else {

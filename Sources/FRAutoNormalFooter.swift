@@ -13,7 +13,6 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     // MARK: - public
     /** loading样式 */
     public var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
-        
         didSet {
             self.activityView.activityIndicatorViewStyle = activityIndicatorViewStyle
             self.setNeedsLayout()
@@ -23,7 +22,6 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     // MARK: - private
     // loading
     lazy var activityView: UIActivityIndicatorView = {
-        
         [unowned self] in
         
         let activityView = UIActivityIndicatorView(activityIndicatorStyle: self.activityIndicatorViewStyle)
@@ -36,9 +34,10 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     // MARK: 重写 rewrite
     override func placeSubvies() {
         super.placeSubvies()
+        if self.activityView.constraints.count > 0 { return }
         // loading
         var activityViewCenterX = self.width * 0.5
-        if !self.isRefreshingTitleHidden { activityViewCenterX -=  RefreshFooterActivityViewDeviation }
+        if !self.isRefreshingTitleHidden { activityViewCenterX -= self.stateLabel.fr_textWidth() * 0.5 + 20 }
         let activityViewCenterY = self.height * 0.5
         self.activityView.center = CGPoint(x: activityViewCenterX, y: activityViewCenterY)
     }
@@ -46,17 +45,12 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     override var state: RefreshState {
         didSet {
             if oldValue == state { return }
-            
-            
             if state == RefreshState.noMoreData || state == RefreshState.idle {
-                
                 self.activityView.stopAnimating()
-                
             } else if state == RefreshState.refreshing  {
-                
                 self.activityView.startAnimating()
             }
         }
     }
-
+    
 }
