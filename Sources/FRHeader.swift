@@ -117,11 +117,13 @@ public class FRHeader: FRComponent {
                     self.scrollView.insertTop -= self.height
                     
                     // 自动调整透明度
-                    if self.automaticallyChangeAlpha {self.alpha = 0.0}
+                    if self.isAutomaticallyChangeAlpha {self.alpha = 0.0}
                     
                     }, completion: { [unowned self] (flag) -> Void in
                         
                         self.pullingPercent = 0.0
+                        
+                        self.endRefreshingCompletionBlock()
                 })
                 
             } else if state == RefreshState.refreshing {

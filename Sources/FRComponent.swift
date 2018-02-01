@@ -23,7 +23,12 @@ public enum RefreshState: Int {
 }
 
 /** 闭包的类型 ()->() */
+/// 进入刷新状态的回调
 public typealias ComponentRefreshingClosure = ()->()
+/// 开始刷新后的回调（进入刷新状态后的回调）
+public typealias ComponentbeginRefreshingCompletionBlock = ()->()
+/// 结束刷新后的回调
+public typealias ComponentEndRefreshingCompletionBlock = ()->()
 
 /** 抽象类，不直接使用，用于继承后，重写 */
 public class FRComponent: UIView {
@@ -45,21 +50,24 @@ public class FRComponent: UIView {
     // 5.真正刷新 回调
     var refreshingClosure: ComponentRefreshingClosure = {}
     
+    var beginRefreshingCompletionBlock: ComponentbeginRefreshingCompletionBlock = {}
+    var endRefreshingCompletionBlock: ComponentEndRefreshingCompletionBlock = {}
+
     /** 拉拽的百分比 */
     public var pullingPercent: CGFloat = 1 {
         didSet {
             if self.state == RefreshState.refreshing { return }
-            if self.automaticallyChangeAlpha == true {
+            if self.isAutomaticallyChangeAlpha == true {
                 self.alpha = pullingPercent
             }
         }
     }
     
     /** 根据拖拽比例自动切换透明度 */
-    public var automaticallyChangeAlpha: Bool = false {
+    public var isAutomaticallyChangeAlpha: Bool = false {
         didSet {
             if self.state == RefreshState.refreshing { return }
-            if automaticallyChangeAlpha == true {
+            if isAutomaticallyChangeAlpha == true {
                 self.alpha = self.pullingPercent
             } else {
                 self.alpha = 1.0
@@ -180,13 +188,11 @@ public class FRComponent: UIView {
         super.init(frame: frame)
         
         prepare()
-        
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     // 重写父类方法 这个view 会添加到 ScrollView 上去
     override public func willMove(toSuperview newSuperview: UIView?) {
@@ -257,8 +263,8 @@ public class FRComponent: UIView {
     }
     
     override public func layoutSubviews() {
-        super.layoutSubviews()
         self.placeSubvies()
+        super.layoutSubviews()
     }
     
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -282,13 +288,13 @@ public class FRComponent: UIView {
 
 extension UILabel {
     class func FRLabel() -> UILabel {
-        let FRLable = UILabel()
-        FRLable.font = RefreshLabelFont;
-        FRLable.textColor = RefreshLabelTextColor;
-        FRLable.autoresizingMask = UIViewAutoresizing.flexibleWidth;
-        FRLable.textAlignment = NSTextAlignment.center;
-        FRLable.backgroundColor = UIColor.clear;
-        return FRLable
+        let FRLabel = UILabel()
+        FRLabel.font = RefreshLabelFont;
+        FRLabel.textColor = RefreshLabelTextColor;
+        FRLabel.autoresizingMask = UIViewAutoresizing.flexibleWidth;
+        FRLabel.textAlignment = NSTextAlignment.center;
+        FRLabel.backgroundColor = UIColor.clear;
+        return FRLabel
     }
     
     func fr_textWidth() -> CGFloat {

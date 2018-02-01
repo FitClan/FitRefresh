@@ -12,24 +12,15 @@ public class FRAutoFooter: FRFooter {
     
     // MARK: - public
     /** 是否自动刷新(默认为YES) */
-    public var automaticallyRefresh: Bool = true
-    
-    /** 当底部控件出现多少时就自动刷新(默认为1.0，也就是底部控件完全出现时，才会自动刷新) */
-    //    @available(*, deprecated=1.0, message="Use -automaticallyChangeAlpha instead.")
-    var appearencePercentTriggerAutoRefresh: CGFloat = 1.0 {
-        willSet {
-            self.triggerAutomaticallyRefreshPercent = newValue
-        }
-    }
+    public var isAutomaticallyRefresh: Bool = true
     
     /** 当底部控件出现多少时就自动刷新(默认为1.0，也就是底部控件完全出现时，才会自动刷新) */
     public var triggerAutomaticallyRefreshPercent: CGFloat = 1.0
     
     
-    // MARK: 重写
+    // MARK: 重写父类方法
     // 初始化
     override public func willMove(toSuperview newSuperview: UIView?) {
-        
         super.willMove(toSuperview: newSuperview)
         
         if let _ = newSuperview {
@@ -39,8 +30,8 @@ public class FRAutoFooter: FRFooter {
             // 设置位置
             self.y = self.scrollView.contentH
             
-        } else { // 被移除了两种结果，一种是手动移除，一种是父控件消除
-            // TODO:防止 是 空的
+        } else {
+            // 被移除了
             if let realScrollView = self.scrollView {
                 if self.isHidden == false {
                     realScrollView.insertBottom -= self.height
@@ -60,7 +51,7 @@ public class FRAutoFooter: FRFooter {
     override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentOffsetDidChange(change)
         
-        if self.state != RefreshState.idle || !self.automaticallyRefresh || self.y == 0 { return }
+        if self.state != RefreshState.idle || !self.isAutomaticallyRefresh || self.y == 0 { return }
         
         if self.scrollView.insertTop + self.scrollView.contentH > self.scrollView.height {
             // 内容超过一个屏幕
@@ -68,7 +59,6 @@ public class FRAutoFooter: FRFooter {
             if self.scrollView.offSetY >= self.scrollView.contentH - self.scrollView.height + self.scrollView.insertBottom + self.height * self.triggerAutomaticallyRefreshPercent - self.height {
                 
                 self.beginRefreshing()
-                
             }
         }
     }
@@ -76,26 +66,24 @@ public class FRAutoFooter: FRFooter {
     override func scrollViewPanStateDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewPanStateDidChange(change)
         
-        
         if self.state != RefreshState.idle { return }
         
-        // 2.1.1 抬起
+        // 抬起手
         if self.scrollView.panGestureRecognizer.state == UIGestureRecognizerState.ended {
             
-            // 2.2.1.1 不够一个屏幕的滚动 top + content.height 就是内容显示的高度
+            // 不够一个屏幕的滚动 top + content.height 就是内容显示的高度
             if self.scrollView.insertTop +
                 self.scrollView.contentH <= self.scrollView.height {
                 // 向上拖拽
                 if self.scrollView.offSetY >= -self.scrollView.insertTop {
                     beginRefreshing()
                 }
-                // 2.1.1.2 超出一个屏幕 也就是scrollView的
+                // 超出一个屏幕 也就是scrollView的
             } else {
                 // 拖拽到了底部
                 if self.scrollView.offSetY >= self.scrollView.contentH + self.scrollView.insertBottom - self.scrollView.height {
                     beginRefreshing()
                 }
-                
             }
         }
     }
@@ -107,6 +95,10 @@ public class FRAutoFooter: FRFooter {
                 FRDelay(0.5, task: {
                     self.executeRefreshingCallback()
                 })
+            } else if (state == RefreshState.noMoreData || state == RefreshState.idle) {
+                if RefreshState.refreshing == oldValue {
+                    self.endRefreshingCompletionBlock()
+                }
             }
         }
     }

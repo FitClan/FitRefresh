@@ -31,20 +31,19 @@ class GifTableViewController: UITableViewController {
         headerView.setImages(images, duration: 2.0, state: RefreshState.idle)
         headerView.setImages(images, duration: 2.0, state: RefreshState.refreshing)
         // 隐藏刷新状态栏
-        headerView.refreshingTitleHidden = true
+        headerView.isRefreshingTitleHidden = true
         // 隐藏刷新时间状态
-        headerView.refreshingTimeHidden = true
+        headerView.isRefreshingTimeHidden = true
         // 根据上拉比例设置透明度
-        headerView.automaticallyChangeAlpha = true
+        headerView.isAutomaticallyChangeAlpha = true
 
         self.tableView.fr.headerView = headerView
         self.tableView.fr.headerView?.beginRefreshing()
         
-        
         let footerView = FRAutoGifFooter(target: self, action: #selector(GifTableViewController.downPullLoadData))
         footerView.setImages(images, duration: 2.0, state: RefreshState.idle)
         footerView.setImages(images, duration: 2.0, state: RefreshState.refreshing)
-        footerView.refreshingTitleHidden = true
+        footerView.isRefreshingTitleHidden = true
         self.tableView.fr.footerView = footerView
         
     }

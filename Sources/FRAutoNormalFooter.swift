@@ -29,7 +29,6 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
         let activityView = UIActivityIndicatorView(activityIndicatorStyle: self.activityIndicatorViewStyle)
         activityView.hidesWhenStopped = true
         self.addSubview(activityView)
-        
         return activityView
         }()
     
@@ -39,7 +38,7 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
         super.placeSubvies()
         // loading
         var activityViewCenterX = self.width * 0.5
-        if !self.refreshingTitleHidden { activityViewCenterX -=  RefreshFooterActivityViewDeviation }
+        if !self.isRefreshingTitleHidden { activityViewCenterX -=  RefreshFooterActivityViewDeviation }
         let activityViewCenterY = self.height * 0.5
         self.activityView.center = CGPoint(x: activityViewCenterX, y: activityViewCenterY)
     }

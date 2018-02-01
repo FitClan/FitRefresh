@@ -26,17 +26,17 @@ public class FRStateHeader: FRHeader {
     /** 显示上一次刷新时间的label */
     lazy var lastUpdatedTimeLabel: UILabel = {
         [unowned self] in
-        let lable = UILabel.FRLabel()
-        self.addSubview(lable)
-        return lable
+        let label = UILabel.FRLabel()
+        self.addSubview(label)
+        return label
         }()
     
     /** 显示刷新状态的label */
     lazy var stateLabel: UILabel = {
         [unowned self] in
-        let lable = UILabel.FRLabel()
-        self.addSubview(lable)
-        return lable
+        let label = UILabel.FRLabel()
+        self.addSubview(label)
+        return label
         }()
     
     /** 设置状态的显示文字 */
@@ -45,18 +45,18 @@ public class FRStateHeader: FRHeader {
     }
     
     /** 文字刷新状态下的显示与隐藏 */
-    public var refreshingTitleHidden: Bool = false {
+    public var isRefreshingTitleHidden: Bool = false {
         didSet {
-            if oldValue == refreshingTitleHidden { return }
-            self.stateLabel.isHidden = refreshingTitleHidden
+            if oldValue == isRefreshingTitleHidden { return }
+            self.stateLabel.isHidden = isRefreshingTitleHidden
         }
     }
     
     /** 时间刷新状态下的显示与隐藏*/
-    public var refreshingTimeHidden: Bool = false {
+    public var isRefreshingTimeHidden: Bool = false {
         didSet {
-            if oldValue == refreshingTimeHidden { return }
-            self.lastUpdatedTimeLabel.isHidden = refreshingTimeHidden
+            if oldValue == isRefreshingTimeHidden { return }
+            self.lastUpdatedTimeLabel.isHidden = isRefreshingTimeHidden
         }
     }
     

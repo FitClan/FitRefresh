@@ -9,12 +9,23 @@
 import UIKit
 
 public class FRFooter: FRComponent {
+    
     // MARK: - public
     /** 提示没有更多的数据 */
+    public func endRefreshingWithNoMoreData() {
+        DispatchQueue.main.async {
+            self.state = RefreshState.noMoreData
+        }
+    }
+    
     public func noticeNoMoreData() { self.state = RefreshState.noMoreData }
     
     /** 重置没有更多的数据（消除没有更多数据的状态） */
-    public func resetNoMoreData() {  self.state = RefreshState.idle }
+    public func resetNoMoreData() {
+        DispatchQueue.main.async {
+            self.state = RefreshState.idle
+        }
+    }
     
     /** 忽略多少scrollView的contentInset的bottom */
     public var ignoredScrollViewContentInsetBottom: CGFloat = 0
