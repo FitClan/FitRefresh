@@ -18,6 +18,7 @@ public class FRFooter: FRComponent {
         }
     }
     
+    @available(*, deprecated, message: "使用endRefreshingWithNoMoreData", renamed: "endRefreshingWithNoMoreData")
     public func noticeNoMoreData() { self.endRefreshingWithNoMoreData() }
     
     /** 重置没有更多的数据（消除没有更多数据的状态） */
@@ -41,7 +42,6 @@ public class FRFooter: FRComponent {
         super.willMove(toSuperview: newSuperview)
         
         if let _ = newSuperview {
-            
             // 监听scrollView数据的变化
             // 由于闭包是Any 所以不能采用关联对象
             let tmpClass = ReloadDataClosureInClass()

@@ -11,10 +11,10 @@ import UIKit
 public class FRAutoFooter: FRFooter {
     
     // MARK: - public
-    /** 是否自动刷新(默认为YES) */
+    /// 是否自动刷新(默认为YES)
     public var isAutomaticallyRefresh: Bool = true
     
-    /** 当底部控件出现多少时就自动刷新(默认为1.0，也就是底部控件完全出现时，才会自动刷新) */
+    /// 当底部控件出现多少时就自动刷新(默认为1.0，也就是底部控件完全出现时，才会自动刷新)
     public var triggerAutomaticallyRefreshPercent: CGFloat = 1.0
     
     
@@ -58,6 +58,7 @@ public class FRAutoFooter: FRFooter {
             // TODO: 计算公式，判断是不是在拖在到了底部
             if self.scrollView.offSetY >= self.scrollView.contentH - self.scrollView.height + self.scrollView.insetBottom + self.height * self.triggerAutomaticallyRefreshPercent - self.height {
                 
+               // 当底部刷新控件完全出现的时候，才刷新
                 self.beginRefreshing()
             }
         }
