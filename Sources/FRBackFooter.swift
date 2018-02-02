@@ -25,7 +25,7 @@ class FRBackFooter: FRFooter {
     // MARK: 实现父类的接口
     override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentOffsetDidChange(change)
-        
+                
         // 如果正在刷新,直接返回
         if self.state == RefreshState.refreshing { return }
         

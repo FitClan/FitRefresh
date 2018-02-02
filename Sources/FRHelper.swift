@@ -210,7 +210,6 @@ extension UIScrollView {
         get {
             return self.contentSize.height
         }
-        
         set {
             self.contentSize.height = newValue
         }

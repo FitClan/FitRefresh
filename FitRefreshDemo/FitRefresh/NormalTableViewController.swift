@@ -29,6 +29,8 @@ class NormalTableViewController: UITableViewController {
             self.downPullLoadData()
         })
         
+        self.tableView.fr.footerView?.isAutomaticallyChangeAlpha = true
+        
     }
     
     override func didReceiveMemoryWarning() {
