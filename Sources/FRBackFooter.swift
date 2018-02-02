@@ -11,7 +11,6 @@ import UIKit
 class FRBackFooter: FRFooter {
 
     // MARK: - public
-    fileprivate var lastRefreshCount: Int = 0
     fileprivate var lastBottomDelta: CGFloat = 0.0
   
     // MARK: 重写
@@ -25,7 +24,7 @@ class FRBackFooter: FRFooter {
     // MARK: 实现父类的接口
     override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentOffsetDidChange(change)
-                
+        
         // 如果正在刷新,直接返回
         if self.state == RefreshState.refreshing { return }
         
@@ -102,7 +101,8 @@ class FRBackFooter: FRFooter {
                         bottom -= deltaH
                     }
                     self.lastBottomDelta = bottom - self.scrollView.insetBottom
-                    self.scrollView.insetBottom = bottom
+                    // FIXME: 这里原来是 bottom， 改成了现在这样，可能会有bug。等有时间再来看看。
+                    self.scrollView.insetBottom = bottom - self.scrollView.insetBottom
                     self.scrollView.offSetY = self.happenOffsetY() + self.height
                 }, completion: { (_) in
                     self.executeRefreshingCallback()
