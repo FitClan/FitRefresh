@@ -46,11 +46,14 @@ let RefreshHeaderStateIdleText =
 let RefreshHeaderStatePullingText = Bundle.fit_localizedStringForKey("FitRefreshHeaderPullingText", value: "松开立即刷新")
 let RefreshHeaderStateRefreshingText = Bundle.fit_localizedStringForKey("FitRefreshHeaderRefreshingText", value: "正在刷新数据中...")
 
+let RefreshAutoFooterIdleText = Bundle.fit_localizedStringForKey("FitRefreshAutoFooterIdleText", value: "点击加载更多")
+let RefreshAutoFooterRefreshingText = Bundle.fit_localizedStringForKey("FitRefreshAutoFooterRefreshingText", value: "正在加载更多的数据...")
+let RefreshAutoFooterNoMoreDataText = Bundle.fit_localizedStringForKey("FitRefreshAutoFooterNoMoreDataText", value: "已经全部加载完毕")
 
-let RefreshFooterStateIdleText = Bundle.fit_localizedStringForKey("FitRefreshAutoFooterIdleText", value: "点击加载更多")
+let RefreshBackFooterIdleText = Bundle.fit_localizedStringForKey("FitRefreshBackFooterIdleText", value: "上拉可以加载更多")
 let RefreshBackFooterPullingText = Bundle.fit_localizedStringForKey("FitRefreshBackFooterPullingText", value: "松开立即加载更多")
-let RefreshFooterStateRefreshingText = Bundle.fit_localizedStringForKey("FitRefreshAutoFooterRefreshingText", value: "正在加载更多的数据...")
-let RefreshFooterStateNoMoreDataText = Bundle.fit_localizedStringForKey("FitRefreshAutoFooterNoMoreDataText", value: "已经全部加载完毕")
+let RefreshBackFooterRefreshingText = Bundle.fit_localizedStringForKey("FitRefreshBackFooterRefreshingText", value: "正在加载更多的数据...")
+let RefreshBackFooterNoMoreDataText = Bundle.fit_localizedStringForKey("FitRefreshBackFooterNoMoreDataText", value: "已经全部加载完毕")
 
 /** 图片路径 */
 let FRIconSrcPath: String = "Frameworks/FitRefresh.framework/FRResources.bundle/fr_down.png"

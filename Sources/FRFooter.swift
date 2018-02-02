@@ -40,14 +40,11 @@ public class FRFooter: FRComponent {
     
     override public func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
-        
-        if let _ = newSuperview {
-            // 监听scrollView数据的变化
-            // 由于闭包是Any 所以不能采用关联对象
-            let tmpClass = ReloadDataClosureInClass()
-            
-            self.scrollView.fr.reloadDataClosureClass = tmpClass
-            
-        }
+
+//        if let _ = newSuperview {
+//            // 由于闭包是Any 所以不能采用关联对象
+//            let tmpClass = ReloadDataClosureInClass()
+//            self.scrollView.fr.reloadDataClosureClass = tmpClass
+//        }
     }
 }

@@ -23,8 +23,8 @@ class FRBackFooter: FRFooter {
     }
     
     // MARK: 实现父类的接口
-    override func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
-        super.scrollViewContentSizeDidChange(change)
+    override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+        super.scrollViewContentOffsetDidChange(change)
         
         // 如果正在刷新,直接返回
         if self.state == RefreshState.refreshing { return }
@@ -66,8 +66,8 @@ class FRBackFooter: FRFooter {
         }
     }
     
-    override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
-        super.scrollViewContentOffsetDidChange(change)
+    override func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+        super.scrollViewContentSizeDidChange(change)
         
         // 内容的高度
         let contentHeight = self.scrollView.contentH + self.ignoredScrollViewContentInsetBottom
@@ -85,6 +85,8 @@ class FRBackFooter: FRFooter {
                     UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: {
                         [unowned self] () -> Void in
                         self.scrollView.insetBottom -= self.lastBottomDelta
+                        
+                        if self.isAutomaticallyChangeAlpha { self.alpha = 0.0 }
                     }, completion: { (finished) in
                         self.pullingPercent = 0.0
                         self.endRefreshingCompletionBlock()

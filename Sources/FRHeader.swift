@@ -51,7 +51,7 @@ public class FRHeader: FRComponent {
         // 在刷新的refreshing状态
         if self.state == RefreshState.refreshing {
             var insetTop = max(-self.scrollView.offSetY, scrollViewOriginalInset.top)
-            insetTop = min(insetTop, self.height + scrollViewOriginalInset.top)
+            insetTop = insetTop > self.height + scrollViewOriginalInset.top ? self.height+scrollViewOriginalInset.top : insetTop
             self.scrollView.insetTop = insetTop
             self.insetTopDelta = scrollViewOriginalInset.top - insetTop
             return

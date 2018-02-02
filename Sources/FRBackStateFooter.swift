@@ -39,10 +39,10 @@ class FRBackStateFooter: FRBackFooter {
     // MARK: - private
     /// 每个状态对应的文字 
     fileprivate var stateTitles: Dictionary<RefreshState, String> = [
-        RefreshState.idle : RefreshFooterStateIdleText,
+        RefreshState.idle : RefreshBackFooterIdleText,
         RefreshState.pulling : RefreshBackFooterPullingText,
-        RefreshState.refreshing : RefreshFooterStateRefreshingText,
-        RefreshState.noMoreData : RefreshFooterStateNoMoreDataText
+        RefreshState.refreshing : RefreshBackFooterRefreshingText,
+        RefreshState.noMoreData : RefreshBackFooterNoMoreDataText
     ]
     
     override func prepare() {

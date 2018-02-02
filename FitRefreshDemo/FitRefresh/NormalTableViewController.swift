@@ -25,7 +25,7 @@ class NormalTableViewController: UITableViewController {
 //        self.tableView.fr_footerView = FRAutoNormalFooter(target: self, action: #selector(NormalTableViewController.downPullLoadData))
         
         // 闭包方法
-        self.tableView.fr.footerView = FRAutoNormalFooter(ComponentRefreshingClosure: {
+        self.tableView.fr.footerView = FRBackNormalFooter(ComponentRefreshingClosure: {
             self.downPullLoadData()
         })
         

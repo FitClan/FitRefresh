@@ -47,7 +47,7 @@ class FRAutoGifFooter: FRAutoStateFooter {
     
     
     // MARK: 重写
-    override public func prepare() {
+    override func prepare() {
         super.prepare()
     }
     
@@ -73,7 +73,7 @@ class FRAutoGifFooter: FRAutoStateFooter {
     }
     
     fileprivate func switchStateDoSomething(_ state: RefreshState) {
-        
+         
         if state == RefreshState.refreshing {
             if let images = self.stateImages[state] {
                 if images.count < 1 { return }

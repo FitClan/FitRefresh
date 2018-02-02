@@ -10,15 +10,15 @@ import UIKit
 
 /// 刷新状态
 public enum RefreshState: Int {
-    ///普通闲置状态
+    /// 普通闲置状态
     case idle = 1
     /// 松开可以进行刷新状态
     case pulling = 2
-    ///正在刷新中的状态
+    /// 正在刷新中的状态
     case refreshing = 3
     /// 即将刷新的状态
     case willRefresh = 4
-    ///没有数据需要加载
+    /// 没有数据需要加载
     case noMoreData = 5
 }
 
@@ -35,29 +35,29 @@ public class FRComponent: UIView {
     
     // MARK: - public
     // MARK: 给外界访问
-    // 1.字体颜色
+    // 字体颜色
     public var textColor: UIColor?
     
-    // 2.字体大小
+    // 字体大小
     public var font: UIFont?
     
-    // 3.刷新的target
+    // 刷新的target
     fileprivate weak var refreshingTarget: AnyObject!
     
-    // 4.执行的方法
+    // 执行的方法
     fileprivate var refreshingAction: Selector = NSSelectorFromString("")
     
-    // 5.真正刷新 回调
+    // 真正刷新 回调
     var refreshingClosure: ComponentRefreshingClosure = {}
     
     var beginRefreshingCompletionBlock: ComponentbeginRefreshingCompletionBlock = {}
     var endRefreshingCompletionBlock: ComponentEndRefreshingCompletionBlock = {}
 
     /// 拉拽的百分比
-    public var pullingPercent: CGFloat = 1 {
+    public var pullingPercent: CGFloat = 1.0 {
         didSet {
-            if self.state == RefreshState.refreshing { return }
-            if self.isAutomaticallyChangeAlpha == true {
+            if self.isRefreshing { return }
+            if self.isAutomaticallyChangeAlpha {
                 self.alpha = pullingPercent
             }
         }
@@ -66,8 +66,8 @@ public class FRComponent: UIView {
     /// 根据拖拽比例自动切换透明度
     public var isAutomaticallyChangeAlpha: Bool = false {
         didSet {
-            if self.state == RefreshState.refreshing { return }
-            if isAutomaticallyChangeAlpha == true {
+            if self.isRefreshing { return }
+            if isAutomaticallyChangeAlpha {
                 self.alpha = self.pullingPercent
             } else {
                 self.alpha = 1.0
@@ -75,8 +75,14 @@ public class FRComponent: UIView {
         }
     }
     
-    /// 8.刷新状态，交给子类重写
-    var state = RefreshState.idle
+    /// 刷新状态，交给子类重写
+    var state = RefreshState.idle {
+        didSet {
+            DispatchQueue.main.async {
+                self.setNeedsLayout()
+            }
+        }
+    }
     
     /// 是否在刷新
     public var isRefreshing: Bool {
@@ -106,18 +112,17 @@ public class FRComponent: UIView {
         self.setRefreshingTarget(target, action: action)
     }
     
-    /// 1. 设置 回调方法
+    /// 设置 回调方法
     func setRefreshingTarget(_ target: AnyObject, action: Selector) {
         self.refreshingTarget = target
         self.refreshingAction = action
-        
     }
     
     
     // MARK: 提供给子类重写
     /// 开始刷新,进入刷新状态
     public func beginRefreshing() {
-        UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: { () -> Void in
+        UIView.animate(withDuration: RefreshFastAnimationDuration, animations: { () -> Void in
             self.alpha = 1.0
         })
         
@@ -126,11 +131,18 @@ public class FRComponent: UIView {
         // 在刷新
         if let _ =  self.window {
             self.state = .refreshing
-        }else{
-            self.state = RefreshState.willRefresh
-            // 刷新(预防从另一个控制器回到这个控制器的情况，回来要重新刷新一下)
-            self.setNeedsDisplay()
+        } else {
+            if self.state != RefreshState.refreshing {
+                self.state = RefreshState.willRefresh
+                // 刷新(预防从另一个控制器回到这个控制器的情况，回来要重新刷新一下)
+                self.setNeedsDisplay()
+            }
         }
+    }
+    
+    public func beginRefreshingWithCompletionBlock(completion: @escaping ()->()) {
+        self.beginRefreshingCompletionBlock = completion
+        self.beginRefreshing()
     }
     
     /// 结束刷新
@@ -140,6 +152,11 @@ public class FRComponent: UIView {
         }
     }
     
+    public func endRefreshingWithCompletionBlock(completion: @escaping ()->()) {
+        self.endRefreshingCompletionBlock = completion
+        self.endRefreshing()
+    }
+    
     // MARK: 初始化
     func prepare() {
         // 基本属性 只适应 宽度
@@ -147,33 +164,29 @@ public class FRComponent: UIView {
         self.backgroundColor = UIColor.clear
     }
     
-    /// 6. 摆放子控件
+    /// 摆放子控件
     func placeSubvies() {}
     
-    /// 7. 当scrollView的contentOffset发生改变的时候调用
+    /// 当scrollView的contentOffset发生改变的时候调用
     func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
-    
-    /// 8. 当scrollView的contentSize发生改变的时候调用
+    /// 当scrollView的contentSize发生改变的时候调用
     func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
-    
-    /// 9. 当scrollView的拖拽状态发生改变的时候调用
+    /// 当scrollView的拖拽状态发生改变的时候调用
     func scrollViewPanStateDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
     
     /// 促发回调
     func executeRefreshingCallback() {
-        
         DispatchQueue.main.async {
-            
             self.refreshingClosure()
             
             // 执行方法
-            if let realTager = self.refreshingTarget {
-                if realTager.responds(to: self.refreshingAction) == true {
-                    
+            if let realTaget = self.refreshingTarget {
+                if realTaget.responds(to: self.refreshingAction) == true {
                     let timer = Timer.scheduledTimer(timeInterval: 0, target: self.refreshingTarget, selector: self.refreshingAction, userInfo: nil, repeats: false)
                     RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
                 }
             }
+            self.beginRefreshingCompletionBlock()
         }
     }
     
@@ -200,28 +213,34 @@ public class FRComponent: UIView {
     override public func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
-        // 1.旧的父控件 移除监听
-        self.removeObservers()
-        
         // 2.添加监听
         if let tmpNewSuperview = newSuperview {
+        
+            // 如果不是UIScrollView return
+            if !tmpNewSuperview.isKind(of: UIScrollView.self) { return }
             
-            // 2.1设置宽度
+            // 旧的父控件 移除监听
+            self.removeObservers()
+            
+            // 设置宽度
             self.width = tmpNewSuperview.width
             
-            // 2.2 设置位置
+            // 设置位置
             self.x = 0
+            if let _ = self.scrollView {
+                self.x = -self.scrollView.insetLeft
+            }
             
-            // 2.3记录UIScrollView
+            // 记录UIScrollView
             self.scrollView = tmpNewSuperview as! UIScrollView
             
-            // 2.4 设置用于支持 垂直下拉有弹簧的效果
+            // 设置用于支持 垂直下拉有弹簧的效果
             self.scrollView.alwaysBounceVertical = true
             
-            // 2.5 记录UIScrollView最开始的contentInset
+            // 记录UIScrollView最开始的contentInset
             self.scrollViewOriginalInset = self.scrollView.inset
             
-            // 2.6 添加监听
+            // 添加监听
             self.addObservers()
         }
     }

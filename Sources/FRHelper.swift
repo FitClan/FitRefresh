@@ -155,7 +155,7 @@ extension UIScrollView {
         }
     }
     
-    var insetRight:CGFloat {
+    var insetRight: CGFloat {
         get {
             return self.inset.right
         }
@@ -169,7 +169,7 @@ extension UIScrollView {
         }
     }
     
-    var insetLeft:CGFloat {
+    var insetLeft: CGFloat {
         get {
             return self.inset.left
         }
@@ -182,7 +182,7 @@ extension UIScrollView {
             self.contentInset.left = newValue
         }
     }
-    var insetBottom:CGFloat {
+    var insetBottom: CGFloat {
         get {
             return self.inset.bottom
         }

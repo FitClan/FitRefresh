@@ -28,14 +28,15 @@ class FRBackNormalFooter: FRBackStateFooter {
     /// loading样式 
     public var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
         didSet {
-            self.activityView.activityIndicatorViewStyle = activityIndicatorViewStyle
+            self.activityView?.activityIndicatorViewStyle = activityIndicatorViewStyle
+            self.activityView = nil
             self.setNeedsLayout()
         }
     }
     
     // MARK: - private
     // loading
-    lazy var activityView: UIActivityIndicatorView = {
+    lazy var activityView: UIActivityIndicatorView? = {
         [unowned self] in
         
         let activityView = UIActivityIndicatorView(activityIndicatorStyle: self.activityIndicatorViewStyle)
@@ -51,7 +52,10 @@ class FRBackNormalFooter: FRBackStateFooter {
         
         // loading
         var activityViewCenterX = self.width * 0.5
-        if !self.stateLabel.isHidden { activityViewCenterX -= self.stateLabel.fr_textWidth * 0.5 + self.labelLeftInset }
+        if !self.stateLabel.isHidden {
+            activityViewCenterX -= self.stateLabel.fr_textWidth * 0.5 + self.labelLeftInset
+            
+        }
         let activityViewCenterY = self.height * 0.5
         let activityCenter = CGPoint(x: activityViewCenterX, y: activityViewCenterY)
         
@@ -62,8 +66,8 @@ class FRBackNormalFooter: FRBackStateFooter {
         }
         
         // 菊花
-        if self.activityView.constraints.count == 0 {
-            self.activityView.center = activityCenter
+        if self.activityView?.constraints.count == 0 {
+            self.activityView?.center = activityCenter
         }
         
         self.arrowView.tintColor = self.stateLabel.textColor
@@ -77,16 +81,16 @@ class FRBackNormalFooter: FRBackStateFooter {
                     self.arrowView.transform = CGAffineTransform(rotationAngle: CGFloat(0.000001 - .pi))
                     UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: {
                         [unowned self] () -> Void in
-                        self.activityView.alpha = 0.0
+                        self.activityView?.alpha = 0.0
                     }, completion: { (_) in
-                        self.activityView.alpha = 1.0
-                        self.activityView.stopAnimating()
+                        self.activityView?.alpha = 1.0
+                        self.activityView?.stopAnimating()
                         
                         self.arrowView.isHidden = false
                     })
                 } else {
                     self.arrowView.isHidden = false
-                    self.activityView.stopAnimating()
+                    self.activityView?.stopAnimating()
                     UIView.animate(withDuration: RefreshFastAnimationDuration, animations: {
                         [unowned self] () -> Void in
                         self.arrowView.transform = CGAffineTransform(rotationAngle: CGFloat(0.000001 - .pi))
@@ -95,17 +99,17 @@ class FRBackNormalFooter: FRBackStateFooter {
                 
             } else if state == RefreshState.pulling  {
                 self.arrowView.isHidden = false
-                self.activityView.startAnimating()
+                self.activityView?.stopAnimating()
                 UIView.animate(withDuration: RefreshFastAnimationDuration, animations: {
                     [unowned self] () -> Void in
                     self.arrowView.transform = CGAffineTransform.identity
                 })
             } else if state == RefreshState.refreshing {
                 self.arrowView.isHidden = true
-                self.activityView.startAnimating()
+                self.activityView?.startAnimating()
             } else if state == RefreshState.noMoreData {
                 self.arrowView.isHidden = true
-                self.activityView.stopAnimating()
+                self.activityView?.stopAnimating()
             }
         }
     }

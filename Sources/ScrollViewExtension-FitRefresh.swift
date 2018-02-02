@@ -48,7 +48,7 @@ extension FitRefresh where Base: ScrollView {
             if headerView == newValue { return }
             
             headerView?.removeFromSuperview()
-            objc_setAssociatedObject(base,&RefreshHeaderKey, newValue , objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+            objc_setAssociatedObject(base, &RefreshHeaderKey, newValue , objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
             
             if let newHeaderView = newValue {
                 base.addSubview(newHeaderView)
