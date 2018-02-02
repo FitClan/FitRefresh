@@ -8,21 +8,21 @@
 
 import UIKit
 
-/** 刷新状态 */
+/// 刷新状态
 public enum RefreshState: Int {
-    /**普通闲置状态 */
+    ///普通闲置状态
     case idle = 1
-    /** 松开可以进行刷新状态 */
+    /// 松开可以进行刷新状态
     case pulling = 2
-    /**正在刷新中的状态 */
+    ///正在刷新中的状态
     case refreshing = 3
-    /** 即将刷新的状态 */
+    /// 即将刷新的状态
     case willRefresh = 4
-    /**没有数据需要加载 */
+    ///没有数据需要加载
     case noMoreData = 5
 }
 
-/** 闭包的类型 ()->() */
+/// 闭包的类型 ()->()
 /// 进入刷新状态的回调
 public typealias ComponentRefreshingClosure = ()->()
 /// 开始刷新后的回调（进入刷新状态后的回调）
@@ -30,7 +30,7 @@ public typealias ComponentbeginRefreshingCompletionBlock = ()->()
 /// 结束刷新后的回调
 public typealias ComponentEndRefreshingCompletionBlock = ()->()
 
-/** 抽象类，不直接使用，用于继承后，重写 */
+/// 抽象类，不直接使用，用于继承后，重写
 public class FRComponent: UIView {
     
     // MARK: - public
@@ -53,7 +53,7 @@ public class FRComponent: UIView {
     var beginRefreshingCompletionBlock: ComponentbeginRefreshingCompletionBlock = {}
     var endRefreshingCompletionBlock: ComponentEndRefreshingCompletionBlock = {}
 
-    /** 拉拽的百分比 */
+    /// 拉拽的百分比
     public var pullingPercent: CGFloat = 1 {
         didSet {
             if self.state == RefreshState.refreshing { return }
@@ -63,7 +63,7 @@ public class FRComponent: UIView {
         }
     }
     
-    /** 根据拖拽比例自动切换透明度 */
+    /// 根据拖拽比例自动切换透明度
     public var isAutomaticallyChangeAlpha: Bool = false {
         didSet {
             if self.state == RefreshState.refreshing { return }
@@ -75,13 +75,13 @@ public class FRComponent: UIView {
         }
     }
     
-    /** 8.刷新状态，交给子类重写 */
+    /// 8.刷新状态，交给子类重写
     var state = RefreshState.idle
     
-    /** 是否在刷新 */
+    /// 是否在刷新
     public var isRefreshing: Bool {
         get {
-            return self.state == .refreshing || self.state == .willRefresh;
+            return self.state == .refreshing || self.state == .willRefresh
         }
     }
     
@@ -92,21 +92,21 @@ public class FRComponent: UIView {
     }
     
     // MARK: 遍历构造方法
-    /** 闭包回调 */
+    /// 闭包回调
     public convenience
     init(ComponentRefreshingClosure: @escaping ComponentRefreshingClosure) {
         self.init()
         self.refreshingClosure = ComponentRefreshingClosure
     }
     
-    /** target action 回调 [推荐] */
+    /// target action 回调 [推荐]
     public convenience
     init(target: AnyObject, action: Selector) {
         self.init()
         self.setRefreshingTarget(target, action: action)
     }
     
-    /* 1. 设置 回调方法 */
+    /// 1. 设置 回调方法
     func setRefreshingTarget(_ target: AnyObject, action: Selector) {
         self.refreshingTarget = target
         self.refreshingAction = action
@@ -115,7 +115,7 @@ public class FRComponent: UIView {
     
     
     // MARK: 提供给子类重写
-    /** 开始刷新,进入刷新状态 */
+    /// 开始刷新,进入刷新状态
     public func beginRefreshing() {
         UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: { () -> Void in
             self.alpha = 1.0
@@ -133,7 +133,7 @@ public class FRComponent: UIView {
         }
     }
     
-    /** 结束刷新 */
+    /// 结束刷新
     public func endRefreshing() {
         DispatchQueue.main.async {
             self.state = .idle
@@ -147,26 +147,26 @@ public class FRComponent: UIView {
         self.backgroundColor = UIColor.clear
     }
     
-    /** 6. 摆放子控件 */
+    /// 6. 摆放子控件
     func placeSubvies() {}
     
-    /** 7. 当scrollView的contentOffset发生改变的时候调用 */
+    /// 7. 当scrollView的contentOffset发生改变的时候调用
     func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
     
-    /** 8. 当scrollView的contentSize发生改变的时候调用 */
+    /// 8. 当scrollView的contentSize发生改变的时候调用
     func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
     
-    /** 9. 当scrollView的拖拽状态发生改变的时候调用 */
+    /// 9. 当scrollView的拖拽状态发生改变的时候调用
     func scrollViewPanStateDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
     
-    /** 促发回调 */
+    /// 促发回调
     func executeRefreshingCallback() {
         
         DispatchQueue.main.async {
             
             self.refreshingClosure()
             
-            //执行方法
+            // 执行方法
             if let realTager = self.refreshingTarget {
                 if realTager.responds(to: self.refreshingAction) == true {
                     
@@ -178,9 +178,9 @@ public class FRComponent: UIView {
     }
     
     // MARK: - private
-    /** 记录scrollView刚开始的inset */
+    /// 记录scrollView刚开始的inset
     var scrollViewOriginalInset: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-    /** 父控件 */
+    /// 父控件 */
     weak var scrollView: UIScrollView!
     
     fileprivate var panGes: UIPanGestureRecognizer!
@@ -216,10 +216,10 @@ public class FRComponent: UIView {
             self.scrollView = tmpNewSuperview as! UIScrollView
             
             // 2.4 设置用于支持 垂直下拉有弹簧的效果
-            self.scrollView.alwaysBounceVertical = true;
+            self.scrollView.alwaysBounceVertical = true
             
             // 2.5 记录UIScrollView最开始的contentInset
-            self.scrollViewOriginalInset = self.scrollView.inset;
+            self.scrollViewOriginalInset = self.scrollView.inset
             
             // 2.6 添加监听
             self.addObservers()
@@ -291,15 +291,15 @@ public class FRComponent: UIView {
 extension UILabel {
     class func FRLabel() -> UILabel {
         let FRLabel = UILabel()
-        FRLabel.font = RefreshLabelFont;
-        FRLabel.textColor = RefreshLabelTextColor;
-        FRLabel.autoresizingMask = UIViewAutoresizing.flexibleWidth;
-        FRLabel.textAlignment = NSTextAlignment.center;
-        FRLabel.backgroundColor = UIColor.clear;
+        FRLabel.font = RefreshLabelFont
+        FRLabel.textColor = RefreshLabelTextColor
+        FRLabel.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        FRLabel.textAlignment = NSTextAlignment.center
+        FRLabel.backgroundColor = UIColor.clear
         return FRLabel
     }
     
-    func fr_textWidth() -> CGFloat {
+    var fr_textWidth: CGFloat {
         var stringWidth: CGFloat = 0
         
         let size = CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT))

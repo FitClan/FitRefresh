@@ -48,6 +48,7 @@ let RefreshHeaderStateRefreshingText = Bundle.fit_localizedStringForKey("FitRefr
 
 
 let RefreshFooterStateIdleText = Bundle.fit_localizedStringForKey("FitRefreshAutoFooterIdleText", value: "点击加载更多")
+let RefreshBackFooterPullingText = Bundle.fit_localizedStringForKey("FitRefreshBackFooterPullingText", value: "松开立即加载更多")
 let RefreshFooterStateRefreshingText = Bundle.fit_localizedStringForKey("FitRefreshAutoFooterRefreshingText", value: "正在加载更多的数据...")
 let RefreshFooterStateNoMoreDataText = Bundle.fit_localizedStringForKey("FitRefreshAutoFooterNoMoreDataText", value: "已经全部加载完毕")
 

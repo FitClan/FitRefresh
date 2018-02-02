@@ -84,9 +84,11 @@ class GifTableViewController: UITableViewController {
             }
             
             self.tableView.reloadData()
-            
-            self.tableView.fr.footerView?.endRefreshing()
-            
+            if self.tmpCount == 30 {
+                self.tableView.fr.footerView?.endRefreshingWithNoMoreData()
+            } else {
+                self.tableView.fr.footerView?.endRefreshing()
+            }
         }
     }
     
@@ -101,9 +103,9 @@ class GifTableViewController: UITableViewController {
             }
             
             self.tableView.reloadData()
-            
+
             self.tableView.fr.headerView?.endRefreshing()
-            
+            self.tableView.fr.footerView?.resetNoMoreData()
         }
     }
     

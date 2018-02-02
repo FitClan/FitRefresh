@@ -11,7 +11,7 @@ import UIKit
 public class FRNormalHeader: FRStateHeader {
     // MARK: - public
     
-    /** loading样式 */
+    /// loading样式 
     public var activityIndicatorViewStyle:UIActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
         didSet {
             self.activityView.activityIndicatorViewStyle = activityIndicatorViewStyle
@@ -19,7 +19,7 @@ public class FRNormalHeader: FRStateHeader {
         }
     }
     
-    /** 指示器的图片[箭头] */
+    /// 指示器的图片[箭头] 
     public var arrowImage: UIImage? {
         didSet {
             self.arrowView.image = arrowImage
@@ -29,7 +29,7 @@ public class FRNormalHeader: FRStateHeader {
     
     // MARK: lazy
     // 图片
-    /** 指示图片 */
+    /// 指示图片 
     lazy var arrowView: UIImageView = {
         [unowned self] in
         
@@ -72,7 +72,7 @@ public class FRNormalHeader: FRStateHeader {
     }
     
     // 重写观察者属性
-    /** 辅助记录 旧值 */
+    /// 辅助记录 旧值 
     fileprivate var oldState: RefreshState!
     override var state: RefreshState {
         didSet {
@@ -123,7 +123,7 @@ public class FRNormalHeader: FRStateHeader {
             commonFun()
             UIView.animate(withDuration: RefreshSlowAnimationDuration, animations: { () -> Void in
                 let tmp:CGFloat = 0.000001 - CGFloat(Double.pi)
-                self.arrowView.transform = CGAffineTransform(rotationAngle: tmp);
+                self.arrowView.transform = CGAffineTransform(rotationAngle: tmp)
             })
             
         case .refreshing:

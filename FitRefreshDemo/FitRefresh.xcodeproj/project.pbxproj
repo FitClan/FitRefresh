@@ -31,6 +31,10 @@
 		E7081C9F1EB32B850082C609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7081C9E1EB32B850082C609 /* Assets.xcassets */; };
 		E7081CA71EB33D000082C609 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7081CA61EB33D000082C609 /* Info.plist */; };
 		E767470F1FC9B8DA0087A2DF /* FRHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7081C6D1EB319640082C609 /* FRHelper.swift */; };
+		E79C5241202300F50087463B /* FRBackFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C5240202300F50087463B /* FRBackFooter.swift */; };
+		E79C52432023128B0087463B /* FRBackNormalFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C52422023128B0087463B /* FRBackNormalFooter.swift */; };
+		E79C52452023143C0087463B /* FRBackStateFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C52442023143C0087463B /* FRBackStateFooter.swift */; };
+		E79C52472024088B0087463B /* FRBackGifFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C52462024088B0087463B /* FRBackGifFooter.swift */; };
 		E7A6DF451FD62F5A00EA3449 /* FRAutoGifFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A6DF441FD62F5A00EA3449 /* FRAutoGifFooter.swift */; };
 		E7BF078A1F4A806E00AD2338 /* FitRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF07891F4A806E00AD2338 /* FitRefresh.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +87,10 @@
 		E7081C9E1EB32B850082C609 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7081CA51EB33D000082C609 /* FitRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitRefresh.h; sourceTree = "<group>"; };
 		E7081CA61EB33D000082C609 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E79C5240202300F50087463B /* FRBackFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRBackFooter.swift; sourceTree = "<group>"; };
+		E79C52422023128B0087463B /* FRBackNormalFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRBackNormalFooter.swift; sourceTree = "<group>"; };
+		E79C52442023143C0087463B /* FRBackStateFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRBackStateFooter.swift; sourceTree = "<group>"; };
+		E79C52462024088B0087463B /* FRBackGifFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRBackGifFooter.swift; sourceTree = "<group>"; };
 		E7A6DF441FD62F5A00EA3449 /* FRAutoGifFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRAutoGifFooter.swift; sourceTree = "<group>"; };
 		E7BF07891F4A806E00AD2338 /* FitRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitRefresh.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +180,10 @@
 				E7081C6F1EB319640082C609 /* FRResources.bundle */,
 				E7081C651EB319640082C609 /* FRComponent.swift */,
 				E7081C661EB319640082C609 /* FRAutoFooter.swift */,
+				E79C5240202300F50087463B /* FRBackFooter.swift */,
+				E79C52442023143C0087463B /* FRBackStateFooter.swift */,
+				E79C52462024088B0087463B /* FRBackGifFooter.swift */,
+				E79C52422023128B0087463B /* FRBackNormalFooter.swift */,
 				E7081C671EB319640082C609 /* FRAutoNormalFooter.swift */,
 				E7081C681EB319640082C609 /* FRAutoStateFooter.swift */,
 				E7A6DF441FD62F5A00EA3449 /* FRAutoGifFooter.swift */,
@@ -337,10 +349,12 @@
 				E7081C7D1EB319640082C609 /* FRStateHeader.swift in Sources */,
 				E7A6DF451FD62F5A00EA3449 /* FRAutoGifFooter.swift in Sources */,
 				E7081C771EB319640082C609 /* FRFooter.swift in Sources */,
+				E79C52472024088B0087463B /* FRBackGifFooter.swift in Sources */,
 				E7081C7E1EB319640082C609 /* ScrollViewExtension-FitRefresh.swift in Sources */,
 				E7081C781EB319640082C609 /* FRGifHeader.swift in Sources */,
 				E7081C1E1EB2E67C0082C609 /* ViewController.swift in Sources */,
 				E7081C761EB319640082C609 /* FRConst.swift in Sources */,
+				E79C52432023128B0087463B /* FRBackNormalFooter.swift in Sources */,
 				E7BF078A1F4A806E00AD2338 /* FitRefresh.swift in Sources */,
 				E7081C7B1EB319640082C609 /* FRNormalHeader.swift in Sources */,
 				E7081C731EB319640082C609 /* FRAutoFooter.swift in Sources */,
@@ -348,8 +362,10 @@
 				E7081C9D1EB321F20082C609 /* NormalTableViewController.swift in Sources */,
 				E7081C751EB319640082C609 /* FRAutoStateFooter.swift in Sources */,
 				E7081C721EB319640082C609 /* FRComponent.swift in Sources */,
+				E79C52452023143C0087463B /* FRBackStateFooter.swift in Sources */,
 				E7081C791EB319640082C609 /* FRHeader.swift in Sources */,
 				E7081C9B1EB321E40082C609 /* GifTableViewController.swift in Sources */,
+				E79C5241202300F50087463B /* FRBackFooter.swift in Sources */,
 				E7081C1C1EB2E67C0082C609 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

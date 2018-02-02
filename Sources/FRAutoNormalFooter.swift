@@ -11,7 +11,7 @@ import UIKit
 public class FRAutoNormalFooter: FRAutoStateFooter {
     
     // MARK: - public
-    /** loading样式 */
+    /// loading样式
     public var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
         didSet {
             self.activityView.activityIndicatorViewStyle = activityIndicatorViewStyle
@@ -37,7 +37,9 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
         if self.activityView.constraints.count > 0 { return }
         // loading
         var activityViewCenterX = self.width * 0.5
-        if !self.isRefreshingTitleHidden { activityViewCenterX -= self.stateLabel.fr_textWidth() * 0.5 + 20 }
+        if !self.isRefreshingTitleHidden {
+            activityViewCenterX -= self.stateLabel.fr_textWidth * 0.5 + labelLeftInset
+        }
         let activityViewCenterY = self.height * 0.5
         self.activityView.center = CGPoint(x: activityViewCenterX, y: activityViewCenterY)
     }

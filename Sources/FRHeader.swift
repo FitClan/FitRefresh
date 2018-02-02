@@ -14,13 +14,13 @@ public class FRHeader: FRComponent {
     var insetTopDelta: CGFloat = 0.0
     
     
-    /** 利用这个key来保存上次的刷新时间（不同界面的刷新控件应该用不同的dateKey，以区分不同界面的刷新时间） */
+    /// 利用这个key来保存上次的刷新时间（不同界面的刷新控件应该用不同的dateKey，以区分不同界面的刷新时间） 
     var lastUpdatedateKey = RefreshHeaderLastUpdatedTimeKey
     
-    /** 忽略多少scrollView的contentInset的top */
+    /// 忽略多少scrollView的contentInset的top 
     public var ignoredScrollViewContentInsetTop: CGFloat = 0.0
     
-    /** 上一次下拉刷新成功的时间 */
+    /// 上一次下拉刷新成功的时间 
     public var lastUpdatedTime: Date {
         get {
             if let realTmp =  UserDefaults.standard.object(forKey: self.lastUpdatedateKey) {
@@ -96,7 +96,7 @@ public class FRHeader: FRComponent {
     
     
     // MARK: 改变状态后
-    /** 刷新控件的状态 */
+    /// 刷新控件的状态 
     override var state: RefreshState {
         didSet {
             // 状态和以前的一样就不用改变

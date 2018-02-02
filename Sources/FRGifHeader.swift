@@ -11,21 +11,21 @@ import UIKit
 public class FRGifHeader: FRStateHeader {
     
     // MARK: 方法接口
-    /** 设置刷新状态下,gif的图片 */
+    /// 设置刷新状态下,gif的图片 
     @discardableResult
     public func setImages(_ images: Array<UIImage>, state: RefreshState) -> Self {
         
         return self.setImages(images, duration: TimeInterval(images.count) * 0.1, state: state)
     }
     
-    /** 设置刷新状态下,gif的图片,动画每帧相隔的时间 */
+    /// 设置刷新状态下,gif的图片,动画每帧相隔的时间 
     @discardableResult
     public func setImages(_ images: Array<UIImage>, duration:TimeInterval, state:RefreshState) -> Self {
         // 防止空数组 []
         if images.count < 1 { return self}
         
-        self.stateImages[state] = images;
-        self.stateDurations[state] = duration;
+        self.stateImages[state] = images
+        self.stateDurations[state] = duration
         
         // 根据图片设置控件的高度
         let image: UIImage = images.first!
