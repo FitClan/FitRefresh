@@ -59,7 +59,7 @@ class NormalTableViewController: UITableViewController {
         // 延迟执行 模拟网络延迟，实际开发中去掉
         FRDelay(2) {
             
-            for _ in 1...15{
+            for _ in 1...20 {
                 self.tmpCount += 1
                 self.dataArray.append("数据 - \(self.tmpCount)")
             }
@@ -78,7 +78,7 @@ class NormalTableViewController: UITableViewController {
         // 延迟执行 模拟网络延迟，实际开发中去掉
         FRDelay(2) {
             
-            for _ in 1...15{
+            for _ in 1...20 {
                 self.tmpCount += 1
                 self.dataArray.append("数据 - \(self.tmpCount)")
             }

@@ -77,13 +77,13 @@ class GifTableViewController: UITableViewController {
         // 延迟执行 模拟网络延迟，实际开发中去掉
         task = FRDelay(2) {
             
-            for _ in 1...15{
+            for _ in 1...20 {
                 self.tmpCount += 1
                 self.dataArray.append("数据 - \(self.tmpCount)")
             }
             
             self.tableView.reloadData()
-            if self.tmpCount == 30 {
+            if self.tmpCount == 60 {
                 self.tableView.fr.footerView?.endRefreshingWithNoMoreData()
             } else {
                 self.tableView.fr.footerView?.endRefreshing()
@@ -96,7 +96,7 @@ class GifTableViewController: UITableViewController {
         task = FRDelay(2) {
             self.tmpCount = 0
             self.dataArray.removeAll()
-            for _ in 1...15{
+            for _ in 1...20 {
                 self.tmpCount += 1
                 self.dataArray.append("数据 - \(self.tmpCount)")
             }
