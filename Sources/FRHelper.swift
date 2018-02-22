@@ -362,9 +362,9 @@ extension Date {
             formatter.dateFormat = "yyyy-MM-dd HH:mm"
         }
         let time: String = formatter.string(from: self)
-        let infoString = isToday ? Bundle.fit_localizedStringForKey("FitRefreshHeaderDateTodayText", value: "今天") : Bundle.fit_localizedStringForKey("FitRefreshHeaderLastTimeText", value: "最后更新")
+        let infoString = isToday ? Bundle.fit_localizedStringForKey("FitRefreshHeaderDateTodayText", value: "今天") : ""
         
-        return infoString + ":" + time
+        return Bundle.fit_localizedStringForKey("FitRefreshHeaderLastTimeText", value: "最后更新") + infoString + time
     }
     
     func currentCalendar() -> Calendar {
