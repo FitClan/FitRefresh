@@ -95,7 +95,6 @@ class FRBackNormalFooter: FRBackStateFooter {
                         self.arrowView.transform = CGAffineTransform(rotationAngle: CGFloat(0.000001 - .pi))
                     })
                 }
-                
             } else if state == RefreshState.pulling  {
                 self.arrowView.isHidden = false
                 self.activityView.stopAnimating()
