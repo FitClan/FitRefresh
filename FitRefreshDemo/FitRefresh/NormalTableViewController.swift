@@ -19,6 +19,11 @@ class NormalTableViewController: UITableViewController {
         
         // target
         self.tableView.fr.headerView = FRNormalHeader(target: self, action: #selector(NormalTableViewController.upPullLoadData))
+        if #available(iOS 10.0, *) {
+            self.tableView.fr.headerView?.isImpactFeedback = true
+        } else {
+            // Fallback on earlier versions
+        }
         self.tableView.fr.headerView?.beginRefreshing()
         
         
@@ -30,7 +35,6 @@ class NormalTableViewController: UITableViewController {
         })
         
         self.tableView.fr.footerView?.isAutomaticallyChangeAlpha = true
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,25 +44,20 @@ class NormalTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return dataArray.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FRNormalCellID", for: indexPath)
-        
         cell.textLabel?.text = dataArray[indexPath.row]
-        
         return cell
     }
     
     @objc func upPullLoadData() {
-        tmpCount = 0
-        self.dataArray.removeAll()
         // 延迟执行 模拟网络延迟，实际开发中去掉
         FRDelay(2) {
-            
+            self.tmpCount = 0
+            self.dataArray.removeAll()
             for _ in 1...20 {
                 self.tmpCount += 1
                 self.dataArray.append("数据 - \(self.tmpCount)")
@@ -68,16 +67,13 @@ class NormalTableViewController: UITableViewController {
             
             self.tableView.fr.footerView?.endRefreshing()
             self.tableView.fr.headerView?.endRefreshing()
-            
         }
-        
     }
     
     func downPullLoadData() {
         
         // 延迟执行 模拟网络延迟，实际开发中去掉
         FRDelay(2) {
-            
             for _ in 1...20 {
                 self.tmpCount += 1
                 self.dataArray.append("数据 - \(self.tmpCount)")
@@ -88,4 +84,5 @@ class NormalTableViewController: UITableViewController {
             self.tableView.fr.footerView?.endRefreshing()
         }
     }
+    
 }
