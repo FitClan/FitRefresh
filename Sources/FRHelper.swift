@@ -22,7 +22,7 @@ func FRColor(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
 
 // MARK: delay
 public typealias FRTask = (_ cancel: Bool) -> Void
-/** 延迟执行 */
+/// 延迟执行
 @discardableResult
 public func FRDelay(_ time: TimeInterval, task: @escaping ()->()) -> FRTask? {
     func dispatch_later(block: @escaping ()->()) -> Void {
@@ -53,7 +53,7 @@ public func FRDelay(_ time: TimeInterval, task: @escaping ()->()) -> FRTask? {
     
     return result
 }
-/** 取消任务 */
+/// 取消任务
 public func FRCancel(_ task: FRTask?) {
     task?(true)
 }
@@ -74,7 +74,7 @@ public extension DispatchQueue {
      - parameter token: A unique reverse DNS style name such as com.vectorform.<name> or a GUID
      - parameter block: Block to execute once
      */
-    /** 单例 */
+    /// 单例
     public class func once(token: String, block:()->Void) {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
@@ -339,7 +339,7 @@ extension Bundle {
 
 extension Date {
     
-    /** 转换NSDate->String 精确点 */
+    /// 转换NSDate->String 精确点
     func ConvertStringTime() -> String {
         
         // 1.获得年月日

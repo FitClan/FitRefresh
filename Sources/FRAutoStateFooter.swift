@@ -10,6 +10,7 @@ import UIKit
 
 public class FRAutoStateFooter: FRAutoFooter {
     // MARK: - public
+    /// label的左间距
     public var labelLeftInset: CGFloat = 20
     
     /// 显示刷新状态的label

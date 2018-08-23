@@ -11,6 +11,7 @@ import UIKit
 class FRBackNormalFooter: FRBackStateFooter {
 
     // MARK: - public
+    /// 箭头view
     lazy var arrowView: UIImageView = {
         [unowned self] in
         

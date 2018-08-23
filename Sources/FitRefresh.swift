@@ -20,9 +20,7 @@ public final class FitRefresh<Base> {
     }
 }
 
-/**
- A type that has FitRefresh extensions.
- */
+/// A type that has FitRefresh extensions.
 public protocol FitRefreshCompatible {
     associatedtype CompatibleType
     var fr: CompatibleType { get }

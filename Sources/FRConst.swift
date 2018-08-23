@@ -8,37 +8,34 @@
 
 import UIKit
 
-// 文字颜色
+/// 文字颜色
 let RefreshLabelTextColor = FRColor(r: 100, g: 100, b: 100)
-
-// 字体大小
+/// 字体大小
 let RefreshLabelFont = UIFont.boldSystemFont(ofSize: 13)
 
-/** 头部高度 */
+/// 头部高度
 let RefreshHeaderHeight: CGFloat = 64
-/** 尾部高度 */
+/// 尾部高度
 let RefreshFooterHeight: CGFloat = 44
-
-/** gifView 偏差 */
+/// gifView 偏差
 let RefreshGifViewWidthDeviation: CGFloat = 99
-
-/** footer loading 偏差 */
+/// footer loading 偏差
 let RefreshFooterActivityViewDeviation: CGFloat = 100
 
-/** 开始的动画时间 */
+/// 开始的动画时间
 let RefreshFastAnimationDuration = 0.25
-/** 慢的动画时间 */
+/// 慢的动画时间
 let RefreshSlowAnimationDuration = 0.4
 
-/** 更新的时间 */
+/// 更新的时间
 let RefreshHeaderLastUpdatedTimeKey = "FitRefreshHeaderLastUpdatedTimeKey"
-/** 也就是上拉下拉的多少*/
+/// 也就是上拉下拉的多少
 let RefreshKeyPathContentOffset = "contentOffset"
-/** 内容的size */
+/// 内容的size
 let RefreshKeyPathContentSize = "contentSize"
-/** 内边距 */
+/// 内边距
 let RefreshKeyPathContentInset = "contentInset"
-/** 手势状态 */
+/// 手势状态
 let RefreshKeyPathPanKeyPathState = "state"
 
 let RefreshHeaderStateIdleText =
@@ -55,6 +52,6 @@ let RefreshBackFooterPullingText = Bundle.fit_localizedStringForKey("FitRefreshB
 let RefreshBackFooterRefreshingText = Bundle.fit_localizedStringForKey("FitRefreshBackFooterRefreshingText", value: "正在加载更多的数据...")
 let RefreshBackFooterNoMoreDataText = Bundle.fit_localizedStringForKey("FitRefreshBackFooterNoMoreDataText", value: "已经全部加载完毕")
 
-/** 图片路径 */
+/// 图片路径
 let FRIconSrcPath: String = "Frameworks/FitRefresh.framework/FRResources.bundle/fr_down.png"
 let FRIconLocalPath: String = "FRResources.bundle/fr_down.png"

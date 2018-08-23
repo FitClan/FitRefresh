@@ -35,19 +35,26 @@ public class FRComponent: UIView {
     
     // MARK: - public
     // MARK: 给外界访问
-    // 字体颜色
+    
+    /// 是否在刷新的时候给予震动反馈(ios10及以上版本支持），默认是 false
+    @available(iOS 10.0, *)
+    public lazy var isImpactFeedback: Bool = {
+        return false
+    }()
+    
+    /// 字体颜色
     public var textColor: UIColor?
     
-    // 字体大小
+    /// 字体大小
     public var font: UIFont?
     
-    // 刷新的target
+    /// 刷新的target
     fileprivate weak var refreshingTarget: AnyObject!
     
-    // 执行的方法
+    /// 执行的方法
     fileprivate var refreshingAction: Selector = NSSelectorFromString("")
     
-    // 真正刷新 回调
+    /// 真正刷新 回调
     var refreshingClosure: ComponentRefreshingClosure = {}
     
     var beginRefreshingCompletionBlock: ComponentbeginRefreshingCompletionBlock = {}
@@ -92,7 +99,7 @@ public class FRComponent: UIView {
     }
     
     // MARK 方法
-    // 提供方便，有提示
+    /// 提供方便，有提示
     func addCallBack(_ block: @escaping ComponentRefreshingClosure) {
         self.refreshingClosure = block
     }
@@ -177,6 +184,16 @@ public class FRComponent: UIView {
     /// 促发回调
     func executeRefreshingCallback() {
         DispatchQueue.main.async {
+            
+            if #available(iOS 10.0, *) {
+                if (self.isImpactFeedback) {
+                    // 震动反馈
+                    let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: UIImpactFeedbackStyle.light)
+                    impactFeedbackGenerator.prepare()
+                    impactFeedbackGenerator.impactOccurred()
+                }
+            }
+            
             self.refreshingClosure()
             
             // 执行方法
