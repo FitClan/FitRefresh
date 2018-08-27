@@ -83,6 +83,10 @@ class FRBackNormalFooter: FRBackStateFooter {
                         [unowned self] () -> Void in
                         self.activityView.alpha = 0.0
                     }, completion: { (_) in
+                        if (self.state != RefreshState.idle) {
+                            return
+                        }
+                        
                         self.activityView.alpha = 1.0
                         self.activityView.stopAnimating()
                         

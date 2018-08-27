@@ -116,7 +116,9 @@ extension UIScrollView {
     var inset: UIEdgeInsets {
         get {
             if #available(iOS 11.0, *) {
-                return self.adjustedContentInset
+                if (self.responds(to: #selector(getter: adjustedContentInset))) {
+                    return self.adjustedContentInset
+                }
             }
             return self.contentInset
         }
@@ -148,7 +150,9 @@ extension UIScrollView {
             var finValue = newValue
             
             if #available(iOS 11.0, *) {
-                finValue -= (self.adjustedContentInset.top - self.contentInset.top)
+                if (self.responds(to: #selector(getter: adjustedContentInset))) {
+                    finValue -= (self.adjustedContentInset.top - self.contentInset.top)
+                }
             }
             
             self.contentInset.top = finValue
@@ -163,7 +167,9 @@ extension UIScrollView {
             var finValue = newValue
             
             if #available(iOS 11.0, *) {
-                finValue -= (self.adjustedContentInset.right - self.contentInset.right)
+                if (self.responds(to: #selector(getter: adjustedContentInset))) {
+                    finValue -= (self.adjustedContentInset.right - self.contentInset.right)
+                }
             }
             self.contentInset.right = newValue
         }
@@ -177,7 +183,9 @@ extension UIScrollView {
             var finValue = newValue
             
             if #available(iOS 11.0, *) {
-                finValue -= (self.adjustedContentInset.left - self.contentInset.left)
+                if (self.responds(to: #selector(getter: adjustedContentInset))) {
+                    finValue -= (self.adjustedContentInset.left - self.contentInset.left)
+                }
             }
             self.contentInset.left = newValue
         }
@@ -190,7 +198,9 @@ extension UIScrollView {
             var finValue = newValue
             
             if #available(iOS 11.0, *) {
-                finValue -= (self.adjustedContentInset.bottom - self.contentInset.bottom)
+                if (self.responds(to: #selector(getter: adjustedContentInset))) {
+                    finValue -= (self.adjustedContentInset.bottom - self.contentInset.bottom)
+                }
             }
             self.contentInset.bottom = newValue
         }
