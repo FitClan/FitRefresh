@@ -249,7 +249,7 @@ public class FRComponent: UIView {
             }
             
             // 记录UIScrollView
-            self.scrollView = tmpNewSuperview as! UIScrollView
+            self.scrollView = (tmpNewSuperview as! UIScrollView)
             
             // 设置用于支持 垂直下拉有弹簧的效果
             self.scrollView.alwaysBounceVertical = true
