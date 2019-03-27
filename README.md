@@ -9,22 +9,23 @@
 
 
 
+`Swift 5+` 的下拉刷新。
 
-## 描述
+The refresh use Swift5..
 
-Swift 4+ 的下拉刷新 (The refresh use Swift4)
+## 集成 Installation
 
-## 集成
-
-最简单也是推荐的方式
+最简单也是推荐的方式。
 The sample way.
 
 ```ruby
 pod 'FitRrefesh'
 ```
 
-另外一种
-else 
+另外一种。
+else
+
+把`Sources`中的文件加入到你的项目中。
 
 You can also drop the `Sources` to your project.
 
