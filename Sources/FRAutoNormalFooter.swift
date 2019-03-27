@@ -12,9 +12,9 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     
     // MARK: - public
     /// loading样式
-    public var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
+    public var activityIndicatorViewStyle = UIActivityIndicatorView.Style.gray {
         didSet {
-            self.activityView.activityIndicatorViewStyle = activityIndicatorViewStyle
+            self.activityView.style = activityIndicatorViewStyle
             self.setNeedsLayout()
         }
     }
@@ -24,7 +24,7 @@ public class FRAutoNormalFooter: FRAutoStateFooter {
     lazy var activityView: UIActivityIndicatorView = {
         [unowned self] in
         
-        let activityView = UIActivityIndicatorView(activityIndicatorStyle: self.activityIndicatorViewStyle)
+        let activityView = UIActivityIndicatorView(style: self.activityIndicatorViewStyle)
         activityView.hidesWhenStopped = true
         self.addSubview(activityView)
         return activityView

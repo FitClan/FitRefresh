@@ -167,7 +167,7 @@ public class FRComponent: UIView {
     // MARK: 初始化
     func prepare() {
         // 基本属性 只适应 宽度
-        self.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        self.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         self.backgroundColor = UIColor.clear
     }
     
@@ -188,7 +188,7 @@ public class FRComponent: UIView {
             if #available(iOS 10.0, *) {
                 if (self.isImpactFeedback) {
                     // 震动反馈
-                    let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: UIImpactFeedbackStyle.light)
+                    let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: UIImpactFeedbackGenerator.FeedbackStyle.light)
                     impactFeedbackGenerator.prepare()
                     impactFeedbackGenerator.impactOccurred()
                 }
@@ -199,8 +199,8 @@ public class FRComponent: UIView {
             // 执行方法
             if let realTaget = self.refreshingTarget {
                 if realTaget.responds(to: self.refreshingAction) == true {
-                    let timer = Timer.scheduledTimer(timeInterval: 0, target: self.refreshingTarget, selector: self.refreshingAction, userInfo: nil, repeats: false)
-                    RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+                    let timer = Timer.scheduledTimer(timeInterval: 0, target: self.refreshingTarget!, selector: self.refreshingAction, userInfo: nil, repeats: false)
+                    RunLoop.main.add(timer, forMode:.common)
                 }
             }
             self.beginRefreshingCompletionBlock()
@@ -209,7 +209,7 @@ public class FRComponent: UIView {
     
     // MARK: - private
     /// 记录scrollView刚开始的inset
-    var scrollViewOriginalInset: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+    var scrollViewOriginalInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     /// 父控件 */
     weak var scrollView: UIScrollView!
     
@@ -329,7 +329,7 @@ extension UILabel {
         let FRLabel = UILabel()
         FRLabel.font = RefreshLabelFont
         FRLabel.textColor = RefreshLabelTextColor
-        FRLabel.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        FRLabel.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         FRLabel.textAlignment = NSTextAlignment.center
         FRLabel.backgroundColor = UIColor.clear
         return FRLabel
@@ -342,7 +342,7 @@ extension UILabel {
         
         if let text = self.text {
             if text.count > 0 {
-                stringWidth = text.boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : self.font], context: nil).size.width
+                stringWidth = text.boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font : self.font!], context: nil).size.width
             }
         }
        

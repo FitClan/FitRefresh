@@ -115,7 +115,7 @@ public extension UIScrollView {
     
     /// reloadDataClosure 
     @available(*, deprecated, message: "Extensions directly on scroll Views are deprecated. Use like `scrollView.fr.reloadDataClosureClass` instead.", renamed: "fr.reloadDataClosureClass")
-    public var reloadDataClosureClass:ReloadDataClosureInClass {
+    var reloadDataClosureClass:ReloadDataClosureInClass {
         set {
             self.willChangeValue(forKey: "reloadDataClosure")
             // 因为闭包不属于class 所以不合适 AnyObject
@@ -132,7 +132,7 @@ public extension UIScrollView {
         
     /// 下拉刷新的控件 
     @available(*, deprecated, message: "Extensions directly on scroll Views are deprecated. Use like `scrollView.fr.headerView` instead.", renamed: "fr.headerView")
-    public var fr_headerView: FRHeader? {
+    var fr_headerView: FRHeader? {
         set {
             if self.fr_headerView == newValue { return }
             

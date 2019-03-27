@@ -70,7 +70,7 @@ public class FRAutoFooter: FRFooter {
         if self.state != RefreshState.idle { return }
         
         // 抬起手
-        if self.scrollView.panGestureRecognizer.state == UIGestureRecognizerState.ended {
+        if self.scrollView.panGestureRecognizer.state == UIGestureRecognizer.State.ended {
             
             // 不够一个屏幕的滚动 top + content.height 就是内容显示的高度
             if self.scrollView.insetTop +

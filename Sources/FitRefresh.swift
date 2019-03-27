@@ -27,7 +27,7 @@ public protocol FitRefreshCompatible {
 }
 
 public extension FitRefreshCompatible {
-    public var fr: FitRefresh<Self> {
+    var fr: FitRefresh<Self> {
         get { return FitRefresh(self) }
     }
 }

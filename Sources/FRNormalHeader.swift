@@ -12,9 +12,9 @@ public class FRNormalHeader: FRStateHeader {
     // MARK: - public
     
     /// loading样式 
-    public var activityIndicatorViewStyle:UIActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
+    public var activityIndicatorViewStyle:UIActivityIndicatorView.Style = UIActivityIndicatorView.Style.gray {
         didSet {
-            self.activityView.activityIndicatorViewStyle = activityIndicatorViewStyle
+            self.activityView.style = activityIndicatorViewStyle
             self.setNeedsLayout()
         }
     }
@@ -47,7 +47,7 @@ public class FRNormalHeader: FRStateHeader {
     fileprivate lazy var activityView: UIActivityIndicatorView = {
         [unowned self] in
         
-        let activityView = UIActivityIndicatorView(activityIndicatorStyle: self.activityIndicatorViewStyle)
+        let activityView = UIActivityIndicatorView(style: self.activityIndicatorViewStyle)
         activityView.bounds = self.arrowView.bounds
         
         self.addSubview(activityView)

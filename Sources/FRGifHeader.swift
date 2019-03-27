@@ -70,9 +70,9 @@ public class FRGifHeader: FRStateHeader {
         
         self.gifView.frame = self.bounds
         if self.stateLabel.isHidden && self.lastUpdatedTimeLabel.isHidden {
-            self.gifView.contentMode = UIViewContentMode.center
+            self.gifView.contentMode = UIView.ContentMode.center
         } else {
-            self.gifView.contentMode = UIViewContentMode.right
+            self.gifView.contentMode = UIView.ContentMode.right
             self.gifView.width = self.width * 0.5 - RefreshGifViewWidthDeviation
         }
     }

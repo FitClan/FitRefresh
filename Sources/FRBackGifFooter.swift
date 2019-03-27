@@ -70,9 +70,9 @@ class FRBackGifFooter: FRBackStateFooter {
         if self.gifView.constraints.count > 0 { return }
         self.gifView.frame = self.bounds
         if self.stateLabel.isHidden {
-            self.gifView.contentMode = UIViewContentMode.center
+            self.gifView.contentMode = UIView.ContentMode.center
         } else {
-            self.gifView.contentMode = UIViewContentMode.right
+            self.gifView.contentMode = UIView.ContentMode.right
             self.gifView.width = self.width * 0.5 - self.labelLeftInset - self.stateLabel.fr_textWidth * 0.5
         }
     }

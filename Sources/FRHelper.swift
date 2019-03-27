@@ -75,7 +75,7 @@ public extension DispatchQueue {
      - parameter block: Block to execute once
      */
     /// 单例
-    public class func once(token: String, block:()->Void) {
+    class func once(token: String, block:()->Void) {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
         

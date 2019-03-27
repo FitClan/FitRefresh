@@ -58,9 +58,9 @@ class FRAutoGifFooter: FRAutoStateFooter {
         
         self.gifView.frame = self.bounds
         if self.isRefreshingTitleHidden {
-            self.gifView.contentMode = UIViewContentMode.center
+            self.gifView.contentMode = UIView.ContentMode.center
         } else {
-            self.gifView.contentMode = UIViewContentMode.right
+            self.gifView.contentMode = UIView.ContentMode.right
             self.gifView.width = self.width * 0.5 - self.labelLeftInset - self.stateLabel.fr_textWidth * 0.5
         }
     }
